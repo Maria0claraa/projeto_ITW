@@ -1,48 +1,134 @@
-index.css
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            color: #333;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
+/* Estilos globais */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f3f4f6;
+    /* Cor de fundo mais suave */
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
 
-        .header {
-            background-color: lightsteelblue;
-            color: #fff;
-            text-align: center;
-            padding: 1rem 0;
-        }
+/* Cabeçalho */
+.header {
+    background-color: #e8e7e6;
+    color: black;
+    text-align: center;
+    padding: 1.5rem 0;
+    border-bottom: 4px solid #2c3e50;
+}
 
-            .header h1 {
-                margin: 0;
-                font-size: 2.5rem;
-            }
+.header h1 {
+    margin: 0;
+    font-size: 2.8rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+}
 
-        .content {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 1rem;
-            background-color: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
+/* Conteúdo principal */
+.content {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background-color: #ffffff;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+}
 
-            .content h2 {
-                color: #2c3e50;
-                margin-bottom: 1rem;
-            }
+.content:hover {
+    transform: translateY(-5px);
+    /* Elevação ao passar o mouse */
+}
 
-            .content p {
-                margin-bottom: 1rem;
-                text-align: justify;
-            }
+.content h2 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
 
-        .footer {
-            text-align: center;
-            padding: 1rem 0;
-            background-color: #2c3e50;
-            color: #fff;
-            margin-top: 2rem;
-        }
+.content p {
+    margin-bottom: 1rem;
+    text-align: justify;
+    line-height: 1.8;
+}
+
+/* Banner/Carousel */
+.carousel-inner img {
+    height: 300px;
+    /* Altura fixa para o banner */
+    object-fit: cover;
+    border-radius: 12px;
+    /* Bordas arredondadas para o banner */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Botões do carousel */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: brightness(0) invert(1);
+    /* Ajusta cor dos ícones para branco */
+    width: 30px;
+    height: 30px;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    transition: transform 0.2s ease;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    transform: scale(1.1);
+    /* Efeito ao passar o mouse nos botões */
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 1rem 0;
+    background-color: #2c3e50;
+    color: #fff;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    border-top: 4px solid #e8e7e6;
+}
+
+/* Navbar */
+.navbar {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+.navbar-nav .nav-link {
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #2c3e50;
+}
+
+.navbar-nav .nav-link i {
+    margin-right: 5px;
+    /* Espaço entre ícones e texto */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .content {
+        margin: 1rem;
+        padding: 1rem;
+    }
+
+    .header h1 {
+        font-size: 2rem;
+    }
+
+    .carousel-inner img {
+        height: 200px;
+        /* Reduz a altura do banner em telas menores */
+    }
+}
