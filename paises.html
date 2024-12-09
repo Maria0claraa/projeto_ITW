@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Países</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+        }
+
+        .country-card {
+            position: relative;
+            display: inline-block;
+            margin: 15px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .country-card img {
+            width: 150px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: box-shadow 0.2s ease, transform 0.2s ease;
+        }
+
+        .country-card img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .country-name {
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            font-size: 0.9rem;
+            padding: 5px 10px;
+            border-radius: 5px;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .country-card:hover .country-name {
+            opacity: 1;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+        }
+
+        .navbar {
+            background-color: #e8e7e6;
+        }
+
+        .footer {
+            background-color: #e8e7e6;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img src="paris-2024-logo-1.png" alt="Logo" height="50" class="d-inline-block align-text-top">
+            </a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="paises.html">Países</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="torneios.html">Torneios</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Países Participantes -->
+    <h1>Países Participantes</h1>
+    <div class="container text-center">
+        <div class="country-card">
+            <img src="https://flagcdn.com/w320/af.png" alt="Afeganistão">
+            <div class="country-name">Afeganistão</div>
+        </div>
+        <div class="country-card">
+            <img src="https://flagcdn.com/w320/za.png" alt="África do Sul">
+            <div class="country-name">África do Sul</div>
+        </div>
+        <div class="country-card">
+            <img src="https://flagcdn.com/w320/al.png" alt="Albânia">
+            <div class="country-name">Albânia</div>
+        </div>
+        <div class="country-card">
+            <img src="https://flagcdn.com/w320/de.png" alt="Alemanha">
+            <div class="country-name">Alemanha</div>
+        </div>
+        <div class="country-card">
+            <img src="https://flagcdn.com/w320/ad.png" alt="Andorra">
+            <div class="country-name">Andorra</div>
+        </div>
+        <div class="country-card">
+            <img src="https://flagcdn.com/w320/ao.png" alt="Angola">
+            <div class="country-name">Angola</div>
+        </div>
+        <div class="country-card">
+            <img src="https://flagcdn.com/w320/ag.png" alt="Antígua e Barbuda">
+            <div class="country-name">Antígua e Barbuda</div>
+        </div>
+        <div class="country-card">
+            <img src="https://flagcdn.com/w320/sa.png" alt="Arábia Saudita">
+            <div class="country-name">Arábia Saudita</div>
+        </div>
+        <div class="country-card">
+            <img src="https://flagcdn.com/w320/dz.png" alt=" Argélia">
+            <div class="country-name"> Argélia</div>
+        </div>
+        <div class="country-card">
+            <img src="https://flagcdn.com/w320/ar.png" alt="Argentina">
+            <div class="country-name">Argentina</div>
+        </div>
+        <div class="country-card">
+            <img src="https://flagcdn.com/w320/am.png" alt="Armênia ">
+            <div class="country-name">Armênia </div>
+        </div>
+        <div class="country-card">
+            <img src="https://flagcdn.com/w320/aw.png" alt="Aruba">
+            <div class="country-name">Aruba</div>
+        </div>
+        <div class="country-card">
+            <img src="paisesneutro.png" alt="Atletas Individuais Neutros">
+            <div class="country-name">Atletas Individuais Neutros</div>
+        </div>
+    </div>
+    <div class="country-card">
+        <img src="https://flagcdn.com/w320/au.png" alt="Austrália">
+        <div class="country-name">Austrália</div>
+    </div>
+    <div class="country-card">
+        <img src="https://flagcdn.com/w320/at.png" alt="Áustria">
+        <div class="country-name">Áustria</div>
+    </div>
+
+
+    </div>
+
+    <!-- Footer -->
+    <nav class="navbar navbar-expand-md fixed-bottom" style="background-color:#e8e7e6 ">
+        <div class="container-md">
+            <div class="navbar-text">Olimpíasdas Paris 2024 - projeto realizado no âmbito da cadeira de ITW</div>
+            <div class="navbar-text justify-content-end d-none d-md-block">Universidade de Aveiro</div>
+        </div>
+    </nav>
+
+</body>
+
+</html>
