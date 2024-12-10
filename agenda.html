@@ -4,15 +4,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Agenda - Olimpíadas</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+    <style>
+        .timeline-container {
+            position: relative;
+            width: 100%;
+            padding: 20px 0;
+            background-color: #f5f5f5;
+        }
 
+        .timeline {
+            display: flex;
+            overflow-x: scroll;
+            padding: 20px 0;
+            scroll-behavior: smooth;
+        }
+
+        .timeline::-webkit-scrollbar {
+            height: 10px;
+        }
+
+        .timeline::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+
+        .timeline-event {
+            flex: none;
+            width: 200px;
+            margin: 0 10px;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 15px;
+            transition: transform 0.3s;
+        }
+
+        .timeline-event:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .timeline-date {
+            font-weight: bold;
+            color: #007BFF;
+            margin-bottom: 5px;
+        }
+
+        .timeline-description {
+            font-size: 14px;
+        }
+
+        .timeline-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .timeline-navigation button {
+            background-color: #007BFF;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .timeline-navigation button:hover {
+            background-color: #0056b3;
+        }
+
+        .event-card {
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .event-card img {
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .event-card h5 {
+            color: #007BFF;
+        }
+
+        .news-section {
+            margin-top: 50px;
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .news-card {
+            border: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .news-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .news-card img {
+            border-radius: 8px;
+            height: 150px;
+            object-fit: cover;
+        }
+    </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg" style="background-color: #e8e7e6 ">
+    <nav class="navbar navbar-expand-lg" style="background-color: #e8e7e6;">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.html">
                 <img src="paris-2024-logo-1.png" alt="Logo" height="50" class="d-inline-block align-text-top">
@@ -40,193 +152,103 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="mapa.html">
-                            <i class="fa fa-map"></i>Mapa</a>
+                            <i class="fa fa-map"></i> Mapa
+                        </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="agenda.html">
-                            <i class="fa-solid fa-calendar-days"></i>Agenda</a>
+                            <i class="fa-solid fa-calendar-days"></i> Agenda
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="loja.html">
+                            <i class="fa fa-cart-shopping"></i>Loja</a>
                     </li>
                 </ul>
-                </ul>
+                <!-- Botão de login no canto superior direito -->
+                <ul class="navbar-nav ms-auto" id="user_or_login">
+                    <!-- O botão será alterado dinamicamente -->
                 </ul>
             </div>
         </div>
     </nav>
+    <div class="container my-4">
+        <h2 class="text-center">Agenda das Competições</h2>
+        <div class="timeline-container">
+            <div class="timeline" id="timeline">
+                <!-- Eventos -->
+                <div class="timeline-event">
+                    <div class="timeline-date">26 Jul</div>
+                    <div class="timeline-description">Cerimônia de Abertura<br>Trocadéro - 20:00</div>
+                </div>
+                <div class="timeline-event">
+                    <div class="timeline-date">27 Jul</div>
+                    <div class="timeline-description">Voleibol de Praia<br>Torre Eiffel Arena - 09:00</div>
+                </div>
+                <div class="timeline-event">
+                    <div class="timeline-date">28 Jul</div>
+                    <div class="timeline-description">Maratona<br>Pont d'Iéna - 08:00</div>
+                </div>
+                <div class="timeline-event">
+                    <div class="timeline-date">29 Jul</div>
+                    <div class="timeline-description">Basquete 3x3<br>Praça da Concórdia - 09:00</div>
+                </div>
+                <div class="timeline-event">
+                    <div class="timeline-date">30 Jul</div>
+                    <div class="timeline-description">Remo<br>Vaires-sur-Marne - 07:00</div>
+                </div>
+                <div class="timeline-event">
+                    <div class="timeline-date">31 Jul</div>
+                    <div class="timeline-description">Saltos Ornamentais<br>Paris Aquatic Centre - 15:00</div>
+                </div>
+                <div class="timeline-event">
+                    <div class="timeline-date">11 Aug</div>
+                    <div class="timeline-description">Cerimônia de Encerramento<br>Stade de France - 20:00</div>
+                </div>
+            </div>
+            <!-- Notícias -->
+            <div class="news-section">
+                <h3 class="text-center">Últimas Notícias</h3>
+                <div class="row">
+                    <!-- Notícia 1 -->
+                    <div class="col-md-4">
+                        <div class="card news-card">
+                            <img src="noticia1.jpg" alt="Notícia 1" class="card-img-top">
+                            <div class="card-body">
+                                <h5 class="card-title">Esgrima estreia com casa cheia</h5>
+                                <p class="card-text">Grand Palais recebeu a primeira competição de esgrima do evento.
+                                </p>
+                                <a href="#" class="btn btn-primary">Leia mais</a>
+                            </div>
+                        </div>
+                    </div>
 
+                    <!-- Notícia 2 -->
+                    <div class="col-md-4">
+                        <div class="card news-card">
+                            <img src="noticia2.jpg" alt="Notícia 2" class="card-img-top">
+                            <div class="card-body">
+                                <h5 class="card-title">Basquete 3x3 impressiona público</h5>
+                                <p class="card-text">Evento na Praça da Concórdia trouxe partidas emocionantes.</p>
+                                <a href="#" class="btn btn-primary">Leia mais</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Notícia 3 -->
+                    <div class="col-md-4">
+                        <div class="card news-card">
+                            <img src="noticia3.jpg" alt="Notícia 3" class="card-img-top">
+                            <div class="card-body">
+                                <h5 class="card-title">Saltos Ornamentais ganham destaque</h5>
+                                <p class="card-text">Paris Aquatic Centre recebeu saltos de altíssimo nível.</p>
+                                <a href="#" class="btn btn-primary">Leia mais</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 </body>
-<div class="container my-4">
-    <h2 class="text-center">Agenda das Competições</h2>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Data</th>
-                <th>Esporte</th>
-                <th>Local</th>
-                <th>Horário</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- 26 de Julho (Abertura e Início) -->
-            <tr>
-                <td>26 de Julho</td>
-                <td>Cerimônia de Abertura</td>
-                <td>Trocadéro</td>
-                <td>20:00</td>
-            </tr>
-
-            <!-- 27 de Julho -->
-            <tr>
-                <td>27 de Julho</td>
-                <td>Voleibol de Praia</td>
-                <td>Torre Eiffel Arena</td>
-                <td>09:00</td>
-            </tr>
-            <tr>
-                <td>27 de Julho</td>
-                <td>Esgrima</td>
-                <td>Grand Palais</td>
-                <td>10:00</td>
-            </tr>
-            <tr>
-                <td>27 de Julho</td>
-                <td>Futebol</td>
-                <td>Parc des Princes</td>
-                <td>14:00</td>
-            </tr>
-            <tr>
-                <td>27 de Julho</td>
-                <td>Ciclismo de Estrada</td>
-                <td>Pont d'Iéna</td>
-                <td>17:00</td>
-            </tr>
-
-            <!-- 28 de Julho -->
-            <tr>
-                <td>28 de Julho</td>
-                <td>Maratona</td>
-                <td>Pont d'Iéna</td>
-                <td>08:00</td>
-            </tr>
-            <tr>
-                <td>28 de Julho</td>
-                <td>Triatlo</td>
-                <td>Pont Alexandre III</td>
-                <td>10:30</td>
-            </tr>
-
-            <!-- 29 de Julho -->
-            <tr>
-                <td>29 de Julho</td>
-                <td>Basquete 3x3</td>
-                <td>Praça da Concórdia</td>
-                <td>09:00</td>
-            </tr>
-            <tr>
-                <td>29 de Julho</td>
-                <td>Hipismo</td>
-                <td>Palácio de Versalhes (Jardins)</td>
-                <td>11:00</td>
-            </tr>
-
-            <!-- 30 de Julho -->
-            <tr>
-                <td>30 de Julho</td>
-                <td>Remo</td>
-                <td>Vaires-sur-Marne</td>
-                <td>07:00</td>
-            </tr>
-            <tr>
-                <td>30 de Julho</td>
-                <td>Vela</td>
-                <td>Porto de Marselha</td>
-                <td>10:00</td>
-            </tr>
-            <tr>
-                <td>30 de Julho</td>
-                <td>Ginástica Artística</td>
-                <td>Beicy Arena</td>
-                <td>14:00</td>
-            </tr>
-
-            <!-- 31 de Julho -->
-            <tr>
-                <td>31 de Julho</td>
-                <td>Futebol</td>
-                <td>Stade de France</td>
-                <td>18:00</td>
-            </tr>
-            <tr>
-                <td>31 de Julho</td>
-                <td>Saltos Ornamentais</td>
-                <td>Paris Aquatic Centre</td>
-                <td>15:00</td>
-            </tr>
-
-            <!-- 1 de Agosto -->
-            <tr>
-                <td>1 de Agosto</td>
-                <td>Taekwondo</td>
-                <td>Grand Palais</td>
-                <td>09:00</td>
-            </tr>
-            <tr>
-                <td>1 de Agosto</td>
-                <td>Basquete</td>
-                <td>Beicy Arena</td>
-                <td>11:00</td>
-            </tr>
-            <tr>
-                <td>1 de Agosto</td>
-                <td>Golfe</td>
-                <td>Le Golf National</td>
-                <td>13:00</td>
-            </tr>
-
-            <!-- 2 de Agosto -->
-            <tr>
-                <td>2 de Agosto</td>
-                <td>Futebol</td>
-                <td>Stade Vélodrome</td>
-                <td>17:00</td>
-            </tr>
-            <tr>
-                <td>2 de Agosto</td>
-                <td>Ciclismo de Pista</td>
-                <td>Velódromo de Saint-Quentin-en-Yvelines</td>
-                <td>16:00</td>
-            </tr>
-
-            <!-- 3 de Agosto -->
-            <tr>
-                <td>3 de Agosto</td>
-                <td>Remo</td>
-                <td>Vaires-sur-Marne</td>
-                <td>09:00</td>
-            </tr>
-
-            <!-- 4 de Agosto -->
-            <tr>
-                <td>4 de Agosto</td>
-                <td>Surfe</td>
-                <td>Teahupo'o</td>
-                <td>08:00</td>
-            </tr>
-            <tr>
-                <td>4 de Agosto</td>
-                <td>Maratona Aquática</td>
-                <td>Pont Alexandre III</td>
-                <td>11:00</td>
-            </tr>
-
-            <!-- Cerimônia de Encerramento -->
-            <tr>
-                <td>11 de Agosto</td>
-                <td>Cerimônia de Encerramento</td>
-                <td>Stade de France</td>
-                <td>20:00</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
 
 </html>
