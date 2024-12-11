@@ -364,6 +364,10 @@
 </body>
 <script>
     
+    function removeAccents(str) {
+        return str.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+    }
+    
     const filterInput = document.getElementById('country-filter');
     const cards = document.querySelectorAll('.country-card');
 
