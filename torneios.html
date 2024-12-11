@@ -363,22 +363,29 @@
     </nav>
 </body>
 <script>
-    
+    // Função para remover acentos
     function removeAccents(str) {
         return str.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
     }
-    
+
+    // Seleciona o campo de entrada e os cards
     const filterInput = document.getElementById('country-filter');
     const cards = document.querySelectorAll('.country-card');
 
-    
+    // Adiciona o evento para capturar mudanças no campo de entrada
     filterInput.addEventListener('input', function () {
-        const filterText = filterInput.value.toLowerCase();
+        const filterText = removeAccents(filterInput.value.trim().toLowerCase()); // remove espaços extras
+
         cards.forEach(card => {
-            const countryName = card.querySelector('.country-name').textContent.toLowerCase();
-            // Dividir o texto em palavras separadas 
-            const matches = countryName.split(' ').some(word => word.startsWith(filterText));
-            card.style.display = matches ? '' : 'none';
+            const countryName = removeAccents(card.querySelector('.country-name').textContent.toLowerCase());
+            
+            // Divide o texto de pesquisa em palavras e verifica se cada palavra do filtro é encontrada nas palavras do nome
+            const filterWords = filterText.split(' '); // separa a pesquisa em palavras
+            const matches = filterWords.every(word => 
+                countryName.split(' ').some(countryWord => countryWord.startsWith(word))
+            );
+
+            card.style.display = matches ? '' : 'none'; // Exibe ou oculta o card
         });
     });
 </script>
