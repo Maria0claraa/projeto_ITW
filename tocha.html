@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Percurso da Tocha Olímpica</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg" style="background-color: #e8e7e6;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img src="paris-2024-logo-1.png" alt="Logo" height="50" class="d-inline-block align-text-top">
+            </a>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h1 class="mb-4">Percurso da Tocha Olímpica</h1>
+        <div id="torch-route-table">
+            <!-- A tabela será gerada dinamicamente aqui -->
+        </div>
+    </div>
+
+    <script>
+        // URL da API
+        const apiUrl = "http://192.168.160.58/Paris2024/Help/Api/GET-api-Torch_route";
+
+        // Função para buscar os dados
+        async function fetchTorchRoute() {
+            try {
+                const response = await fetch(apiUrl);
+                if (!response.ok) {
+                    console.error(`Erro na API: ${response.status} ${response.statusText}`);
+                    return;
+                }
+                const data = await response.json();
+                console.log("Dados recebidos:", data);
+                generateTable(data);
+            } catch (error) {
+                console.error('Erro ao buscar dados:', error);
+            }
+        }
+
+        // Função para gerar a tabela
+        function generateTable(routeData) {
+            const container = document.getElementById('torch-route-table');
+
+            // Criação do cabeçalho da tabela
+            let tableHTML = `
+                <table class="table table-bordered table-striped">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Data de Início</th>
+                            <th>Data de Fim</th>
+                            <th>Título do Segmento</th>
+                            <th>Nome da Cidade</th>
+                            <th>Segmento</th>
+                            <th>Latitude</th>
+                            <th>Longitude</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            // Preenchendo a tabela com os dados da API
+            routeData.forEach(route => {
+                tableHTML += `
+                    <tr>
+                        <td>${new Date(route.Date_start).toLocaleString()}</td>
+                        <td>${new Date(route.Date_end).toLocaleString()}</td>
+                        <td>${route.Title}</td>
+                        <td>${route.City}</td>
+                        <td>${route.Stage_number}</td>
+                        <td>${route.Latitude}</td>
+                        <td>${route.Longitude}</td>
+                    </tr>
+                `;
+            });
+
+            // Fechamento da tabela
+            tableHTML += `
+                    </tbody>
+                </table>
+            `;
+
+            // Inserir a tabela no container
+            container.innerHTML = tableHTML;
+        }
+
+        // Chamar a função ao carregar a página
+        fetchTorchRoute();
+    </script>
+</body>
+
+</html>
