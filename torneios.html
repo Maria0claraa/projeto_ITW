@@ -59,11 +59,20 @@
         </div>
     </nav>
 
+
+    <div class="container mt-4">
+        <input type="text" id="country-filter" placeholder="Filtrar pelo nome da modalidade...">
+    </div>
+
+
     <div class="container text-center">
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/dppxhjguqbuxnsbzmxqh" alt="Atletismo">
-            <div class="country-name">Atletismo</div>
-        </div>
+        <a href="Torneios_atletismo.html" style="text-decoration: none;">
+            <div class="country-card">
+                <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/dppxhjguqbuxnsbzmxqh" alt="Atletismo">
+                <div class="country-name">Atletismo</div>
+            </div>
+        </a>
+        
         <div class="country-card">
             <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/findcxvr4rdc1ciyate0" alt="Badminton">
             <div class="country-name">Badminton</div>
@@ -345,8 +354,6 @@
 
 
 
-
-
     <!--footer-->
     <nav class="navbar navbar-expand-md fixed-bottom" style="background-color: lightsteelblue ">
         <div class="container-md">
@@ -355,5 +362,32 @@
         </div>
     </nav>
 </body>
+<script>
+    // Função para remover acentos
+    function removeAccents(str) {
+        return str.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+    }
+
+    // Seleciona o campo de entrada e os cards
+    const filterInput = document.getElementById('country-filter');
+    const cards = document.querySelectorAll('.country-card');
+
+    // Adiciona o evento para capturar mudanças no campo de entrada
+    filterInput.addEventListener('input', function () {
+        const filterText = removeAccents(filterInput.value.trim().toLowerCase()); // remove espaços extras
+
+        cards.forEach(card => {
+            const countryName = removeAccents(card.querySelector('.country-name').textContent.toLowerCase());
+            
+            // Divide o texto de pesquisa em palavras e verifica se cada palavra do filtro é encontrada nas palavras do nome
+            const filterWords = filterText.split(' '); // separa a pesquisa em palavras
+            const matches = filterWords.every(word => 
+                countryName.split(' ').some(countryWord => countryWord.startsWith(word))
+            );
+
+            card.style.display = matches ? '' : 'none'; // Exibe ou oculta o card
+        });
+    });
+</script>
 
 </html>
