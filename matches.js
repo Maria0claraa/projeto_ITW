@@ -1,41 +1,71 @@
 // matches.js
 
-// ViewModel para os eventos de atletismo
+// ViewModel para os matches de atletismo
 function MatchesViewModel() {
     const self = this;
 
-    // Flag para verificar se a API já foi chamada
-    self.isDataLoaded = ko.observable(false);
+    // Observables para a interface
+    self.matches = ko.observableArray([]);
+    self.currentPage = ko.observable(1);
+    self.totalPages = ko.observable(1);
+    self.totalRecords = ko.observable(0);
+    self.pageSize = ko.observable(10);
 
-    // Observáveis para a interface
-    self.events = ko.observableArray([]); // Observável para armazenar eventos de atletismo
+    self.fromRecord = ko.computed(() => (self.currentPage() - 1) * self.pageSize() + 1);
+    self.toRecord = ko.computed(() => Math.min(self.currentPage() * self.pageSize(), self.totalRecords()));
 
-    // Função para buscar os eventos da API
-    self.fetchEvents = function () {
-        // Verifica se os dados já foram carregados
-        if (self.isDataLoaded()) {
-            return; // Se já foi carregado, não faz a chamada novamente
+    // Computed para criar a lista de páginas
+    self.pageArray = ko.computed(() => {
+        const total = self.totalPages();
+        const current = self.currentPage();
+        const pages = [];
+
+        const start = Math.max(1, current - 4);
+        const end = Math.min(total, current + 4);
+
+        for (let i = start; i <= end; i++) {
+            pages.push(i);
         }
+        return pages;
+    });
 
-        const apiUrl = 'http://192.168.160.58/Paris2024/Help/Api/GET-api-Athletics-Events';
+    // Função para buscar os matches da API
+    self.fetchMatches = function () {
+        const apiUrl = 'http://192.168.160.58/Paris2024/Help/Api/GET-api-Athletics_EventId_StageId';
+        const params = {
+            page: self.currentPage(),
+            pageSize: self.pageSize()
+        };
 
         $.ajax({
             url: apiUrl,
             method: 'GET',
+            data: params,
             success: function (response) {
-                // Atualiza a lista de eventos com os dados recebidos
-                self.events(response);
-                self.isDataLoaded(true); // Marca como carregado
+                self.matches(response.data); // Atualiza a lista de matches
+                self.totalRecords(response.totalRecords);
+                self.totalPages(response.totalPages);
             },
             error: function (error) {
-                console.error("Erro ao carregar eventos:", error);
-                alert("Ocorreu um erro ao carregar os eventos.");
+                console.error("Erro ao carregar matches:", error);
+                alert("Ocorreu um erro ao carregar os dados.");
             }
         });
     };
 
+    // Funções para navegação entre páginas
+    self.previousPage = ko.computed(() => Math.max(1, self.currentPage() - 1));
+    self.nextPage = ko.computed(() => Math.min(self.totalPages(), self.currentPage() + 1));
+
+    self.goToPage = function (page) {
+        if (page >= 1 && page <= self.totalPages()) {
+            self.currentPage(page);
+            self.fetchMatches();
+        }
+    };
+
     // Inicializa a aplicação
-    self.fetchEvents();
+    self.fetchMatches();
 }
 
 // Ativa o Knockout.js
