@@ -60,81 +60,44 @@
     </nav>
 
     <!-- informações-->
-    <div class="container">
-        <div class="border-bottom py-2 mb-2">
-            <h2 data-bind="text: displayName"></h2>
-        </div>
-        <!-- ko if: matches().length > 0 -->
-        <div class="row small">
-            <p class="col-4 mr-auto pt-2">
-                <span data-bind="html: 'Page: ' + currentPage() + ' of ' + totalPages()"></span><br />
-                <span data-bind="html: 'Matches: '+ fromRecord() + '-' + toRecord() + ' of ' + totalRecords()"></span>
-            </p>
-            <div class="col-8 my-0 pt-3">
-                <ul class="pagination float-end">
-                    <!-- ko if: currentPage() > 5 && totalPages() > 10 -->
-                    <li class="page-item float-end">
-                        <a class="page-link" title="First Page" data-bind="attr: { href: './matches.html?page=1', rel: 'prev' }">&laquo;</a>
-                    </li>
-                    <li class="page-item float-end">
-                        <a class="page-link" title="Previous Page" data-bind="attr: { href: './matches.html?page=' + previousPage(), rel: 'prev' }">&larr;</a>
-                    </li>
-                    <!-- /ko -->
-                    <!-- ko foreach: pageArray() -->
-                    <!-- ko if: $data == $parent.currentPage() -->
-                    <li class="active page-item">
-                        <a class="page-link" data-bind="attr: { title: 'Current Page ' + $data }, text: $data"></a>
-                    </li>
-                    <!-- /ko -->
-                    <!-- ko if: $data != $parent.currentPage() -->
-                    <li class="page-item">
-                        <a class="page-link" data-bind="attr: { href: './matches.html?page=' + $data + '&pagesize=' + $parent.pagesize(), title: 'Goto Page ' + $data }, text: $data"></a>
-                    </li>
-                    <!-- /ko -->
-                    <!-- /ko -->
-                    <!-- ko if: currentPage() < totalPages() - 4 && totalPages() > 9 -->
-                    <li class="page-item">
-                        <a class="page-link" title="Next Page" data-bind="attr: { href: './matches.html?page=' + nextPage(), rel: 'next' }">&rarr;</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" title="Last Page" data-bind="attr: { href: './matches.html?page=' + totalPages() }">&raquo;</a>
-                    </li>
-                    <!-- /ko -->
-                </ul>
+    <div class="container bannerTop">
+        <!-- Work Area -->
+        <div class="border-bottom pt-4 pb-2 mb-3">
+            <div class="row flex">
+                <div class="col-md-8 d-flex align-items-center">
+                    <h2 class="d-flex align-items-center">
+                        <i class="fa fa-running text-danger" style="margin-right: 5px;"></i>
+                        <span class="ms-2">Athletics Events</span>
+                    </h2>
+                </div>
             </div>
         </div>
-        <!-- /ko -->
-    
         <table class="table table-striped table-sm small">
             <thead class="table-secondary">
                 <tr>
-                    <th scope="col">Match ID</th>
-                    <th scope="col">Event Name</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Location</th>
-                    <th scope="col">Category</th>
-                    <th scope="col" class="text-right">Details</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nome do Evento</th>
+                    <th scope="col">Stages</th>
+                    
                 </tr>
             </thead>
-            <tbody data-bind="foreach: matches">
+            <tbody data-bind="foreach: records">
                 <tr>
-                    <td class="align-middle" data-bind="text: matchId"></td>
-                    <td class="align-middle" data-bind="text: eventName"></td>
-                    <td class="align-middle" data-bind="text: matchDate"></td>
-                    <td class="align-middle" data-bind="text: location"></td>
-                    <td class="align-middle" data-bind="text: category"></td>
-                    <td class="text-end">
-                        <a class="btn btn-default btn-light btn-xs" data-bind="attr: { href: './matchDetails.html?id=' + matchId }">
-                            <i class="fa fa-eye" title="Show details"></i>
-                        </a>
-                        <button class="btn btn-default btn-xs">
-                            <i class="fa fa-heart-o" data-bind="attr: { 'id': 'favourite_' + matchId }" title="Add to favorites"></i>
-                        </button>
-                    </td>
+                    <td data-bind="text: EventId"></td>
+                    <td data-bind="text: EventName"></td>
+                    <td data-bind="text: Stages"></td>
                 </tr>
             </tbody>
         </table>
+        <!-- End of Work Area -->
+        <nav class="navbar navbar-expand-md fixed-bottom" style="background-color:#e8e7e6 ">
+            <div class="container-md">
+                <div class="navbar-text">Olimpíadas Paris 2024 - projeto realizado no âmbito da cadeira de ITW</div>
+                <div class="navbar-text justify-content-end d-none d-md-block">Universidade de Aveiro</div>
+            </div>
+        </nav>
     </div>
+        
     
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -151,25 +114,9 @@
             </div>
         </div>
     </div>
-    <!-- End of Working Area -->
     
-    <nav class="navbar fixed-bottom bg-body-tertiary border-top">
-        <div class="container small">
-            <div class="navbar-text">&copy; Introdução as Tecnologias Web - 2024/25</div>
-            <div class="navbar-text">Made with <i class="fa fa-heart-o text-danger"></i> for U by <a href="mailto:jsp@ua.pt" class="text-decoration-none text-muted">jsp@ua.pt</a>.</div>
-            <div class="navbar-nav">
-                <div class="nav-item text-end">
-                    <a href="https://www.ua.pt" class="nav-link">Universidade de Aveiro</a>
-                </div>
-            </div>
-        </div>
-    </nav>
     
-    <script src="../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../lib/knockout/dist/knockout-latest.min.js"></script>
-    <script src="../lib/jquery/dist/jquery.min.js"></script>
-    <script src="matches.js"></script>
-
+    
 
 
     <!--footer-->
@@ -179,6 +126,10 @@
             <div class="navbar-text justify-content-end d-none d-md-block"> Universidade de Aveiro </div>
         </div>
     </nav>
-</body>
 
+    <script src="../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../lib/knockout/dist/knockout-latest.min.js"></script>
+    <script src="../lib/jquery/dist/jquery.min.js"></script>
+    <script src="matches.js"></script>
+</body>
 </html>
