@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Detalhes do País</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const country = urlParams.get('pais');
+
+            // Dados fictícios de modalidades (pode ser substituído por uma chamada a um backend)
+            const modalidades = {
+                "Afeganistão": ["Atletismo", "Ciclismo de Estrada", "Judo", "Natação"],
+                "Africa do Sul": ["Atletismo", "Hipismo", "Remo", "Judo", "Hóquei em Campo", "Badminton", "Surf", "Esgrima", "Skate", "Ciclismo BMX Freestyle", "Ciclismo Mountain Bike", "Rugby Sevens", "Tiro com Arco", "Natação", "Triatlo", "Golfe", "Escalda Desportiva", "Canoagem velocidade", "Ciclismo de Pista", "Saltos Ornamentais", ""],
+                // Adicione mais países e modalidades aqui
+            };
+
+            document.getElementById('country-name').textContent = country.replace('_', ' ');
+            const sportsList = document.getElementById('sports-list');
+
+            if (modalidades[country]) {
+                modalidades[country].forEach(modalidade => {
+                    const li = document.createElement('li');
+                    li.textContent = modalidade;
+                    sportsList.appendChild(li);
+                });
+            } else {
+                sportsList.textContent = "Sem modalidades registradas para este país.";
+            }
+        });
+
+    </script>
+</head>
+
+<body>
+    <div class="container mt-4">
+        <h1 id="country-name"></h1>
+        <ul id="sports-list"></ul>
+        <a href="paises.html">Voltar para Países</a>
+    </div>
+    <div class="container-fluid w-100" style="background-color:#e8e7e6">
+        <div class="row">
+            <div class="col">
+                <div class="navbar-text">Olimpíadas Paris 2024 - projeto realizado no âmbito da cadeira de ITW</div>
+            </div>
+            <div class="col" style="text-align: end;">
+                <div class="navbar-text justify-content-end d-none d-md-block">Universidade de Aveiro</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

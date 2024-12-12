@@ -95,26 +95,7 @@ body {
     border-top: 4px solid #e8e7e6;
 }
 
-/* Navbar */
-.navbar {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
 
-
-.navbar-nav .nav-link {
-    color: #333;
-    font-weight: 500;
-    transition: color 0.3s ease;
-}
-
-.navbar-nav .nav-link:hover {
-    color: #2c3e50;
-}
-
-.navbar-nav .nav-link i {
-    margin-right: 5px;
-    /* Espaço entre ícones e texto */
-}
 
 /* Responsividade */
 @media (max-width: 768px) {
