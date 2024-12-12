@@ -1,74 +1,55 @@
-// matches.js
+// ViewModel KnockOut
+var vm = function () {
+    console.log('ViewModel initiated...');
+    // Variáveis locais
+    var self = this;
+    self.baseUri = ko.observable('http://192.168.160.58/paris2024/api/athletics');
+    self.displayName = 'Paris 2024 Athletics';
+    self.records = ko.observableArray([]);
 
-// ViewModel para os matches de atletismo
-function MatchesViewModel() {
-    const self = this;
+    // Função para buscar os dados da API
+    self.activate = function (id) {
+        console.log('CALL: getAthletics...');
+        var composedUri = self.baseUri();
 
-    // Observables para a interface
-    self.matches = ko.observableArray([]);
-    self.currentPage = ko.observable(1);
-    self.totalPages = ko.observable(1);
-    self.totalRecords = ko.observable(0);
-    self.pageSize = ko.observable(10);
+        ajaxHelper(composedUri, 'GET')
+            .done(function (data) {
+                console.log('Dados recebidos:', data);
+                self.records(data);
+                self.error(''); // Limpa erros anteriores, se existirem
+            })
+            .fail(function (jqXHR, textStatus, errorThrown) {
+                console.error('Erro ao buscar dados:', textStatus, errorThrown);
+                self.error('Erro ao carregar os dados. Por favor, tente novamente mais tarde.');
+            });
+    };
 
-    self.fromRecord = ko.computed(() => (self.currentPage() - 1) * self.pageSize() + 1);
-    self.toRecord = ko.computed(() => Math.min(self.currentPage() * self.pageSize(), self.totalRecords()));
+    // Inicialização
+    self.activate = function () {
+        self.getAthletics();
+    };
 
-    // Computed para criar a lista de páginas
-    self.pageArray = ko.computed(() => {
-        const total = self.totalPages();
-        const current = self.currentPage();
-        const pages = [];
+    // Chamar a função de ativação ao carregar
+    self.activate();
+    console.log('ViewModel initialized!');
+};
 
-        const start = Math.max(1, current - 4);
-        const end = Math.min(total, current + 4);
-
-        for (let i = start; i <= end; i++) {
-            pages.push(i);
+ // Função AJAX Helper
+ function ajaxHelper(uri, method, data) {
+    return $.ajax({
+        type: method,
+        url: uri,
+        dataType: 'json',
+        contentType: 'application/json',
+        data: data ? JSON.stringify(data) : null,
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.error(`AJAX Call [${uri}] Failed:`, textStatus, errorThrown);
         }
-        return pages;
     });
-
-    // Função para buscar os matches da API
-    self.fetchMatches = function () {
-        const apiUrl = 'http://192.168.160.58/Paris2024/Help/Api/GET-api-Athletics_EventId_StageId';
-        const params = {
-            page: self.currentPage(),
-            pageSize: self.pageSize()
-        };
-
-        $.ajax({
-            url: apiUrl,
-            method: 'GET',
-            data: params,
-            success: function (response) {
-                self.matches(response.data); // Atualiza a lista de matches
-                self.totalRecords(response.totalRecords);
-                self.totalPages(response.totalPages);
-            },
-            error: function (error) {
-                console.error("Erro ao carregar matches:", error);
-                alert("Ocorreu um erro ao carregar os dados.");
-            }
-        });
-    };
-
-    // Funções para navegação entre páginas
-    self.previousPage = ko.computed(() => Math.max(1, self.currentPage() - 1));
-    self.nextPage = ko.computed(() => Math.min(self.totalPages(), self.currentPage() + 1));
-
-    self.goToPage = function (page) {
-        if (page >= 1 && page <= self.totalPages()) {
-            self.currentPage(page);
-            self.fetchMatches();
-        }
-    };
-
-    // Inicializa a aplicação
-    self.fetchMatches();
 }
 
-// Ativa o Knockout.js
+// Aplicação de Bindings ao carregar a página
 $(document).ready(function () {
-    ko.applyBindings(new MatchesViewModel());
+    console.log('Document ready!');
+    ko.applyBindings(new vm());
 });
