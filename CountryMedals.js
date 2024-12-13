@@ -4,7 +4,7 @@ var vm = function(){
     console.log('viewModel Initiated...');
     //--variaveis locais
     var self=this;
-    self.baseUri = ko.observable('http://192.168.160.58/Paris2024/api/CountryMedals');
+    self.baseUri = ko.observable('http://192.168.160.58/Paris2024/api/countrymedals');
     self.displayNAme = 'Paris 2024 Country Medals'
     self.records = ko.observableArray([]);
 
