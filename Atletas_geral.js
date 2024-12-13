@@ -1,129 +1,127 @@
-function ViewModel() {
-    const self = this;
+function vm() {
+    var self = this;
 
-    // Observables para controlar os dados e a navegação
-    self.baseUri = ko.observable('http://192.168.160.58/paris2024/api/Athletes');
-    self.pagesize = ko.observable(20); // Tamanho da página
-    self.currentPage = ko.observable(1); // Página atual
-    self.totalRecords = ko.observable(50); // Total de registros
-    self.athletes = ko.observableArray([]); // Lista de atletas
-    self.hasPrevious = ko.observable(false); // Botão "Anterior"
-    self.hasNext = ko.observable(false); // Botão "Próxima"
-    self.error = ko.observable(''); // Mensagens de erro
+// propriedade KO disponiveis 
+self.athletes_info = ko.observableArray([]);
+self.totalPages = ko.observable(0);
+self.currentPage = ko.observable(0);
+self.totalAhletes = ko.observable(0);
+self.fromRecord = ko.observable(0);
+self.toRecord = ko.observable(0);
 
-    self.previousPage = ko.computed(function () {
-        return self.currentPage() * 1 - 1;
-    }, self);
-    self.nextPage = ko.computed(function () {
-        return self.currentPage() * 1 + 1;
-    }, self);
-    self.fromRecord = ko.computed(function () {
-        return self.previousPage() * self.pagesize() + 1;
-    }, self);
-    self.toRecord = ko.computed(function () {
-        return Math.min(self.currentPage() * self.pagesize(), self.totalRecords());
-    }, self);
-    self.totalPages = ko.observable(0);
-    self.pageArray = function () {
-        var list = [];
-        var size = Math.min(self.totalPages(), 9);
-        var step;
-        if (size < 9 || self.currentPage() === 1)
-            step = 0;
-        else if (self.currentPage() >= self.totalPages() - 4)
-            step = self.totalPages() - 9;
-        else
-            step = Math.max(self.currentPage() - 5, 0);
-   
-        for (var i = 1; i <= size; i++)
-            list.push(i + step);
-        return list;
-    };
-    //--- Page Events
-    self.activate = function (id) {
-        console.log('CALL: getAthletes...');
-        var composedUri = self.baseUri() + "?page=" + id + "&pageSize=" + self.pagesize();
-        ajaxHelper(composedUri, 'GET').done(function (data) {
-            console.log(data);
-            hideLoading();
-            self.athletes(data.Athletes);
-            self.currentPage(data.CurrentPage);
-            self.hasNext(data.HasNext);
-            self.hasPrevious(data.HasPrevious);
-            self.pagesize(data.PageSize)
-            self.totalPages(data.TotalPages);
-            self.totalRecords(data.TotalAhletes);
-            
-        });
-    };
-
-    //--- Internal functions
-    function ajaxHelper(uri, method, data) {
-        self.error(''); // Clear error message
-        return $.ajax({
-            type: method,
-            url: uri,
-            dataType: 'json',
-            contentType: 'application/json',
-            data: data ? JSON.stringify(data) : null,
-            error: function (jqXHR, textStatus, errorThrown) {
-                console.log("AJAX Call[" + uri + "] Fail...");
-                hideLoading();
-                self.error(errorThrown);
-            }
-        });
-    }
-
-    function sleep(milliseconds) {
-        const start = Date.now();
-        while (Date.now() - start < milliseconds);
-    }
-
-    function showLoading() {
-        $("#myModal").modal('show', {
-            backdrop: 'static',
-            keyboard: false
-        });
-    }
-    function hideLoading() {
-        $('#myModal').on('shown.bs.modal', function (e) {
-            $("#myModal").modal('hide');
-        })
-    }
-
-    function getUrlParameter(sParam) {
-        var sPageURL = window.location.search.substring(1),
-            sURLVariables = sPageURL.split('&'),
-            sParameterName,
-            i;
-        console.log("sPageURL=", sPageURL);
-        for (i = 0; i < sURLVariables.length; i++) {
-            sParameterName = sURLVariables[i].split('=');
-
-            if (sParameterName[0] === sParam) {
-                return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
-            }
-        }
-    };
-
-    //--- start ....
-    showLoading();
-    var pg = getUrlParameter('page');
-    console.log(pg);
-    if (pg == undefined)
-        self.activate(1);
-    else {
-        self.activate(pg);
-    }
-    console.log("VM initialized!");
-};
-
-$(document).ready(function () {
-    console.log("ready!");
-    ko.applyBindings(new vm());
+// relativamente ás páginas : 
+self.hasPreviousPage = ko.computed(() => {
+    return self.currentPage() > 1;
+});
+self.hasNextPage = ko.computed(() => {
+    return self.currentPage() < self.totalPages();
 });
 
-$(document).ajaxComplete(function (event, xhr, options) {
-    $("#myModal").modal('hide');
-})
+// Computed properties for adjacent pages
+self.previousPage = ko.computed(() => {
+    return self.currentPage() > 1 ? self.currentPage() - 1 : 1;
+});
+self.nextPage = ko.computed(() => {
+    return self.currentPage() < self.totalPages() ? self.currentPage() + 1 : self.totalPages();
+});
 
+
+const getQueryParams = () => {
+    const params = new URLSearchParams(window.location.search);
+    return {
+        page: +params.get('page') || 1, // estamos a usar o operador + para conseguir converter strings para números 
+        pageSize: +params.get('pageSize') || 20, 
+        order: 1,
+        search: params.get('q') || '', //significa que se não pesquisarmos nada é como se tivesse-mos uma pesquisa vazia 
+    }; 
+};
+
+
+//função para conseguir mudar de página 
+self.getPageHref = (page_number) => {
+    const params = getQueryParams();
+    const pageLink = './Atletas_geral.html?' +
+        // nº de página
+        'page=' + page_number +
+        // tamanho da página
+        '&pageSize=' + params.pageSize +
+        // ordem 
+        '&order=' + params.order +
+        // pesquisa (se houver)
+        '&q=' + params.search;
+    return pageLink; //retornamos o link completo 
+};
+
+
+    // função para atualizar os dados a mostrar em cada página
+    self.inventory_populate = function() {
+    
+        const { page, pageSize, search, order } = getQueryParams();
+
+        // Para conseguir ir buscar a api
+        fetch(`http://192.168.160.58/Paris2024/api/Athletes?page=${page}&pageSize=${pageSize}&order=${order}&search=${search}`, {
+            method: "GET" 
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('A resposta da rede não foi ok: ' + response.statusText);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data);
+            const formattedData = data.Athletes.map(athlete => ({
+                ...athlete,
+                BirthDate: athlete.BirthDate.split('T')[0] // de maneira a ter apenas a data de nascimento
+            }));
+
+            // atualização dos dados
+            self.athletes_info(formattedData);
+            self.currentPage(data.CurrentPage);
+            self.totalPages(data.TotalPages);
+            self.totalAhletes(data.TotalAhletes);
+            self.fromRecord((data.CurrentPage - 1) * data.PageSize + 1);
+            self.toRecord(Math.min(data.TotalAhletes, data.CurrentPage * data.PageSize));
+        })
+
+        //caso haja algum problema
+        .catch(error => {
+            console.error('Houve um problema com a operação de fetch:', error);
+        });
+    };
+
+
+    //Calculo do numero da página anterior 
+    self.previousPage = function() {
+        return Math.max(1, self.currentPage() - 1);
+    };
+
+    // função para saber a quantidade de páginas que deixamos visiveis 
+    self.visiblePages = ko.computed(() => {
+        const current = self.currentPage();
+        const total = self.totalPages();
+        const pages = [];
+    
+        // Adiciona as páginas antes da página atual (até 3 páginas)
+        for (let i = current - 3; i < current; i++) {
+            if (i >= 1) pages.push(i);// fazemos isto para não dar para adicionar páginas antes da primeira
+        }
+
+        pages.push(current);
+    
+        // Adiciona as páginas depois da página atual (até 3 páginas)
+        for (let i = current + 1; i <= current + 3; i++) {
+            if (i <= total) pages.push(i);
+        }
+        return pages;
+    });
+    
+    const searchQuery = getQueryParams().search;
+    document.getElementById("input-query").value = searchQuery;
+    self.inventory_populate();
+    
+}
+
+const appElement = document.querySelector("#knockout-app");
+const viewModel = new vm();
+ko.applyBindings(viewModel, appElement);
