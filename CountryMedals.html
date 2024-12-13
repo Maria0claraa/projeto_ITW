@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Página inicial</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <main class="container-lg">
+        <table class="table table-striped table-sm small">
+            <thead class="table-secondary">
+                <tr>
+                    <th class="d-none d-lg-table-cell align-middle" scope="col">Code</th>
+                    <th class="d-none d-xl-table-cell align-middle" scope="col">Name</th>
+                    <th scope="col">Gold</th>
+                    <th scope="col">silver</th>
+                    <th scope="col">bronze</th>
+                    <th scope="col">total</th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: records">
+                <tr>
+                    <td class="d-none d-lg-table-cell align-middle" data-bind="text: CountryCode"></td>
+                    <td class="d-none d-xl-table-cell align-middle" data-bind="text: CountryName"></td>
+                    <td class="align-middle" data-bind="text: GoldMedal"></td>
+                    <td class="align-middle" data-bind="text: SilverMedal"></td>
+                    <td class="align-middle" data-bind="text: BronzeMedal"></td>
+                    <td class="align-middle"><a class="nav-link" data-bind="text: Total, attr: { href: Url }" title="Show Details"></a></td>
+                    
+                </tr>
+            </tbody>
+        </table>
+    </main>  
+
+    <script href="CountryMedals.js"></script>
+</body>
+
+</html>
