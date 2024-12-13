@@ -1,0 +1,135 @@
+/* Estilos gerais para os gráficos */
+#chart1,
+#chart2 {
+    width: 100%;
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 20px;
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: chartFadeIn 0.5s ease-out;
+    /* Animação ao carregar */
+}
+
+/* Efeito de hover para o gráfico */
+#chart1:hover,
+#chart2:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo do título do gráfico */
+.google-visualization-title {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    color: #2c3e50;
+}
+
+/* Personalizando as barras do gráfico */
+.google-visualization-bar-chart rect {
+    fill: #1abc9c;
+    transition: fill 0.3s ease-in-out, transform 0.2s ease;
+}
+
+/* Efeito de hover nas barras do gráfico */
+.google-visualization-bar-chart rect:hover {
+    fill: #16a085;
+    transform: scale(1.05);
+}
+
+/* Estilo do tooltip */
+.google-visualization-tooltip {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #ffffff;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Tooltip linha destacada */
+.google-visualization-tooltip .google-visualization-tooltip-line {
+    border-bottom: 1px solid #ffffff;
+    margin-bottom: 5px;
+}
+
+/* Tooltip título */
+.google-visualization-tooltip .google-visualization-tooltip-title {
+    font-weight: bold;
+    color: #f39c12;
+    margin-bottom: 5px;
+}
+
+/* Animação ao carregar os gráficos */
+@keyframes chartFadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Estilo para os títulos personalizados */
+.custom-title {
+    font-size: 3rem;
+    /* Maior para atrair atenção */
+    font-weight: 800;
+    /* Bem destacado */
+    background: linear-gradient(90deg, #1abc9c, #3498db);
+    /* Gradiente suave */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* Aplicação do gradiente no texto */
+    text-transform: uppercase;
+    /* Letras maiúsculas para impacto */
+    letter-spacing: 3px;
+    /* Maior espaçamento entre as letras */
+    margin-bottom: 20px;
+    text-align: center;
+    position: relative;
+    /* Necessário para o pseudo-elemento */
+}
+
+/* Linha animada sob o título */
+.custom-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+    width: 0%;
+    height: 5px;
+    background: linear-gradient(90deg, #e74c3c, #f39c12);
+    /* Gradiente na borda */
+    border-radius: 3px;
+    animation: slide-in 1s forwards;
+    /* Animação para abrir a linha */
+}
+
+/* Animação para a linha do título */
+@keyframes slide-in {
+    0% {
+        width: 0%;
+    }
+
+    100% {
+        width: 70%;
+    }
+}
+
+.navbar {
+    background-color: #e8e7e6;
+    /* ou qualquer cor que você preferir */
+}
+
+.footer {
+    background-color: #e8e7e6;
+    /* mesma cor da navbar */
+}

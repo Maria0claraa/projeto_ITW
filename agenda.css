@@ -1,0 +1,141 @@
+/* Definições principais */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container da Linha do Tempo */
+.timeline-container {
+    position: relative;
+    width: 100%;
+    padding: 50px 0;
+    background-color: #f8f9fa;
+}
+
+/* Linha do Tempo */
+.timeline {
+    display: flex;
+    overflow-x: auto;
+    padding: 20px 0;
+    scroll-behavior: smooth;
+}
+
+.timeline::-webkit-scrollbar {
+    height: 12px;
+}
+
+.timeline::-webkit-scrollbar-thumb {
+    background: #007BFF;
+    border-radius: 10px;
+}
+
+.timeline::-webkit-scrollbar-track {
+    background: #eaeaea;
+    border-radius: 10px;
+}
+
+/* Evento da Linha do Tempo */
+.timeline-event {
+    flex: none;
+    width: 220px;
+    margin: 0 15px;
+    background-color: #fff;
+    border: 2px solid #007BFF;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    transition-duration: 0.4s;
+}
+
+.timeline-event:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.timeline-date {
+    font-weight: bold;
+    color: #007BFF;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.timeline-description {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Detalhes do Evento */
+.event-details {
+    margin-top: 50px;
+    background-color: #fff;
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.event-details h3 {
+    color: #007BFF;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.event-details p {
+    font-size: 16px;
+    margin: 5px 0;
+    color: #555;
+}
+
+/* Animação do Hover */
+.timeline-event:hover .timeline-description {
+    color: #007BFF;
+    font-weight: bold;
+}
+
+/* Botões de Navegação (Se houver) */
+button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .timeline {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .timeline-event {
+        width: 90%;
+        margin: 10px 0;
+    }
+
+    .event-details {
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .timeline-event {
+        width: 100%;
+        margin: 10px 0;
+    }
+}

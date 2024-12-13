@@ -1,58 +1,65 @@
-// ViewModel KnockOut
-var vm = function () {
-    console.log('ViewModel initiated...');
-    // Variáveis locais
-    var self = this;
+const map = L.map('map').setView([48.8566, 2.3522], 5); // Coordenadas iniciais (Paris)
 
-    // Configurações da API
-    self.baseUri = ko.observable('http://192.168.160.58/Paris2024/api/Torch_route');
-    self.displayName = 'Paris 2024 Torch Route';
-    self.records = ko.observableArray([]);
-    self.error = ko.observable('');
+// Adicionando camada de mapa base (OpenStreetMap)
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 18,
+    attribution: '© OpenStreetMap contributors'
+}).addTo(map);
 
-    // Função para buscar os dados da API
-    self.getRoutes = function () {
-        console.log('CALL: getRoutes...');
-        var composedUri = self.baseUri();
+// Elemento para exibir informações ao passar o mouse
+const hoverInfo = document.getElementById('hover-info');
 
-        ajaxHelper(composedUri, 'GET')
-            .done(function (data) {
-                console.log('Dados recebidos:', data);
-                self.records(data);
-                self.error(''); // Limpa erros anteriores, se existirem
-            })
-            .fail(function (jqXHR, textStatus, errorThrown) {
-                console.error('Erro ao buscar dados:', textStatus, errorThrown);
-                self.error('Erro ao carregar os dados. Por favor, tente novamente mais tarde.');
-            });
-    };
+// URL da API
+const apiUrl = 'http://192.168.160.58/Paris2024/API/Torch_route';
 
-    // Inicialização
-    self.activate = function () {
-        self.getRoutes();
-    };
-
-    // Chamar a função de ativação ao carregar
-    self.activate();
-    console.log('ViewModel initialized!');
-};
-
-// Função AJAX Helper
-function ajaxHelper(uri, method, data) {
-    return $.ajax({
-        type: method,
-        url: uri,
-        dataType: 'json',
-        contentType: 'application/json',
-        data: data ? JSON.stringify(data) : null,
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.error(`AJAX Call [${uri}] Failed:`, textStatus, errorThrown);
+// Fetch dos dados da API e adição de marcadores ao mapa
+fetch(apiUrl)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Erro ao buscar dados da API');
         }
-    });
-}
+        return response.json();
+    })
+    .then(data => {
+        data.forEach(location => {
+            const { Lat, Lon, Title, City, Date_start, Date_end } = location;
 
-// Aplicação de Bindings ao carregar a página
-$(document).ready(function () {
-    console.log('Document ready!');
-    ko.applyBindings(new vm());
-});
+            // Criar um marcador apenas se Lat e Lon forem válidos
+            if (Lat && Lon) {
+                const marker = L.marker([parseFloat(Lat), parseFloat(Lon)]).addTo(map);
+
+                // Formatar datas
+                const startDate = new Date(Date_start).toLocaleString();
+                const endDate = new Date(Date_end).toLocaleString();
+
+                // Adicionar eventos de mouse (hover)
+                marker.on('mouseover', (e) => {
+                    hoverInfo.style.display = 'block';
+                    hoverInfo.innerHTML = `
+                                <strong>${Title}</strong><br>
+                                <strong>City:</strong> ${City}<br>
+                                <strong>Start:</strong> ${startDate}<br>
+                                <strong>End:</strong> ${endDate}
+                            `;
+                    hoverInfo.style.left = e.originalEvent.pageX + 'px';
+                    hoverInfo.style.top = e.originalEvent.pageY + 'px';
+                });
+
+                marker.on('mouseout', () => {
+                    hoverInfo.style.display = 'none';
+                });
+
+                // Adicionar evento de click com popup
+                marker.bindPopup(`
+                            <b>${Title}</b><br>
+                            City: ${City}<br>
+                            Start: ${startDate}<br>
+                            End: ${endDate}
+                        `);
+            }
+        });
+    })
+    .catch(error => {
+        console.error('Erro ao carregar dados:', error);
+        alert('Não foi possível carregar as localizações.');
+    });

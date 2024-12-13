@@ -1,115 +1,245 @@
 /* Estilos globais */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f3f4f6;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to bottom, #f4f5f9, #f1f1f1);
     /* Cor de fundo mais suave */
     color: #333;
     margin: 0;
     padding: 0;
     line-height: 1.6;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 /* Cabeçalho */
 .header {
-    background-color: #e8e7e6;
-    color: black;
+    background: linear-gradient(to right, #2c3e50, #4ca1af);
+    color: white;
     text-align: center;
-    padding: 1.5rem 0;
-    border-bottom: 4px solid #2c3e50;
+    padding: 2rem 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .header h1 {
     margin: 0;
-    font-size: 2.8rem;
+    font-size: 3.5rem;
     font-weight: bold;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    padding: 0.5rem 1.5rem;
+    /* Reduzindo o padding da navbar */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 1.5rem;
+    /* Reduzindo a distância entre os itens */
+}
+
+.navbar li {
+    position: relative;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #2c3e50;
+    font-weight: bold;
+    font-size: 1rem;
+    /* Diminuindo o tamanho da fonte dos itens de navegação */
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.navbar a:hover {
+    color: #4ca1af;
+    transform: scale(1.05);
+    /* Efeito de zoom suave no hover */
+}
+
+.navbar li::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 3px;
+    background: #4ca1af;
+    transition: width 0.3s;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+}
+
+.navbar li:hover::after {
+    width: 100%;
+}
+
+/* Tamanho fixo do logo */
+.navbar-brand img {
+    height: 40px;
+    /* Ajuste para o logo */
+    width: auto;
 }
 
 /* Conteúdo principal */
 .content {
-    max-width: 900px;
-    margin: 2rem auto;
-    padding: 1.5rem;
-    background-color: #ffffff;
+    max-width: 1000px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background: #ffffff;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
     border-radius: 12px;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .content:hover {
     transform: translateY(-5px);
-    /* Elevação ao passar o mouse */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .content h2 {
     color: #2c3e50;
-    margin-bottom: 1rem;
-    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
     font-weight: bold;
 }
 
 .content p {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     text-align: justify;
     line-height: 1.8;
+    font-size: 1rem;
+    color: #555;
 }
 
 /* Banner/Carousel */
 .carousel-inner img {
-    height: 300px;
-    /* Altura fixa para o banner */
+    height: 350px;
     object-fit: cover;
     border-radius: 12px;
-    /* Bordas arredondadas para o banner */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 /* Botões do carousel */
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
     filter: brightness(0) invert(1);
-    /* Ajusta cor dos ícones para branco */
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
 }
 
 .carousel-control-prev,
 .carousel-control-next {
-    transition: transform 0.2s ease;
+    transition: transform 0.3s ease;
 }
 
 .carousel-control-prev:hover,
 .carousel-control-next:hover {
-    transform: scale(1.1);
-    /* Efeito ao passar o mouse nos botões */
+    transform: scale(1.15);
 }
 
 /* Footer */
 .footer {
     text-align: center;
-    padding: 1rem 0;
-    background-color: #2c3e50;
+    padding: 2rem 0;
+    background: #2c3e50;
     color: #fff;
-    margin-top: 1rem;
-    font-size: 0.9rem;
-    border-top: 4px solid #e8e7e6;
+    margin-top: 3rem;
+    font-size: 1rem;
+    border-top: 4px solid #4ca1af;
 }
-
-
 
 /* Responsividade */
 @media (max-width: 768px) {
+    .navbar ul {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
     .content {
-        margin: 1rem;
-        padding: 1rem;
+        margin: 1.5rem;
+        padding: 1.5rem;
     }
 
     .header h1 {
-        font-size: 2rem;
+        font-size: 2.5rem;
     }
 
     .carousel-inner img {
-        height: 200px;
-        /* Reduz a altura do banner em telas menores */
+        height: 250px;
     }
+
+    .footer {
+        font-size: 0.85rem;
+    }
+}
+
+/* Botão de alternância de modo */
+.mode-toggle {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 9999;
+}
+
+.mode-toggle button {
+    background-color: #ffffff;
+    border: 2px solid #4ca1af;
+    border-radius: 5px;
+    padding: 12px 18px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.mode-toggle button:hover {
+    background-color: #4ca1af;
+    color: #fff;
+}
+
+/* Estilo do botão de alternância do tema (checkbox) */
+.theme-switcher-checkbox {
+    display: none;
+}
+
+.theme-switcher-checkbox:checked+.theme-icons .fa-sun {
+    display: none;
+}
+
+.theme-switcher-checkbox:not(:checked)+.theme-icons .fa-moon {
+    display: none;
+}
+
+.theme-icons {
+    display: flex;
+    align-items: center;
+}
+
+.theme-icon {
+    width: 26px;
+    height: 26px;
+    transition: opacity 0.3s;
+}
+
+/* Navbar customizada */
+.navbar {
+    background-color: #f9f9f9;
+    /* Alterado para um tom mais neutro */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    /* Maior sombra */
+}
+
+.footer {
+    background-color: #f9f9f9;
+    /* Cor similar à navbar */
 }

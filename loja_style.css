@@ -1,103 +1,106 @@
-/* Estilo geral */
+/* Estilos gerais */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
     margin: 0;
     padding: 0;
 }
 
-/* Navbar superior */
-.navbar {
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.navbar .navbar-brand img {
-    max-height: 50px;
-}
-
-/* Navbar inferior */
-.fixed-bottom {
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-    font-size: 14px;
-    color: #333;
-}
-
-/* Estilização de produtos */
+/* Cards de produtos */
 .product-card {
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    /* Impede que a imagem ultrapasse o card */
 }
 
 .product-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    /* Efeito mais pronunciado ao passar o mouse */
 }
 
 .product-card img {
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
     width: 100%;
     height: 200px;
     object-fit: cover;
+    border-radius: 12px 12px 0 0;
+}
+
+.product-card .card-body {
+    padding: 15px;
 }
 
 .product-card .product-price {
-    color: #007BFF;
+    font-size: 20px;
     font-weight: bold;
+    color: #007BFF;
+    margin-top: 10px;
 }
 
-/* Botão de adicionar ao carrinho */
+/* Botões */
 .cart-btn {
-    background-color: #007BFF;
+    background-color: #3498db;
     color: white;
     border: none;
+    padding: 12px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%;
 }
 
 .cart-btn:hover {
-    background-color: #0056b3;
+    background-color: #2980b9;
+    transform: scale(1.05);
+    /* Efeito de aumento sutil ao passar o mouse */
 }
 
-/* Modal do carrinho */
+/* Modal */
 .modal-header {
-    background-color: #f1f1f1;
+    background-color: #f9f9f9;
     border-bottom: 2px solid #e0e0e0;
+    border-radius: 12px 12px 0 0;
+    /* Cantos arredondados na parte superior */
 }
 
 .modal-footer {
+    background-color: #f9f9f9;
     border-top: 2px solid #e0e0e0;
+    border-radius: 0 0 12px 12px;
+    /* Cantos arredondados na parte inferior */
 }
 
-/* Estilo do botão fechar */
-.btn-close {
-    outline: none;
+.modal-body {
+    padding: 20px;
 }
 
-/* Rodapé */
-.navbar-text {
-    font-size: 14px;
+/* Estilos de Cart Item */
+.list-group-item {
+    border-radius: 8px;
+    margin-bottom: 10px;
+    background-color: #f8f9fa;
+    padding: 10px 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-#search-bar {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 20px;
+.list-group-item button {
+    border-radius: 5px;
+    padding: 5px 10px;
 }
 
-#search-input {
-    width: 300px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px 0 0 5px;
-    font-size: 16px;
+/* Estilos adicionais para o Carrinho */
+#cartItems {
+    max-height: 300px;
+    overflow-y: auto;
 }
 
-#search-button {
-    padding: 10px;
-    background-color: #007BFF;
-    border: 1px solid #007BFF;
-    color: white;
-    cursor: pointer;
-    border-radius: 0 5px 5px 0;
-    font-size: 16px;
+/* Responsividade */
+@media (max-width: 767px) {
+    .product-card img {
+        height: 150px;
+        /* Ajusta a altura da imagem para telas menores */
+    }
 }

@@ -4,11 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Loja Online - Paris 2024</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="loja_style.css">
+    <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
@@ -23,52 +24,29 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="index.html">
-                            <i class="fa fa-home"></i> Home
-                        </a>
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fa fa-home"></i> Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="paises.html"><i class="fa fa-globe"></i> Países</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="paises.html">
-                            <i class="fa fa-globe"></i> Países
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="torneios.html">
-                            <i class="fa fa-trophy"></i> Torneios
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="mapa.html">
-                            <i class="fa fa-map"></i> Mapa
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="agenda.html">
-                            <i class="fa fa-calendar"></i> Agenda
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="loja.html">
-                            <i class="fa fa-shopping-cart"></i>Loja</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="tocha.html">
-                            <i class="fa fa-map-marker"></i>Tocha</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="torneios.html"><i class="fa fa-trophy"></i>
+                            Torneios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="mapa.html"><i class="fa fa-map"></i> Mapa</a></li>
+                    <li class="nav-item"><a class="nav-link" href="agenda.html"><i class="fa fa-calendar"></i>
+                            Agenda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.html"><i class="fa fa-shopping-cart"></i>
+                            Loja</a></li>
+                    <li class="nav-item"><a class="nav-link" href="tocha.html"><i class="fa fa-map-marker"></i>
+                            Tocha</a></li>
+                    <li class="nav-item"><a class="nav-link" href="estatisticas.html"><i class="fa fa-line-chart"></i>
+                            Estatísticas</a></li>
                 </ul>
-
             </div>
         </div>
     </nav>
-    <div id="search-bar">
-        <input type="text" id="search-input" placeholder="Pesquisar produtos...">
-        <button id="search-button"><i class="fa fa-search"></i></button>
-    </div>
 
     <div class="container my-5">
         <h2 class="text-center mb-4">Loja Online</h2>
-        <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#cartModal">
+        <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#cartModal" id="cartButton"
+            disabled>
             <i class="fa fa-shopping-cart"></i> Ver Carrinho (<span id="cartCount">0</span>)
         </button>
         <div class="row" id="productList">
@@ -96,35 +74,22 @@
             </div>
         </div>
     </div>
-    </div>
-    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="cartModalLabel">Carrinho de Compras</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <ul id="cartItems" class="list-group">
-                        <!-- Produtos do carrinho serão exibidos aqui -->
-                    </ul>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-success" onclick="checkout()">Finalizar Compra</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
+
     <script>
+        // Verifica se o usuário está logado
+        const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+
+        if (isLoggedIn) {
+            document.getElementById('cartButton').disabled = false;
+        }
+
         const products = [
-            { id: 1, name: "T-shirt logo Paris 2024", price: 34.00, image: "tshirt1.png" },
-            { id: 2, name: "Polo Paris 2024 - Branco", price: 45.00, image: "tshirt2.png" },
-            { id: 3, name: "Boné Paris 2024 - Preto", price: 22.00, image: "bone1.png" },
-            { id: 4, name: "Relógio Smart", price: 399.99, image: "produto4.jpg" },
-            { id: 5, name: "Mochila Adventure", price: 149.99, image: "produto5.jpg" },
-            { id: 6, name: "Fone Bluetooth", price: 199.99, image: "produto6.jpg" },
+            { id: 1, name: "T-shirt logo Paris 2024", price: 33.99, image: "tshirt1.png" },
+            { id: 2, name: "Polo Paris 2024 - Branco", price: 45.99, image: "tshirt2.png" },
+            { id: 3, name: "Boné Paris 2024 - Preto", price: 22.99, image: "bone1.png" },
+            { id: 4, name: "Paris 2024 Olympics Mascot Plush Backpack", price: 24.99, image: "mochila.png" },
+            { id: 5, name: "Paris 2024 Olympics Cuff Beanie", price: 9.99, image: "gorro.png" },
+            { id: 6, name: "Paris 2024 Olympics Mascot Hoodie - Navy - Kids", price: 21.99, image: "sweat.png" },
         ];
 
         const cart = [];
@@ -132,7 +97,7 @@
         const productList = document.getElementById("productList");
         products.forEach(product => {
             const productCard = document.createElement("div");
-            productCard.className = "col-md-4";
+            productCard.className = "col-md-4 mb-4";
             productCard.innerHTML = `
                 <div class="card product-card">
                     <img src="${product.image}" alt="${product.name}">
@@ -179,7 +144,9 @@
 
         // Finalizar compra
         function checkout() {
-            if (cart.length === 0) {
+            if (!isLoggedIn) {
+                alert("Você precisa estar logado para finalizar a compra!");
+            } else if (cart.length === 0) {
                 alert("O carrinho está vazio!");
             } else {
                 alert("Compra finalizada com sucesso!");
@@ -187,25 +154,19 @@
                 updateCart();
             }
         }
-        document.getElementById("search-input").addEventListener("input", function () {
-            const searchText = this.value.toLowerCase();
-            const filteredProducts = products.filter(product =>
-                product.name.toLowerCase().includes(searchText)
-            );
-            renderProducts(filteredProducts);
-        });
-
     </script>
-</body>
-<div class="container-fluid w-100" style="background-color:#e8e7e6">
-    <div class="row">
-        <div class="col">
-            <div class="navbar-text">Olimpíadas Paris 2024 - projeto realizado no âmbito da cadeira de ITW</div>
-        </div>
-        <div class="col" style="text-align: end;">
-            <div class="navbar-text justify-content-end d-none d-md-block">Universidade de Aveiro</div>
+
+    <div class="container-fluid w-100" style="background-color:#e8e7e6">
+        <div class="row">
+            <div class="col">
+                <div class="navbar-text">Olimpíadas Paris 2024 - projeto realizado no âmbito da cadeira de ITW</div>
+            </div>
+            <div class="col" style="text-align: end;">
+                <div class="navbar-text justify-content-end d-none d-md-block">Universidade de Aveiro</div>
+            </div>
         </div>
     </div>
-</div>
+
+</body>
 
 </html>
