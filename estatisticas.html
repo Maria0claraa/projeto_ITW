@@ -1,31 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Map with Locations</title>
-    <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Página inicial dos Jogos Olímpicos - Estatísticas e informações detalhadas." />
+    <title>Página Inicial - Jogos Olímpicos</title>
+
+    <!-- Estilos e Fontes -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
     <link rel="stylesheet" href="index.css">
-    <style>
-        #map {
-            height: 610px;
-            /* Define o tamanho do mapa */
-            width: 100%;
-            margin-bottom: 15px;
-        }
-    </style>
+    <link rel="stylesheet" href="estatistica.css">
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+    <script src="../Scripts/jquery-3.6.0.min.js"></script>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="estatistica.js"></script>
 </head>
 
 <body>
+
+    <!-- Navegação -->
     <nav class="navbar navbar-expand-lg" style="background-color: #e8e7e6;">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.html">
@@ -78,7 +75,29 @@
             </div>
         </div>
     </nav>
-    <div id="map"></div>
+
+    <!-- Conteúdo Principal -->
+    <main class="container mt-5">
+        <section>
+            <div class="text-center mb-4">
+                <h2 class="custom-title">
+                    <i class="fa fa-trophy"></i> Mais Medalhas
+                </h2>
+            </div>
+            <div id="chart1" style="height: 500px;"></div>
+        </section>
+
+        <section class="mt-5">
+            <div class="text-center mb-4">
+                <h2 class="custom-title">
+                    <i class="fa fa-trophy"></i>Mais Jogos Olímpicos
+                </h2>
+            </div>
+            <div id="chart2" style="height: 500px;"></div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
     <div class="container-fluid w-100" style="background-color:#e8e7e6">
         <div class="row">
             <div class="col">
@@ -90,14 +109,6 @@
         </div>
     </div>
 
-    <!-- Leaflet JS -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!--KnockoutJS-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.js"></script>
-    <!--jQuery-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="tocha.js"></script>
 </body>
 
 </html>

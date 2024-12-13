@@ -7,6 +7,47 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="paises_style.css">
+    <link rel="stylesheet" href="index.css">
+    <style>
+        /* Estilos para a barra de pesquisa - Modalidade */
+        #country-filter {
+            width: 60%;
+            /* Definindo a largura similar à da barra de pesquisa dos países */
+            padding: 12px 20px;
+            /* Espaçamento interno da barra */
+            font-size: 1rem;
+            /* Tamanho da fonte */
+            border: 2px solid #4ca1af;
+            /* Cor da borda (tom suave de azul) */
+            border-radius: 25px;
+            /* Borda arredondada */
+            outline: none;
+            /* Remove a borda de foco padrão */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            /* Sombra suave */
+            transition: border-color 0.3s, box-shadow 0.3s;
+            /* Transição suave para mudanças de foco */
+        }
+
+        /* Estilo quando a barra de pesquisa estiver em foco */
+        #country-filter:focus {
+            border-color: #4ca1af;
+            /* Borda azul mais forte no foco */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            /* Aumenta a sombra ao focar */
+        }
+
+        /* Estilo para o container, para garantir a centralização */
+        .container.mt-4 {
+            display: flex;
+            justify-content: center;
+            /* Centraliza a barra de pesquisa horizontalmente */
+            align-items: center;
+            /* Centraliza verticalmente se necessário */
+            margin-top: 30px;
+            /* Margem superior para afastar do conteúdo acima */
+        }
+    </style>
 </head>
 
 <body>
@@ -47,15 +88,18 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="loja.html">
+                        <a class="nav-link" href="login.html">
                             <i class="fa fa-shopping-cart"></i>Loja</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="tocha.html">
                             <i class="fa fa-map-marker"></i>Tocha</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="estatisticas.html">
+                            <i class="fa fa-line-chart"></i>Estatisticas</a>
+                    </li>
                 </ul>
-
             </div>
         </div>
     </nav>

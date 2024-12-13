@@ -8,7 +8,51 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="paises_style.css">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css"
+        integrity="sha512-ELV+xyi8IhEApPS/pSj66+Jiw+sOT1Mqkzlh8ExXihe4zfqbWkxPRi8wptXIO9g73FSlhmquFlUOuMSoXz5IRw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Estilos para a barra de pesquisa */
+        #country-filter {
+            width: 100%;
+            /* Ajusta a largura da barra de pesquisa */
+            max-width: 500px;
+            /* Define uma largura máxima */
+            padding: 10px 20px;
+            /* Adiciona espaçamento interno */
+            font-size: 1rem;
+            /* Tamanho da fonte */
+            border: 2px solid #4ca1af;
+            /* Borda com uma cor mais suave */
+            border-radius: 25px;
+            /* Bordas arredondadas */
+            outline: none;
+            /* Remove o contorno padrão do navegador */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            /* Sombra suave */
+            transition: border-color 0.3s, box-shadow 0.3s;
+            /* Transições suaves */
+        }
 
+        /* Efeito de foco na barra de pesquisa */
+        #country-filter:focus {
+            border-color: #2c3e50;
+            /* Cor da borda ao focar */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            /* Aumenta a sombra ao focar */
+        }
+
+        /* Estilo para o container */
+        .container {
+            display: flex;
+            justify-content: center;
+            /* Centraliza a barra de pesquisa */
+            align-items: center;
+            margin-top: 30px;
+            /* Espaço superior */
+        }
+    </style>
 </head>
 
 <body>
@@ -49,15 +93,18 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="loja.html">
+                        <a class="nav-link" href="login.html">
                             <i class="fa fa-shopping-cart"></i>Loja</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="tocha.html">
                             <i class="fa fa-map-marker"></i>Tocha</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="estatisticas.html">
+                            <i class="fa fa-line-chart"></i>Estatisticas</a>
+                    </li>
                 </ul>
-
             </div>
         </div>
     </nav>
@@ -65,75 +112,72 @@
         <input type="text" id="country-filter" placeholder="Filtrar pelo nome do país...">
     </div>
     <!-- Países Participantes -->
-    <h1>Países Participantes</h1>
-    <a href="detalhes.html?pais=Afeganistão">
-        <div class="country-card">
-            <img src="https://flagcdn.com/w320/za.png" alt="Afeganis">
-            <div class="country-name">África do Sul</div>
-    </a>
-    <a href="detalhes.html?pais=Africa do Sul">
-        <div class="country-card">
-            <img src="https://flagcdn.com/w320/za.png" alt="África do Sul">
-            <div class="country-name">África do Sul</div>
-        </div>
-    </a>
-    <div class="country-card">
+    <div class="country-card" id="Afghanistan">
+        <img src="afeganistao.png" alt="Afeganistão">
+        <div class="country-name">Afeganistão</div>
+    </div>
+    <div class="country-card" id="SouthAfrica">
+        <img src="https://flagcdn.com/w320/za.png" alt="África do Sul">
+        <div class="country-name">África do Sul</div>
+    </div>
+    <div class="country-card" id="Albania">
         <img src="https://flagcdn.com/w320/al.png" alt="Albânia">
         <div class="country-name">Albânia</div>
     </div>
-    <div class="country-card">
+    <div class="country-card" id="Germany">
         <img src="https://flagcdn.com/w320/de.png" alt="Alemanha">
         <div class="country-name">Alemanha</div>
     </div>
-    <div class="country-card">
+    <div class="country-card" id="Andorra">
         <img src="https://flagcdn.com/w320/ad.png" alt="Andorra">
         <div class="country-name">Andorra</div>
     </div>
-    <div class="country-card">
+    <div class="country-card" id="Angola">
         <img src="https://flagcdn.com/w320/ao.png" alt="Angola">
         <div class="country-name">Angola</div>
     </div>
-    <div class="country-card">
+    <div class="country-card" id="AntiguaBarbuda">
         <img src="https://flagcdn.com/w320/ag.png" alt="Antígua e Barbuda">
         <div class="country-name">Antígua e Barbuda</div>
     </div>
-    <div class="country-card">
+    <div class="country-card" id="SaudiArabia">
         <img src="https://flagcdn.com/w320/sa.png" alt="Arábia Saudita">
         <div class="country-name">Arábia Saudita</div>
     </div>
-    <div class="country-card">
+    <div class="country-card" id="Algeria">
         <img src="https://flagcdn.com/w320/dz.png" alt=" Argélia">
         <div class="country-name"> Argélia</div>
     </div>
-    <div class="country-card">
+    <div class="country-card" id="Argentina">
         <img src="https://flagcdn.com/w320/ar.png" alt="Argentina">
         <div class="country-name">Argentina</div>
     </div>
-    <div class="country-card">
+    <div class="country-card" id="Armenia">
         <img src="https://flagcdn.com/w320/am.png" alt="Arménia ">
         <div class="country-name">Arménia </div>
     </div>
-    <div class="country-card">
+    <div class="country-card" id="Aruba">
         <img src="https://flagcdn.com/w320/aw.png" alt="Aruba">
         <div class="country-name">Aruba</div>
     </div>
-    <div class="country-card">
+    <div class="country-card" id="NeutralAthletes">
         <img src="paisesneutro.png" alt="Atletas Individuais Neutros">
         <div class="country-name">Atletas Individuais Neutros</div>
     </div>
-    <div class="country-card">
+    <div class="country-card" id="Australia">
         <img src="https://flagcdn.com/w320/au.png" alt="Austrália">
         <div class="country-name">Austrália</div>
     </div>
-    <div class="country-card">
+    <div class="country-card" id="Austria">
         <img src="https://flagcdn.com/w320/at.png" alt="Áustria">
         <div class="country-name">Áustria</div>
     </div>
-    <div class="country-card">
+    <div class="country-card" id="Azerbaijan">
         <img src="https://flagcdn.com/w320/az.png" alt="Azerbaijão">
-        <div class=" country-name">Azerbaijão
-        </div>
+        <div class=" country-name">Azerbaijão</div>
     </div>
+    <!-- Código continua com os outros países -->
+
     <div class="country-card">
         <img src="https://flagcdn.com/w320/bs.png" alt="Bahamas">
         <div class="country-name">Bahamas</div>
@@ -935,6 +979,17 @@
             });
         });
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.js"
+        integrity="sha512-2AL/VEauKkZqQU9BHgnv48OhXcJPx9vdzxN1JrKDVc4FPU/MEE/BZ6d9l0mP7VmvLsjtYwqiYQpDskK9dG8KBA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Include JQuery bundle-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.2/jquery.min.js"
+        integrity="sha512-tWHlutFnuG0C6nQRlpvrEhE4QpkG1nn2MOUMWmUeRePl4e3Aki0VB6W1v3oLjFtd0hVOtRQ9PHpSfN6u6/QXkQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Include JQueryUi bundle-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"
+        integrity="sha512-57oZ/vW8ANMjR/KQ6Be9v/+/h6bq9/l3f0Oc7vn6qMqyhvPd1cvKBRWWpzu0QoneImqr2SkmO4MSqU+RpHom3Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
 
 </html>

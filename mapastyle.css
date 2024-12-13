@@ -33,3 +33,26 @@ body {
     border-radius: 0 5px 5px 0;
     font-size: 16px;
 }
+
+/* Estilos para o botão "Saber mais" */
+button.btn.btn-primary {
+    padding: 6px 12px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Efeito de hover para o botão */
+button.btn.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Efeito de foco para o botão */
+button.btn.btn-primary:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.75);
+}

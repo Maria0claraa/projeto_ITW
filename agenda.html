@@ -8,119 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
-    <style>
-        .timeline-container {
-            position: relative;
-            width: 100%;
-            padding: 20px 0;
-            background-color: #f5f5f5;
-        }
-
-        .timeline {
-            display: flex;
-            overflow-x: scroll;
-            padding: 20px 0;
-            scroll-behavior: smooth;
-        }
-
-        .timeline::-webkit-scrollbar {
-            height: 10px;
-        }
-
-        .timeline::-webkit-scrollbar-thumb {
-            background: #888;
-            border-radius: 10px;
-        }
-
-        .timeline-event {
-            flex: none;
-            width: 200px;
-            margin: 0 10px;
-            background-color: #ffffff;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            padding: 15px;
-            transition: transform 0.3s;
-        }
-
-        .timeline-event:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .timeline-date {
-            font-weight: bold;
-            color: #007BFF;
-            margin-bottom: 5px;
-        }
-
-        .timeline-description {
-            font-size: 14px;
-        }
-
-        .timeline-navigation {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-        }
-
-        .timeline-navigation button {
-            background-color: #007BFF;
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .timeline-navigation button:hover {
-            background-color: #0056b3;
-        }
-
-        .event-card {
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-        }
-
-        .event-card img {
-            border-top-left-radius: 8px;
-            border-top-right-radius: 8px;
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .event-card h5 {
-            color: #007BFF;
-        }
-
-        .news-section {
-            margin-top: 50px;
-            background-color: #f8f9fa;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .news-card {
-            border: none;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .news-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .news-card img {
-            border-radius: 8px;
-            height: 150px;
-            object-fit: cover;
-        }
-    </style>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="agenda.css">
 </head>
 
 <body>
@@ -161,105 +50,135 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="loja.html">
+                        <a class="nav-link" href="login.html">
                             <i class="fa fa-shopping-cart"></i>Loja</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="tocha.html">
                             <i class="fa fa-map-marker"></i>Tocha</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="estatisticas.html">
+                            <i class="fa fa-line-chart"></i>Estatisticas</a>
+                    </li>
                 </ul>
-
             </div>
         </div>
     </nav>
+
     <div class="container my-4">
         <h2 class="text-center">Agenda das Competições</h2>
         <div class="timeline-container">
             <div class="timeline" id="timeline">
                 <!-- Eventos -->
-                <div class="timeline-event">
+                <div class="timeline-event"
+                    onclick="showEventDetails('24 Jul', 'Futebol Masculino e Rugby Sevens', 'Clique para ver detalhes')">
+                    <div class="timeline-date">24 Jul</div>
+                    <div>Futebol Masculino e Rugby Sevens</div>
+                </div>
+                <div class="timeline-event"
+                    onclick="showEventDetails('25 Jul', 'Voleibol de Praia', 'Torre Eiffel Arena - 09:00')">
+                    <div class="timeline-date">25 Jul</div>
+                </div>
+                <div class="timeline-event" onclick="showEventDetails('26 Jul', 'Maratona', 'Pont d\'Iéna - 08:00')">
                     <div class="timeline-date">26 Jul</div>
-                    <div class="timeline-description">Cerimônia de Abertura<br>Trocadéro - 20:00</div>
                 </div>
-                <div class="timeline-event">
+                <div class="timeline-event"
+                    onclick="showEventDetails('27 Jul', 'Basquete 3x3', 'Praça da Concórdia - 09:00')">
                     <div class="timeline-date">27 Jul</div>
-                    <div class="timeline-description">Voleibol de Praia<br>Torre Eiffel Arena - 09:00</div>
                 </div>
-                <div class="timeline-event">
+                <div class="timeline-event" onclick="showEventDetails('28 Jul', 'Remo', 'Vaires-sur-Marne - 07:00')">
                     <div class="timeline-date">28 Jul</div>
-                    <div class="timeline-description">Maratona<br>Pont d'Iéna - 08:00</div>
                 </div>
-                <div class="timeline-event">
+                <div class="timeline-event"
+                    onclick="showEventDetails('29 Jul', 'Saltos Ornamentais', 'Paris Aquatic Centre - 15:00')">
                     <div class="timeline-date">29 Jul</div>
-                    <div class="timeline-description">Basquete 3x3<br>Praça da Concórdia - 09:00</div>
                 </div>
-                <div class="timeline-event">
-                    <div class="timeline-date">30 Jul</div>
-                    <div class="timeline-description">Remo<br>Vaires-sur-Marne - 07:00</div>
+                <div class="timeline-event"
+                    onclick="showEventDetails('30 Aug', 'Futebol Feminino', 'Parc des Princes - 10:00')">
+                    <div class="timeline-date">30 Aug</div>
                 </div>
-                <div class="timeline-event">
-                    <div class="timeline-date">31 Jul</div>
-                    <div class="timeline-description">Saltos Ornamentais<br>Paris Aquatic Centre - 15:00</div>
+                <div class="timeline-event" onclick="showEventDetails('31 Aug', 'Ciclismo', 'Champs-Élysées - 11:00')">
+                    <div class="timeline-date">31 Aug</div>
                 </div>
-                <div class="timeline-event">
+                <div class="timeline-event" onclick="showEventDetails('1 Aug', 'Atletismo', 'Stade de France - 09:00')">
+                    <div class="timeline-date">1 Aug</div>
+                </div>
+                <div class="timeline-event"
+                    onclick="showEventDetails('2 Aug', 'Natação', 'Paris Aquatic Centre - 14:00')">
+                    <div class="timeline-date">2 Aug</div>
+                </div>
+                <div class="timeline-event"
+                    onclick="showEventDetails('3 Aug', 'Voleibol', 'Arena Pierre-Mauroy - 18:00')">
+                    <div class="timeline-date">3 Aug</div>
+                </div>
+                <div class="timeline-event" onclick="showEventDetails('4 Aug', 'Esgrima', 'Grand Palais - 10:00')">
+                    <div class="timeline-date">4 Aug</div>
+                </div>
+                <div class="timeline-event"
+                    onclick="showEventDetails('5 Aug', 'Ginástica Artística', 'Bercy Arena - 12:00')">
+                    <div class="timeline-date">5 Aug</div>
+                </div>
+                <div class="timeline-event" onclick="showEventDetails('6 Aug', 'Tênis', 'Stade Pierre-Mauroy - 15:00')">
+                    <div class="timeline-date">6 Aug</div>
+                </div>
+                <div class="timeline-event" onclick="showEventDetails('7 Aug', 'Hóquei', 'La Défense Arena - 16:00')">
+                    <div class="timeline-date">7 Aug</div>
+                </div>
+                <div class="timeline-event" onclick="showEventDetails('8 Aug', 'Handebol', 'Bercy Arena - 19:00')">
+                    <div class="timeline-date">8 Aug</div>
+                </div>
+                <div class="timeline-event" onclick="showEventDetails('9 Aug', 'Handebol', 'Bercy Arena - 19:00')">
+                    <div class="timeline-date">9 Aug</div>
+                </div>
+                <div class="timeline-event" onclick="showEventDetails('10 Aug', 'Handebol', 'Bercy Arena - 19:00')">
+                    <div class="timeline-date">10 Aug</div>
+                </div>
+                <div class="timeline-event" onclick="showEventDetails('11 Aug', 'Handebol', 'Bercy Arena - 19:00')">
                     <div class="timeline-date">11 Aug</div>
-                    <div class="timeline-description">Cerimônia de Encerramento<br>Stade de France - 20:00</div>
-                </div>
-            </div>
-            <!-- Notícias -->
-            <div class="news-section">
-                <h3 class="text-center">Últimas Notícias</h3>
-                <div class="row">
-                    <!-- Notícia 1 -->
-                    <div class="col-md-4">
-                        <div class="card news-card">
-                            <img src="noticia1.jpg" alt="Notícia 1" class="card-img-top">
-                            <div class="card-body">
-                                <h5 class="card-title">Esgrima estreia com casa cheia</h5>
-                                <p class="card-text">Grand Palais recebeu a primeira competição de esgrima do evento.
-                                </p>
-                                <a href="#" class="btn btn-primary">Leia mais</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Notícia 2 -->
-                    <div class="col-md-4">
-                        <div class="card news-card">
-                            <img src="noticia2.jpg" alt="Notícia 2" class="card-img-top">
-                            <div class="card-body">
-                                <h5 class="card-title">Basquete 3x3 impressiona público</h5>
-                                <p class="card-text">Evento na Praça da Concórdia trouxe partidas emocionantes.</p>
-                                <a href="#" class="btn btn-primary">Leia mais</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Notícia 3 -->
-                    <div class="col-md-4">
-                        <div class="card news-card">
-                            <img src="noticia3.jpg" alt="Notícia 3" class="card-img-top">
-                            <div class="card-body">
-                                <h5 class="card-title">Saltos Ornamentais ganham destaque</h5>
-                                <p class="card-text">Paris Aquatic Centre recebeu saltos de altíssimo nível.</p>
-                                <a href="#" class="btn btn-primary">Leia mais</a>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
-        <div class="container-fluid w-100" style="background-color:#e8e7e6">
-            <div class="row">
-                <div class="col">
-                    <div class="navbar-text">Olimpíadas Paris 2024 - projeto realizado no âmbito da cadeira de ITW</div>
-                </div>
-                <div class="col" style="text-align: end;">
-                    <div class="navbar-text justify-content-end d-none d-md-block">Universidade de Aveiro</div>
-                </div>
-            </div>
+
+        <!-- Detalhes do Evento -->
+        <div id="event-details" class="event-details" style="display: none;">
+            <h3>Detalhes do Evento</h3>
+            <p><strong>Data:</strong> <span id="event-date"></span></p>
+            <p><strong>Evento:</strong> <span id="event-name"></span></p>
+            <p><strong>Local:</strong> <span id="event-location"></span></p>
+            <hr>
+            <h4>Futebol (Masculino)</h4>
+            <ul>
+                <li>10:00 - Uzbequistão vs. Espanha - Parc des Princes</li>
+                <li>10:00 - Argentina vs. Marrocos - Estádio Geoffroy-Guichard</li>
+                <li>12:00 - Egito vs. República Dominicana - Estádio La Beaujoire</li>
+                <li>12:00 - Guiné vs. Nova Zelândia - Estádio de Nice</li>
+                <li>14:00 - Japão vs. Paraguai - Estádio Bordeaux</li>
+                <li>14:00 - Iraque vs. Ucrânia - Estádio de Lyon</li>
+                <li>16:00 - Mali vs. Israel - Parc des Princes</li>
+                <li>16:00 - França vs. EUA - Estádio de Marselha</li>
+            </ul>
+            <hr>
+            <h4>Rugby Sevens (Masculino)</h4>
+            <ul>
+                <li>10:30 - Austrália vs. Samoa - Stade Pierre-Mauroy</li>
+                <li>10:30 - Fiji vs. Nova Zelândia - Stade Pierre-Mauroy</li>
+                <li>12:30 - França vs. Tonga - Stade Pierre-Mauroy</li>
+                <li>12:30 - Japão vs. África do Sul - Stade Pierre-Mauroy</li>
+                <li>14:00 - Argentina vs. Inglaterra - Stade Pierre-Mauroy</li>
+                <li>14:00 - Canadá vs. EUA - Stade Pierre-Mauroy</li>
+            </ul>
         </div>
+    </div>
+
+    <script>
+        function showEventDetails(date, name, location) {
+            document.getElementById('event-date').textContent = date;
+            document.getElementById('event-name').textContent = name;
+            document.getElementById('event-location').textContent = location;
+            document.getElementById('event-details').style.display = 'block';
+        }
+    </script>
 </body>
 
 </html>
