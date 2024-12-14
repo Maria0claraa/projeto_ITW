@@ -71,17 +71,110 @@
         </div>
     </nav>
 
-    <h2 class="text-center">Detalhes do Atleta</h2>
+    <!-- Botão para voltar á lista -->
+    <a href="Atletas_geral.html" >Voltar á lista</a>
 
-    <!--Conteúdo para apresentação dos atletas-->
+    <!-- nome do atleta -->
+    <div>
+        <h2 class="text-center">Detalhes do Atleta:  <span data-bind="text: Name"></span></h2>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="stadium-header py-2 mb-4">
+                <h1 data-bind="text: Name"></h1>
+            </div>
+    
+            <div class="row">
+
+                <!-- Coluna para a foto do atleta -->
+                <div class="col-12 col-md-4 d-flex flex-column justify-content-start align-items-center">
+                    <img data-bind="attr: { src: Photo, alt: Name }" class="img-fluid rounded"
+                         style="width: 100%; height: auto; max-width: 400px; max-height: 400px;" />
+                </div>
+
+                <!-- Coluna para os detalhes do atleta (tabela) -->
+                <div class="col-12 col-md-8">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <th scope="row">Player Id</th>
+                                <td data-bind="text: Id"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Name</th>
+                                <td data-bind="text: Name"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Sex</th>
+                                <td data-bind="text: Sex"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Birth Country</th>
+                                <td data-bind="text: BirthCountry"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Birth Date</th>
+                                <td data-bind="text: BirthDate"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Birth Place</th>
+                                <td data-bind="text: BirthPlace"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Height</th>
+                                <td data-bind="text: Height"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Languages</th>
+                                <td data-bind="text: Lang"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Education</th>
+                                <td data-bind="text: Education"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Family</th>
+                                <td data-bind="text: Family"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Medals</th>
+                                <td>
+                                    <ul data-bind="foreach: Medals">
+                                        <li>
+                                            <span data-bind="text: Sport_name"></span> -
+                                            <span data-bind="text: Competition_name"></span> -
+                                            <span data-bind="text: Team_name"></span>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Sports</th>
+                                <td>
+                                    <ul data-bind="foreach: Sports">
+                                        <li>
+                                            <span data-bind="text: Name"></span>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Sporting Relatives</th>
+                                <td data-bind="text: SportingRelatives"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
     
 
-    
  <!-- Scripts -->
  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.min.js"></script>
-    <script src="Atletas_geral.js"></script>
+    <script src="detalhes_atleta.js"></script>
 </body>
 
 </html>
