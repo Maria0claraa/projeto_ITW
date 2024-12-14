@@ -77,17 +77,17 @@ function AthleteDetailsViewModel() {
                 self.Occupation(data.Occupation|| 'unknown');
                 self.Education(data.Education|| 'unknown');
                 self.Family(data.Family|| 'unknown');
-                self.Reason(data.Reason);
-                self.Hero(data.Hero);
-                self.Influence(data.Influence);
-                self.Philosophy(data.Philosophy);
+                self.Reason(data.Reason || 'unknown');
+                self.Hero(data.Hero || 'unknown');
+                self.Influence(data.Influence || 'unknown');
+                self.Philosophy(data.Philosophy || 'unknown');
                 self.SportingRelatives(data.SportingRelatives|| 'unknown');
-                self.Ritual(data.Ritual);
-                self.OtherSports(data.OtherSports);
-                self.Url(data.Url);
+                self.Ritual(data.Ritual || 'unknown');
+                self.OtherSports(data.OtherSports || 'unknown');
+                self.Url(data.Url || 'unknown');
                 self.Medals(data.Medals|| []);
-                self.Sports(data.Sports);
-                self.Competitions(data.Competitions);
+                self.Sports(data.Sports || 'unknown');
+                self.Competitions(data.Competitions || 'unknown');
             })
             .catch(error => {
                 console.error('Houve um problema com a operação de fetch:', error);
