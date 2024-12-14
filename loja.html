@@ -13,8 +13,8 @@
 </head>
 
 <body>
-     <!--Menu para a visualização de diferentes páginas-->
-     <nav class="navbar navbar-expand-lg" style="background-color: #e8e7e6;">
+    <!--Menu para a visualização de diferentes páginas-->
+    <nav class="navbar navbar-expand-lg" style="background-color: #e8e7e6;">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.html">
                 <img src="paris-2024-logo-1.png" alt="Logo" height="50" class="d-inline-block align-text-top">
@@ -47,12 +47,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="mapa.html">
-                            <i class="fa fa-map"></i> Mapa
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="agenda.html">
-                            <i class="fa fa-calendar"></i> Agenda
+                            <i class="fa fa-map"></i> Mapa de Arenas
                         </a>
                     </li>
                     <li class="nav-item">
@@ -61,7 +56,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="tocha.html">
-                            <i class="fa fa-map-marker"></i>Tocha</a>
+                            <i class="fa fa-map-marker"></i>Percurso da tocha</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="estatisticas.html">
@@ -73,7 +68,6 @@
     </nav>
 
     <div class="container my-5">
-        <h2 class="text-center mb-4">Loja Online</h2>
         <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#cartModal" id="cartButton"
             disabled>
             <i class="fa fa-shopping-cart"></i> Ver Carrinho (<span id="cartCount">0</span>)
@@ -178,11 +172,11 @@
             } else if (cart.length === 0) {
                 alert("O carrinho está vazio!");
             } else {
-                alert("Compra finalizada com sucesso!");
-                cart.length = 0; // Limpa o carrinho
-                updateCart();
+                // Redirecionar para a página de pagamento
+                window.location.href = "pagamento.html";
             }
         }
+
     </script>
 
     <div class="container-fluid w-100" style="background-color:#e8e7e6">

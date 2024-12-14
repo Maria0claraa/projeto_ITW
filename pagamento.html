@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento - Paris 2024</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="pagamento.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg" style="background-color: #e8e7e6;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img src="paris-2024-logo-1.png" alt="Logo" height="50" class="d-inline-block align-text-top">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="index.html">
+                            <i class="fa fa-home"></i> Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="paises.html">
+                            <i class="fa fa-globe"></i> Países
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="torneios.html">
+                            <i class="fa fa-trophy"></i> Torneios
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Atletas_geral.html">
+                            <i class="fa fa-users"></i> Atletas
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="mapa.html">
+                            <i class="fa fa-map"></i> Mapa de Arenas
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">
+                            <i class="fa fa-shopping-cart"></i>Loja</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tocha.html">
+                            <i class="fa fa-map-marker"></i>Percurso da tocha</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="estatisticas.html">
+                            <i class="fa fa-line-chart"></i>Estatisticas</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="border-bottom py-2 mb-3">
+            <h2>Formulário de Pagamento</h2>
+        </div>
+        <form class="row g-3">
+            <!-- Primeiro e Último Nome -->
+            <div class="col-12">
+                <label for="firstName" class="form-label">Primeiro Nome</label>
+                <input type="text" class="form-control" id="firstName" placeholder="Insira o seu nome" required>
+            </div>
+            <div class="col-12">
+                <label for="lastName" class="form-label">Apelido</label>
+                <input type="text" class="form-control" id="lastName" placeholder="Insira o seu apelido" required>
+            </div>
+
+            <!-- Email e Telemóvel -->
+            <div class="col-12">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Insira o seu email" required>
+            </div>
+            <div class="col-12">
+                <label for="phone" class="form-label">Telemóvel</label>
+                <input type="tel" class="form-control" id="phone" placeholder="Insira o seu Nº de telemóvel" required>
+            </div>
+
+            <!-- Morada -->
+            <div class="col-12">
+                <label for="address" class="form-label">Morada</label>
+                <input type="text" class="form-control" id="address" placeholder="Insira a sua rua e Nº" required>
+            </div>
+
+            <!-- Cidade e Código Postal -->
+            <div class="col-12">
+                <label for="city" class="form-label">Cidade</label>
+                <input type="text" class="form-control" id="city" placeholder="Insira cidade" required>
+            </div>
+            <div class="col-12">
+                <label for="postalCode" class="form-label">Código Postal</label>
+                <input type="text" class="form-control" id="postalCode" placeholder="Insira o seu código Postal"
+                    required>
+            </div>
+
+            <!-- Tipo de Pagamento -->
+            <fieldset class="col-12">
+                <legend class="form-label">Tipo de Pagamento</legend>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="paymentType" id="paymentCard" value="card"
+                        required>
+                    <label class="form-check-label" for="paymentCard">
+                        Cartão de Crédito/Débito
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="paymentType" id="paymentMbway" value="mbway"
+                        required>
+                    <label class="form-check-label" for="paymentMbway">
+                        MB WAY
+                    </label>
+                </div>
+            </fieldset>
+
+            <div class="col-12 text-center">
+                <button type="button" id="confirmPayment" class="btn btn-primary">Confirmar Pagamento</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="pagamento.js"></script>
+</body>
+
+</html>

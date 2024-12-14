@@ -8,51 +8,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="detalhes_atleta.css">
     <script src="modonoite.js"></script>
-    <style>
-        .botao {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #4ca1af; /* Cor do botão */
-            color: white; /* Cor do texto */
-            text-decoration: none; /* Remove o sublinhado */
-            border: none; /* Remove a borda */
-            border-radius: 27px; /* Bordas arredondadas */
-            transition: background-color 0.3s; /* Transição suave */
-            margin-top: 20px;
-            margin-left: 20px;
-        }
 
-        .botao:hover {
-            background-color: lightblue; /* Cor do botão ao passar o mouse */
-        }
-
-        .text-center {
-            text-align: center; /* Centraliza o texto */
-            margin: 20px 0; /* Adiciona margem acima e abaixo */
-        }
-
-        h2 {
-            font-size: 2em; /* Aumenta o tamanho da fonte */
-            color: #2c3e50; /* Cor do texto */
-            font-weight: bold; /* Deixa o texto em negrito */
-            text-transform: uppercase; /* Transforma o texto em maiúsculas */
-            letter-spacing: 1px; /* Espaçamento entre letras */
-        }
-
-        span {
-            color: #4ca1af; /* Cor do nome do atleta */
-            font-style: italic; /* Estilo itálico para o nome */
-        }
-
-        .img-bordered {
-            border: 5px solid #4ca1af; /* Borda de 5px com a cor especificada */
-            border-radius: 10px; /* Bordas arredondadas (opcional) */
-            max-width: 100%; /* Garante que a imagem não ultrapasse a largura do contêiner */
-            height: auto; /* Mantém a proporção da imagem */
-        }
-        
-    </style>
 </head>
 
 <body>
@@ -90,12 +48,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="mapa.html">
-                            <i class="fa fa-map"></i> Mapa
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="agenda.html">
-                            <i class="fa fa-calendar"></i> Agenda
+                            <i class="fa fa-map"></i> Mapa de Arenas
                         </a>
                     </li>
                     <li class="nav-item">
@@ -104,7 +57,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="tocha.html">
-                            <i class="fa fa-map-marker"></i>Tocha</a>
+                            <i class="fa fa-map-marker"></i>Percurso da tocha</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="estatisticas.html">
@@ -290,10 +243,6 @@
                     <tr>
                         <th scope="row">Outros desportos</th>
                         <td data-bind="text: OtherSports"></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Url</th>
-                        <td data-bind="text: Url"></td>
                     </tr>
                     <tr>
                         <th scope="row">Competições</th>

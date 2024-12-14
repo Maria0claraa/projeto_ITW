@@ -1,0 +1,123 @@
+/* Estilo Geral do Formulário */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 30px;
+    margin-top: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Título do Formulário */
+h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #444;
+    text-align: center;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #ececec;
+    padding-bottom: 10px;
+}
+
+/* Labels */
+label {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+/* Inputs */
+input.form-control {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 0.9rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input.form-control:focus {
+    border-color: #5c9ead;
+    box-shadow: 0 0 5px rgba(92, 158, 173, 0.5);
+    outline: none;
+}
+
+/* Campos Específicos */
+input[type="tel"],
+input[type="email"],
+input[type="text"] {
+    font-size: 0.95rem;
+}
+
+/* Botões */
+.btn-primary {
+    background-color: #5c9ead;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%;
+}
+
+.btn-primary:hover {
+    background-color: #468b9e;
+    transform: scale(1.02);
+}
+
+/* Tipo de Pagamento (Radio Buttons) */
+.form-check-label {
+    font-size: 0.9rem;
+    color: #333;
+}
+
+input.form-check-input:checked {
+    background-color: #5c9ead;
+    border-color: #5c9ead;
+}
+
+/* Modais */
+.modal-content {
+    border-radius: 10px;
+}
+
+.modal-header {
+    background-color: #5c9ead;
+    color: white;
+    border-bottom: none;
+}
+
+.modal-body input {
+    border-radius: 8px;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.modal-body input:focus {
+    border-color: #5c9ead;
+    box-shadow: 0 0 5px rgba(92, 158, 173, 0.5);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 1.6rem;
+    }
+
+    .btn-primary {
+        font-size: 0.9rem;
+    }
+}

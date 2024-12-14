@@ -1,0 +1,157 @@
+/* Estilo geral do botão */
+.botao {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #3498db;
+    /* Azul vibrante para o botão */
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 50px;
+    /* Bordas mais arredondadas */
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    /* Transição suave para todos os efeitos */
+    margin-top: 30px;
+    margin-left: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Sombra sutil para dar profundidade */
+    transform: scale(1);
+    /* Tamanho inicial normal */
+}
+
+.botao:hover {
+    background-color: #1e7eaa;
+    /* Cor do botão ao passar o mouse */
+    transform: scale(1.05);
+    /* Aumenta um pouco o tamanho ao passar o mouse */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    /* Sombra mais intensa ao passar o mouse */
+}
+
+/* Centraliza o texto */
+.text-center {
+    text-align: center;
+    margin: 30px 0;
+}
+
+/* Estilo do título */
+h2 {
+    font-size: 2.5em;
+    color: #2c3e50;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    /* Sombra suave para dar destaque */
+    font-family: 'Arial', sans-serif;
+}
+
+/* Estilo para os nomes do atleta */
+span {
+    color: #3498db;
+    /* Cor vibrante */
+    font-style: italic;
+    font-weight: bold;
+    text-transform: capitalize;
+    /* Capitaliza a primeira letra */
+}
+
+/* Estilo das imagens */
+.img-bordered {
+    border: 6px solid #3498db;
+    /* Borda de 6px com a cor especificada */
+    border-radius: 15px;
+    /* Bordas mais arredondadas */
+    max-width: 100%;
+    height: auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    /* Sombra sutil para destacar a imagem */
+    transition: transform 0.3s ease;
+    /* Transição suave ao passar o mouse */
+}
+
+/* Efeito interativo nas imagens */
+.img-bordered:hover {
+    transform: scale(1.05);
+    /* Aumenta a imagem ao passar o mouse */
+}
+
+/* Estilo das tabelas */
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    font-family: 'Arial', sans-serif;
+}
+
+th,
+td {
+    padding: 12px;
+    text-align: left;
+    font-size: 1.1em;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f1f1f1;
+    color: #2c3e50;
+    text-transform: uppercase;
+}
+
+td {
+    background-color: #fafafa;
+    color: #34495e;
+}
+
+/* Estilo das tabelas com hover */
+tr:hover {
+    background-color: #f0f8ff;
+    transition: background-color 0.3s ease;
+    /* Suaviza a transição ao passar o mouse */
+}
+
+/* Estilo para os cabeçalhos e títulos de tabelas */
+h2.text-center {
+    font-size: 2em;
+    color: #34495e;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+}
+
+/* Estilo de botões interativos */
+.botao-voltar {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #8e44ad;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-left: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.botao-voltar:hover {
+    background-color: #7d3c98;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Pequeno efeito de transição em hover para links */
+a {
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
