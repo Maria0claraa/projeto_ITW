@@ -59,7 +59,69 @@ fetch(apiUrl)
             }
         });
     })
-    .catch(error => {
-        console.error('Erro ao carregar dados:', error);
-        alert('Não foi possível carregar as localizações.');
-    });
+// Função para mostrar o modal de carregamento
+function showLoadingModal() {
+    var myModal = new bootstrap.Modal(document.getElementById('myModal'));
+    myModal.show();
+
+    // Simula o tempo de carregamento de dados (por exemplo, 3 segundos)
+    setTimeout(function () {
+        myModal.hide();
+        loadMapData();
+    }, 500);
+}
+
+// Função para carregar dados no mapa (simulada)
+function loadMapData() {
+    // Inicializa o mapa com Leaflet
+    var map = L.map('map').setView([48.8566, 2.3522], 13); // Coordenadas de Paris
+
+    // Adiciona o layer de mapa (OpenStreetMap)
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap'
+    }).addTo(map);
+
+    // Exemplo de um marcador em Paris
+    L.marker([48.8566, 2.3522]).addTo(map)
+        .bindPopup('Bem-vindo às Olimpíadas Paris 2024!')
+        .openPopup();
+}
+
+// Chama a função para mostrar o modal e carregar os dados
+document.addEventListener('DOMContentLoaded', function () {
+    showLoadingModal();
+});
+// Função para mostrar o modal de carregamento
+function showLoadingModal() {
+    var myModal = new bootstrap.Modal(document.getElementById('myModal'));
+    myModal.show();
+
+    // Simula o tempo de carregamento de dados (por exemplo, 3 segundos)
+    setTimeout(function () {
+        myModal.hide();
+        loadMapData();
+    }, 500);
+}
+
+// Função para carregar dados no mapa (simulada)
+function loadMapData() {
+    // Inicializa o mapa com Leaflet
+    var map = L.map('map').setView([48.8566, 2.3522], 13); // Coordenadas de Paris
+
+    // Adiciona o layer de mapa (OpenStreetMap)
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap'
+    }).addTo(map);
+
+    // Exemplo de um marcador em Paris
+    L.marker([48.8566, 2.3522]).addTo(map)
+        .bindPopup('Bem-vindo às Olimpíadas Paris 2024!')
+        .openPopup();
+}
+
+// Chama a função para mostrar o modal e carregar os dados
+document.addEventListener('DOMContentLoaded', function () {
+    showLoadingModal();
+});

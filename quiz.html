@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Olimpíadas</title>
+    <link rel="stylesheet" href="quiz.css">
+</head>
+
+<body>
+    <div id="quiz-container">
+        <h1><p id="intro-text">Testa o teu conhecimento sobre os Jogos Olímpicos!</p></h1>
+        <button id="start-button">Iniciar Quiz</button>
+        <button id="home-button" onclick="window.location.href='index.html'">
+            Voltar à Página Inicial
+        </button>
+
+
+
+        <div id="quiz" style="display: none;">
+            <h2 id="question-text"></h2>
+            <div class="image-container">
+                <img id="question-image" src="" alt="">
+            </div>
+            <ul id="options"></ul>
+            <div id="feedback"></div>
+            <button id="next-button" style="display: none;">Próxima Pergunta</button>
+        </div>
+
+        <div id="result" style="display: none;">
+            <h2>Fim do Quiz!</h2>
+            <p id="score">Você acertou 0 de 0 perguntas.</p>
+            <button onclick="restartQuiz()">Recomeçar</button>
+        </div>
+    </div>
+
+    <script src="quiz.js"></script>
+</body>
+
+</html>

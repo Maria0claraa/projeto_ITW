@@ -1,0 +1,180 @@
+/* styles.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(to right, #4facfe, #00f2fe);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+}
+
+#quiz-container {
+    width: 90%;
+    max-width: 700px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    padding: 30px;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+button {
+    background: linear-gradient(135deg, #ffcc00, #ff8c00);
+    color: #fff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: background 0.3s, transform 0.2s;
+    margin-top: 15px;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #ff8c00, #ff6100);
+    transform: scale(1.05);
+}
+
+#quiz h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #f0f0f0;
+}
+
+#question-image {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: rgba(255, 255, 255, 0.1);
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background 0.3s, transform 0.2s;
+}
+
+li:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.02);
+}
+
+li.correct {
+    background: #28a745;
+    color: #fff;
+}
+
+li.incorrect {
+    background: #dc3545;
+    color: #fff;
+}
+
+#feedback {
+    margin-top: 20px;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+#feedback p {
+    color: #00f2fe;
+}
+
+#next-button {
+    margin-top: 20px;
+    background: linear-gradient(135deg, #00b4d8, #0096c7);
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 1rem;
+    color: #fff;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background 0.3s, transform 0.2s;
+}
+
+#next-button:hover {
+    background: linear-gradient(135deg, #0096c7, #0077b6);
+    transform: scale(1.05);
+}
+
+#result {
+    text-align: center;
+    font-size: 1.8rem;
+    color: #fff;
+    animation: fadeIn 1s ease-in-out;
+}
+
+#score {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.image-container img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+#home-button {
+    background-color: #ff6347;
+    /* Cor de destaque (tomate) */
+    color: white;
+    /* Ajuste no tamanho do botão */
+    border: none;
+    font-size: 0.9em;
+    /* Tamanho de fonte um pouco menor */
+}
+
+#home-button:hover {
+    background-color: #ff4500;
+    /* Cor mais escura ao passar o mouse */
+}

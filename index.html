@@ -6,9 +6,11 @@
     <title>Página inicial</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
     <link rel="stylesheet" href="index.css">
-    <script src="modonoite.js"></script>
 </head>
 
 <body>
@@ -30,19 +32,27 @@
                             <i class="fa fa-home"></i> Home
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="paises.html">
-                            <i class="fa fa-globe"></i> Países
-                        </a>
+                    <li class="dropdown">
+                        <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-users"></i> Participantes
+                        </button>
+                        <div class="dropdown-menu" style="background-color:#e8e7e6"
+                            aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="Atletas_geral.html">
+                                <i class="fa fa-user"></i> Atletas
+                            </a>
+                            <a class="dropdown-item" href="paises.html">
+                                <i class="fa fa-globe"></i> Países
+                            </a>
+                            <a class="dropdown-item" href="treinadores.html">
+                                <i class="fa fa-id-badge"></i> Treinadores
+                            </a>
+                        </div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="torneios.html">
                             <i class="fa fa-trophy"></i> Torneios
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Atletas_geral.html">
-                            <i class="fa fa-users"></i> Atletas
                         </a>
                     </li>
                     <li class="nav-item">
@@ -62,10 +72,15 @@
                         <a class="nav-link" href="estatisticas.html">
                             <i class="fa fa-line-chart"></i>Estatisticas</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="quiz.html">
+                            <i class="fa fa-puzzle-piece"></i>Quiz</a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
+
 
     <!--Banner para imagens das olimpíadas-->
     <div id="carouselExampleRide" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
@@ -176,7 +191,8 @@
                 </div>
             </div>
         </div>
-
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </body>
 
 </html>

@@ -1,28 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Map with Locations</title>
-    <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <meta charset="utf-8" />
+    <title>Página inicial</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
     <link rel="stylesheet" href="index.css">
-    <style>
-        #map {
-            height: 615px;
-            /* Define o tamanho do mapa */
-            width: 100%;
-            margin-bottom: 15px;
-        }
-    </style>
+    <link rel="stylesheet" href="detalhes_atleta.css">
+    <script src="modonoite.js"></script>
+
 </head>
 
 <body>
@@ -91,6 +79,72 @@
             </div>
         </div>
     </nav>
+
+    <!-- Botão para voltar á lista -->
+    <a href="treinadores.html" class="botao">Voltar á lista</a>
+
+    <!-- nome do atleta -->
+    <div>
+        <h2 class="text-center">Detalhes do Treinador: <span data-bind="text: Name"></span></h2>
+    </div>
+    <div class="container">
+        <div class="row">
+
+            <div class="row">
+
+                <!-- Coluna para a foto do treinador -->
+                <div class="col-12 col-md-4 d-flex flex-column justify-content-start align-items-center">
+                    <img data-bind="attr: { src: Photo, alt: Name }" class="img-fluid img-bordered"
+                        style="width: 100%; height: auto; max-width: 400px;" />
+                </div>
+
+                <!-- Coluna para os detalhes do treinador (tabela) -->
+                <div class="col-12 col-md-8">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <th scope="row">ID</th>
+                                <td data-bind="text: Id"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Nome</th>
+                                <td data-bind="text: Name"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Género</th>
+                                <td data-bind="text: Sex"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Data de Nascimento</th>
+                                <td data-bind="text: BirthDate"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Função</th>
+                                <td data-bind="text: Function"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">País</th>
+                                <td data-bind="text: Country"></td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">Desportos</th>
+                                <td>
+                                    <ul data-bind="foreach: Sports">
+                                        <li>
+                                            <span data-bind="text: Name"></span>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content shadow-lg">
@@ -107,26 +161,12 @@
         </div>
     </div>
 
-    <div id="map"></div>
-    <div class="container-fluid w-100" style="background-color:#e8e7e6">
-        <div class="row">
-            <div class="col">
-                <div class="navbar-text">Olimpíadas Paris 2024 - projeto realizado no âmbito da cadeira de ITW</div>
-            </div>
-            <div class="col" style="text-align: end;">
-                <div class="navbar-text justify-content-end d-none d-md-block">Universidade de Aveiro</div>
-            </div>
-        </div>
-    </div>
 
-    <!-- Leaflet JS -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!--KnockoutJS-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.js"></script>
-    <!--jQuery-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="tocha.js"></script>
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.min.js"></script>
+    <script src="detalhes_treinadores.html"></script>
 </body>
 
 </html>

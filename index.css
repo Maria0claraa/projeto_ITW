@@ -53,6 +53,15 @@ body {
     position: relative;
 }
 
+.dropdown-toggle {
+    text-decoration: none;
+    color: #2c3e50;
+    font-weight: bold;
+    font-size: 1rem;
+    /* Diminuindo o tamanho da fonte dos itens de navegação */
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
 .navbar a {
     text-decoration: none;
     color: #2c3e50;
@@ -191,6 +200,21 @@ body {
     right: 15px;
     z-index: 9999;
 }
+
+.navbar .dropdown-menu {
+    margin-top: 0;
+}
+
+.navbar-nav {
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-menu {
+    margin-top: 0.5rem;
+    /* ajuste conforme necessário */
+}
+
 
 .mode-toggle button {
     background-color: #ffffff;
