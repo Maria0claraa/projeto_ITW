@@ -96,8 +96,10 @@
             <div class="row">
                 <!-- Coluna para a foto do atleta -->
                 <div class="col-12 col-md-4 d-flex flex-column justify-content-start align-items-center">
-                    <img data-bind="attr: { src: Photo, alt: Name }" class="img-fluid img-bordered"
-                        style="width: 100%; height: auto; max-width: 400px;" />
+                    <img data-bind="attr: { src: Photo, alt: Name }" 
+                         class="img-fluid img-bordered"
+                         style="width: 100%; height: auto; max-width: 400px;" 
+                         onerror="this.onerror=null; this.src='caminho/para/imagemDefault.png';" />
                 </div>
 
                 <!-- Coluna para os detalhes do atleta (tabela) -->
