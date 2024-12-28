@@ -1,8 +1,7 @@
 /* Estilos globais */
 body {
     font-family: 'Roboto', sans-serif;
-    background: linear-gradient(to bottom, #f4f5f9, #f1f1f1);
-    /* Cor de fundo mais suave */
+    background-color: white;
     color: #333;
     margin: 0;
     padding: 0;
@@ -34,7 +33,6 @@ body {
     background-color: #ffffff;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
     padding: 0.5rem 1.5rem;
-    /* Reduzindo o padding da navbar */
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -46,20 +44,10 @@ body {
     padding: 0;
     display: flex;
     gap: 1.5rem;
-    /* Reduzindo a distância entre os itens */
 }
 
 .navbar li {
     position: relative;
-}
-
-.dropdown-toggle {
-    text-decoration: none;
-    color: #2c3e50;
-    font-weight: bold;
-    font-size: 1rem;
-    /* Diminuindo o tamanho da fonte dos itens de navegação */
-    transition: color 0.3s ease, transform 0.2s ease;
 }
 
 .navbar a {
@@ -67,14 +55,12 @@ body {
     color: #2c3e50;
     font-weight: bold;
     font-size: 1rem;
-    /* Diminuindo o tamanho da fonte dos itens de navegação */
     transition: color 0.3s ease, transform 0.2s ease;
 }
 
 .navbar a:hover {
     color: #4ca1af;
     transform: scale(1.05);
-    /* Efeito de zoom suave no hover */
 }
 
 .navbar li::after {
@@ -93,10 +79,8 @@ body {
     width: 100%;
 }
 
-/* Tamanho fixo do logo */
 .navbar-brand img {
     height: 40px;
-    /* Ajuste para o logo */
     width: auto;
 }
 
@@ -139,7 +123,6 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* Botões do carousel */
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
     filter: brightness(0) invert(1);
@@ -161,11 +144,9 @@ body {
 .footer {
     text-align: center;
     padding: 2rem 0;
-    background: #2c3e50;
-    color: #fff;
-    margin-top: 3rem;
-    font-size: 1rem;
-    border-top: 4px solid #4ca1af;
+    background-color: white;
+    color: black;
+    transition: color 0.3s;
 }
 
 /* Responsividade */
@@ -201,21 +182,6 @@ body {
     z-index: 9999;
 }
 
-.navbar .dropdown-menu {
-    margin-top: 0;
-}
-
-.navbar-nav {
-    display: flex;
-    align-items: center;
-}
-
-.dropdown-menu {
-    margin-top: 0.5rem;
-    /* ajuste conforme necessário */
-}
-
-
 .mode-toggle button {
     background-color: #ffffff;
     border: 2px solid #4ca1af;
@@ -231,7 +197,6 @@ body {
     color: #fff;
 }
 
-/* Estilo do botão de alternância do tema (checkbox) */
 .theme-switcher-checkbox {
     display: none;
 }
@@ -257,13 +222,205 @@ body {
 
 /* Navbar customizada */
 .navbar {
-    background-color: #f9f9f9;
-    /* Alterado para um tom mais neutro */
+    background-color: white;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    /* Maior sombra */
 }
 
-.footer {
-    background-color: #f9f9f9;
-    /* Cor similar à navbar */
+
+
+.dark-theme .footer {
+    background-color: black;
+    /* Fundo preto no modo escuro */
+    color: white;
+    /* Texto branco no modo escuro */
+}
+
+.light-theme .content {
+    background-color: #ffffff !important;
+    color: #333 !important;
+}
+
+/* Tema escuro */
+.dark-theme {
+    background-color: #121212 !important;
+    color: #fff !important;
+}
+
+.dark-theme .content {
+    background-color: #1e1e1e !important;
+    /* Fundo escuro */
+    color: #fff !important;
+}
+
+
+/* Navbar no tema claro */
+.light-theme .navbar {
+    background-color: #ffffff !important;
+    color: #333 !important;
+}
+
+/* Navbar no tema escuro */
+.dark-theme .navbar {
+    background-color: black !important;
+    color: #fff !important;
+}
+
+
+
+/* Navbar nos itens de navegação */
+.light-theme .navbar a,
+.light-theme .navbar .dropdown-toggle {
+    color: #2c3e50 !important;
+}
+
+.dark-theme .navbar a,
+.dark-theme .navbar .dropdown-toggle {
+    color: #ffffff !important;
+}
+
+.dark-theme .navbar a:hover,
+.dark-theme .navbar .dropdown-toggle:hover {
+    color: #4ca1af !important;
+}
+
+
+.navbar .dropdown {
+    position: relative;
+}
+
+.navbar .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: none;
+    flex-direction: column;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar .dropdown-menu a {
+    padding: 0.5rem 1rem;
+    color: black;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar .dropdown-menu a:hover {
+    background-color: #f0f0f0;
+}
+
+.navbar .dropdown:hover .dropdown-menu {
+    display: flex;
+}
+
+.dark-theme .navbar .dropdown-menu {
+    background-color: black;
+    border: 1px solid #444;
+}
+
+.dark-theme .navbar .dropdown-menu a {
+    color: white;
+}
+
+.dark-theme .navbar .dropdown-menu a:hover {
+    background-color: #444;
+}
+
+/* Estilização geral do botão */
+.mode-toggle {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 9999;
+    background-color: #4ca1af;
+    /* Cor inicial */
+    border: none;
+    border-radius: 50px;
+    /* Forma arredondada */
+    padding: 10px 20px;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+/* Efeito hover */
+.mode-toggle:hover {
+    background-color: #2c3e50;
+    /* Cor mais escura no hover */
+    transform: scale(1.1);
+    /* Leve aumento no hover */
+}
+
+/* Ícone no botão */
+.mode-toggle i {
+    margin-right: 8px;
+    /* Espaço entre o ícone e o texto */
+    transition: transform 0.3s ease;
+}
+
+/* Botão no modo escuro */
+.dark-theme .mode-toggle {
+    background-color: #2c3e50;
+    /* Cor do botão no modo escuro */
+    color: white;
+}
+
+/* Efeito no ícone quando o tema muda */
+.dark-theme .mode-toggle i {
+    transform: rotate(180deg);
+    /* Rotação do ícone no modo escuro */
+}
+
+/* Estilização geral do botão */
+.mode-toggle {
+    align-items: start;
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 9999;
+    background-color: #2c3e50;
+    /* Cor inicial */
+    border: none;
+    border-radius: 50px;
+    /* Forma arredondada */
+    padding: 10px 20px;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+/* Efeito hover */
+.mode-toggle:hover {
+    background-color: #4ca1af;
+    /* Cor mais escura no hover */
+    transform: scale(1.1);
+    /* Leve aumento no hover */
+}
+
+/* Ícone no botão */
+.mode-toggle i {
+    margin-right: 8px;
+    /* Espaço entre o ícone e o texto */
+    transition: transform 0.3s ease;
+}
+
+/* Botão no modo escuro */
+.dark-theme .mode-toggle {
+    background-color: #4ca1af;
+    /* Cor do botão no modo escuro */
+    color: white;
+}
+
+/* Efeito no ícone quando o tema muda */
+.dark-theme .mode-toggle i {
+    transform: rotate(180deg);
+    /* Rotação do ícone no modo escuro */
 }
