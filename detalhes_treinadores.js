@@ -35,7 +35,7 @@ function CoachDetailsViewModel() {
                     self.Function(data.Function || 'unknown');
                     self.Country(data.Country || 'unknown');
                     self.Sports(data.Sports || []); // Atualiza os esportes, se houver
-                    self.Photo(data.Photo || 'imagemDefault.png'); // Foto do treinador
+                    self.Photo(data.Photo && data.Photo.trim() !== '' ? data.Photo : 'imagemDefault.png'); // Foto do treinador
                 })
                 .catch(error => {
                     console.error('Erro ao carregar os dados do treinador:', error);
