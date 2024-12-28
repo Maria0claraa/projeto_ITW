@@ -3,17 +3,15 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Detalhes do treinador</title>
+    <title>Página inicial</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="detalhes_atleta.css">
-
 </head>
 
 <body>
-    <!--Menu para a visualização de diferentes páginas-->
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.html">
@@ -26,7 +24,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="index.html">
+                        <a class="nav-link" href="index.html">
                             <i class="fa fa-home"></i> Home
                         </a>
                     </li>
@@ -35,8 +33,7 @@
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-users"></i> Participantes
                         </button>
-                        <div class="dropdown-menu"
-                            aria-labelledby="dropdownMenuButton">
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="Atletas_geral.html">
                                 <i class="fa fa-user"></i> Atletas
                             </a>
@@ -63,19 +60,23 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="login.html">
-                            <i class="fa fa-shopping-cart"></i>Loja</a>
+                            <i class="fa fa-shopping-cart"></i> Loja
+                        </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="tocha.html">
-                            <i class="fa fa-map-marker"></i>Percurso da tocha</a>
+                            <i class="fa fa-map-marker"></i> Percurso da Tocha
+                        </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="estatisticas.html">
-                            <i class="fa fa-line-chart"></i>Estatisticas</a>
+                            <i class="fa fa-line-chart"></i> Estatísticas
+                        </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="quiz.html">
-                            <i class="fa fa-puzzle-piece"></i>Quiz</a>
+                            <i class="fa fa-puzzle-piece"></i> Quiz
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -87,71 +88,59 @@
         </div>
     </nav>
 
-    <!-- Botão para voltar á lista -->
-    <a href="treinadores.html" class="botao">Voltar á lista</a>
 
-    <!-- nome do atleta -->
-    <div>
-        <h2 class="text-center">Detalhes do Treinador: <span data-bind="text: Name"></span></h2>
-    </div>
+    <!-- Botão para voltar à lista -->
+    <a href="arbitros.html" class="botao">Voltar à lista</a>
+
     <div class="container">
         <div class="row">
+            <!-- Coluna para a foto do atleta -->
+            <div class="col-12 col-md-4 d-flex flex-column justify-content-start align-items-center">
+                <img data-bind="attr: { src: Photo, alt: Name }" class="img-fluid img-bordered"
+                    style="width: 100%; height: auto; max-width: 400px;"
+                    onerror="this.onerror=null; this.src='imagemDefault.png';" />
+            </div>
 
-            <div class="row">
-
-                <!-- Coluna para a foto do treinador -->
-                <div class="col-12 col-md-4 d-flex flex-column justify-content-start align-items-center">
-                    <img data-bind="attr: { src: Photo, alt: Name }" class="img-fluid img-bordered"
-                        style="width: 100%; height: auto; max-width: 400px;" />
-                </div>
-
-                <!-- Coluna para os detalhes do treinador (tabela) -->
-                <div class="col-12 col-md-8">
-                    <table class="table table-bordered">
-                        <tbody>
-                            <tr>
-                                <th scope="row">ID</th>
-                                <td data-bind="text: Id"></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Nome</th>
-                                <td data-bind="text: Name"></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Género</th>
-                                <td data-bind="text: Sex"></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Data de Nascimento</th>
-                                <td data-bind="text: BirthDate"></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Função</th>
-                                <td data-bind="text: Function"></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">País</th>
-                                <td data-bind="text: Country"></td>
-                            </tr>
-
-                            <tr>
-                                <th scope="row">Desportos</th>
-                                <td>
-                                    <ul data-bind="foreach: Sports">
-                                        <li>
-                                            <span data-bind="text: Name"></span>
-                                        </li>
-                                    </ul>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <!-- technical official info -->
+            <div class="col-12 col-md-8">
+                <div class="card">
+                    <div class="card-header">Detalhes do árbitro</div>
+                    <div class="card-body">
+                        <table class="table table-hover">
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Nome </th>
+                                    <td data-bind="text: Name"></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Género </th>
+                                    <td data-bind="text: Sex"></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Data de Nascimento </th>
+                                    <td data-bind="text: BirthDate"></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Organização </th>
+                                    <td data-bind="text: Organisation"></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Função </th>
+                                    <td data-bind="text: Function"></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Desportos </th>
+                                    <td data-bind="text: Sports"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    </div>
+    <!-- Footer -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content shadow-lg">
@@ -170,21 +159,21 @@
     <div class="container-fluid w-100" style="border-top: 2px solid grey;">
         <div class="row">
             <div class="col">
-                <div class="navbar-text">Olimpíadas Paris 2024 - projeto realizado no âmbito da cadeira de ITW</div>
+                <div class="navbar-text">Olimpíadas Paris 2024 - projeto realizado no âmbito da cadeira de ITW
+                </div>
             </div>
             <div class="col" style="text-align: end;">
                 <div class="navbar-text justify-content-end d-none d-md-block">Universidade de Aveiro</div>
             </div>
         </div>
     </div>
-
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.min.js"></script>
-    <script src="detalhes_treinadores.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="detalhes_arbitro.js"></script>
     <script src="modo_escuro.js"></script>
 </body>
 
