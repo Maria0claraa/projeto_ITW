@@ -20,7 +20,7 @@
 
 <body>
     <!--Menu para a visualização de diferentes páginas-->
-    <nav class="navbar navbar-expand-lg" style="background-color: #e8e7e6;">
+    <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.html">
                 <img src="paris-2024-logo-1.png" alt="Logo" height="50" class="d-inline-block align-text-top">
@@ -36,29 +36,61 @@
                             <i class="fa fa-home"></i> Home
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="paises.html">
-                            <i class="fa fa-globe"></i> Comitivas
-                        </a>
+                    <li class="dropdown">
+                        <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-users"></i> Participantes
+                        </button>
+                        <div class="dropdown-menu"
+                            aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="Atletas_geral.html">
+                                <i class="fa fa-user"></i> Atletas
+                            </a>
+                            <a class="dropdown-item" href="paises.html">
+                                <i class="fa fa-globe"></i> Comitivas
+                            </a>
+                            <a class="dropdown-item" href="treinadores.html">
+                                <i class="fa fa-id-badge"></i> Treinadores
+                            </a>
+                            <a class="dropdown-item" href="arbitros.html">
+                                <i class="fa fa-flag"></i> Árbitros
+                            </a>
+                        </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="torneios.html">
-                            <i class="fa fa-trophy"></i> Torneios
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Atletas_geral.html">
-                            <i class="fa fa-users"></i> Atletas
-                        </a>
+                    <li class="dropdown">
+                        <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-users"></i> Competições
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="Torneios.html">
+                                <i class="fa fa-list"></i> Modalidades
+                                
+
+                            </a>
+                            <a class="dropdown-item" href="atletismo.html">
+                                <i class="fa fa-cubes"></i> Atletismo
+                            </a>
+                            <a class="dropdown-item" href="basquetbol.html">
+                                <i class="fa fa-circle"></i> Basquetebol
+                            </a>
+                            <a class="dropdown-item" href="canoagem.html">
+                                <i class="fa fa-flag"></i> Canoagem de velocidade
+                            </a>
+                            <a class="dropdown-item" href="ciclismo.html">
+                                <i class="fa fa-bicycle"></i> Ciclismo de pista
+                            </a>
+                            <a class="dropdown-item" href="futebol.html">
+                                <i class="fa fa-futbol-o"></i> Futebol
+                            </a>
+                            <a class="dropdown-item" href="natacao.html">
+                                <i class="fa fa-life-ring"></i> Natação
+                            </a>
+                        </div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="mapa.html">
-                            <i class="fa fa-map"></i> Mapa
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="agenda.html">
-                            <i class="fa fa-calendar"></i> Agenda
+                            <i class="fa fa-map"></i> Mapa de Arenas
                         </a>
                     </li>
                     <li class="nav-item">
@@ -67,11 +99,15 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="tocha.html">
-                            <i class="fa fa-map-marker"></i>Tocha</a>
+                            <i class="fa fa-map-marker"></i>Percurso da tocha</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="estatisticas.html">
                             <i class="fa fa-line-chart"></i>Estatisticas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="quiz.html">
+                            <i class="fa fa-puzzle-piece"></i>Quiz</a>
                     </li>
                 </ul>
             </div>
