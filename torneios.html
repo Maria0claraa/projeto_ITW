@@ -3,50 +3,96 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Torneios</title>
+    <title>Países</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="paises_style.css">
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css"
+        integrity="sha512-ELV+xyi8IhEApPS/pSj66+Jiw+sOT1Mqkzlh8ExXihe4zfqbWkxPRi8wptXIO9g73FSlhmquFlUOuMSoXz5IRw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="index.css">
+
+        
     <style>
-        /* Estilos para a barra de pesquisa - Modalidade */
+        .titulo {
+            font-size: 2em;
+            /* Aumenta o tamanho da fonte */
+            color: #4ca1af;
+            /* Cor do texto */
+            font-weight: bold;
+            /* Deixa o texto em negrito */
+            text-transform: uppercase;
+            /* Transforma o texto em maiúsculas */
+            letter-spacing: 1px;
+            /* Espaçamento entre letras */
+            margin-top: 20px;
+        }
+
+        .subTitulo {
+            font-size: 1.5em;
+            /* Aumenta o tamanho da fonte */
+            color: #2c3e50;
+            /* Cor do texto */
+            font-weight: bold;
+            /* Deixa o texto em negrito */
+            text-transform: uppercase;
+            /* Transforma o texto em maiúsculas */
+            letter-spacing: 1px;
+            /* Espaçamento entre letras */
+        }
+
+        .custom-pagination-link {
+            color: #4ca1af;
+        }
+
+        .custom-pagination-link:hover {
+            color: #2c3e50;
+            /* Cor de fundo ao passar o mouse (opcional) */
+        }
+    </style>
+    <style>
+        /* Estilos para a barra de pesquisa */
         #country-filter {
-            width: 60%;
-            /* Definindo a largura similar à da barra de pesquisa dos países */
-            padding: 12px 20px;
-            /* Espaçamento interno da barra */
+            width: 100%;
+            /* Ajusta a largura da barra de pesquisa */
+            max-width: 500px;
+            /* Define uma largura máxima */
+            padding: 10px 20px;
+            /* Adiciona espaçamento interno */
             font-size: 1rem;
             /* Tamanho da fonte */
             border: 2px solid #4ca1af;
-            /* Cor da borda (tom suave de azul) */
+            /* Borda com uma cor mais suave */
             border-radius: 25px;
-            /* Borda arredondada */
+            /* Bordas arredondadas */
             outline: none;
-            /* Remove a borda de foco padrão */
+            /* Remove o contorno padrão do navegador */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             /* Sombra suave */
             transition: border-color 0.3s, box-shadow 0.3s;
-            /* Transição suave para mudanças de foco */
+            /* Transições suaves */
         }
 
-        /* Estilo quando a barra de pesquisa estiver em foco */
+        /* Efeito de foco na barra de pesquisa */
         #country-filter:focus {
-            border-color: #4ca1af;
-            /* Borda azul mais forte no foco */
+            border-color: #2c3e50;
+            /* Cor da borda ao focar */
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             /* Aumenta a sombra ao focar */
         }
 
-        /* Estilo para o container, para garantir a centralização */
-        .container.mt-4 {
+        /* Estilo para o container */
+        /*.container {
             display: flex;
             justify-content: center;
-            /* Centraliza a barra de pesquisa horizontalmente */
-            align-items: center;
-            /* Centraliza verticalmente se necessário */
+            /* Centraliza a barra de pesquisa */
+           /* align-items: center;
             margin-top: 30px;
-            /* Margem superior para afastar do conteúdo acima */
-        }
+            /* Espaço superior */
+        /*}*/
     </style>
 </head>
 
@@ -153,372 +199,117 @@
         </div>
     </nav>
 
-    <div class="container mt-4">
-        <input type="text" id="country-filter" placeholder="Filtrar pelo nome da modalidade...">
-    </div>
-
-
-    <div class="container text-center">
-        <a href="Torneios_atletismo.html" style="text-decoration: none;">
-            <div class="country-card">
-                <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/dppxhjguqbuxnsbzmxqh"
-                    alt="Atletismo">
-                <div class="country-name">Atletismo</div>
+    
+    <!--Conteúdo para apresentação dos atletas-->
+    <div class="container" id="knockout-app">
+        <div class="border-bottom py-2 mb-2">
+            <div class="row">
+                <div class=" col-md-8">
+                    <h2 class="subTitulo">Lista de Comitivas Olímpicas</h2>
+                </div>
+                <div class=" col-md-4">
+                    <form>
+                        <input type="hidden" name="page" value="1">
+                        <div class="input-group input-group-sm">
+                            <input id="input-query" class="form-control form-control-sm" type="text" name="q" value=""
+                                placeholder="Insira o nome">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-default btn-sm" title="Filtrar">
+                                    <i class="fa fa-search small"></i></button>
+                                <a href="./torneios.html" class="btn btn-default btn-sm" title="Limpar o filtro">
+                                    <i class="fa fa-times"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </a>
+        </div>
 
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/findcxvr4rdc1ciyate0"
-                alt="Badminton">
-            <div class="country-name">Badminton</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/trmucst5altyonlesk8k"
-                alt="Basquete">
-            <div class="country-name">Basquete</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/iyg53qodvhe34ncxk7u8"
-                alt="Basquete 3x3">
-            <div class="country-name">BAsquete 3x3</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/hkzcc65uzim9yuptyll3"
-                alt="Boxe">
-            <div class="country-name">Boxe</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/qxy54wmct6uekd2rlnf5"
-                alt="Breaking">
-            <div class="country-name">Breaking</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/bpltf9ozxv6gmq2shkcc"
-                alt="Canoagem Velocidade">
-            <div class="country-name">Canoagem Velocidade</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/akaa8vibrfow67u1cwm9"
-                alt="Canoagem Slalom">
-            <div class="country-name">Canoagem Slalom</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/dirpk52ek7xwbuhbsgtw"
-                alt="Ciclismo BMX Freestyle">
-            <div class="country-name">Ciclismo BMX Freestyle</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/dirpk52ek7xwbuhbsgtw"
-                alt="Ciclismo BMX Racing">
-            <div class="country-name">Ciclismo BMX Racing</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/pjqdapwpy1jauogbbp2r"
-                alt="Ciclismo Estrada">
-            <div class="country-name">Ciclismo Estrada</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/vqtglvaqcx8kerpjphzl"
-                alt="ciclismo Pista">
-            <div class="country-name">Ciclismo Pista</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/hiydmrmgogmklyme9wpx"
-                alt="Ciclismo Mountain Bike">
-            <div class="country-name">Ciclismo Mountain Bike</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/xt2uo8youxzuc3ilqg65"
-                alt="Escalada Esportiva">
-            <div class="country-name">Escalada Esposrtiva</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/vvcxtomedxntzn89hg7t"
-                alt="Esgrima">
-            <div class="country-name">Esgrima</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/hcvbzbpobcr98xszfk7a"
-                alt="Futebol">
-            <div class="country-name">Futebol</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/zlihn7ugjnjuczasrdbe"
-                alt="Ginástica Artística">
-            <div class="country-name">Ginástica Artística</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/aacrlz5v4hfiv7psxici"
-                alt="Ginástica de Trampolim">
-            <div class="country-name">Ginástica de Trampolim</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/i5712ie4kuwqhm8q1gvq"
-                alt="Ginástica Ritmica">
-            <div class="country-name">Ginástica Rítmica</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/vv7cmooszhwraxeo3jzu"
-                alt="Golfe">
-            <div class="country-name">Golfe</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/xq6pijehaao96y1mp33e"
-                alt="Handbol">
-            <div class="country-name">Handbol</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/wxkdcrgkyhl6bc7mew10"
-                alt="Hipismo">
-            <div class="country-name">Hipismo</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/vei8fhnmusrbafuoy9l3"
-                alt="Equestrian Eventing">
-            <div class="country-name">Equestrian Eventing</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/iymklbcs3nv34wkip7ie"
-                alt="Hipismo Saltos">
-            <div class="country-name">Hipismo Saltos</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/fgv6nxfkddswlzyan7f9"
-                alt="Hóquei sobre a Grama">
-            <div class="country-name">Hóquei sobre a Grama</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/hxoz63jygaorr58i4jkz"
-                alt="Judô">
-            <div class="country-name">Judô</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/rwzbkntk4p8a9mpwgxui"
-                alt="Levantamento de Peso">
-            <div class="country-name">Levantamento de Peso</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/v3p8wjxyoqvbarkty9ez"
-                alt="Luta">
-            <div class="country-name">Luta</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/prl5py8otkrevvwlgxwf"
-                alt="Maratona Aquática">
-            <div class="country-name">Maratona Aquática</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/to4sslxvx1kaxuuwekwd"
-                alt="Nado Artístico">
-            <div class="country-name">Nado Artístico</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/sv0o7rdrr5plpddmfoiv"
-                alt="Natação">
-            <div class="country-name">Natação</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/xtqxfiwpk3cekdld6j2r"
-                alt="Pentatlo Moderno">
-            <div class="country-name">Pentatlo Moderno</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/vy1fkxkgusexgnbpfr24"
-                alt="Polo Aquático">
-            <div class="country-name">Polo Aquático</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/vnwsayyzlqpyzske0lnf"
-                alt="Remo">
-            <div class="country-name">Remo</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/n6k5nikbhmlrpssiesw0"
-                alt="Rugby Sevens">
-            <div class="country-name">Rugby Sevens</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/m1enjj4ominbroha64hs"
-                alt="Saltos Ornamentais">
-            <div class="country-name">Saltos Ornamentais</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/p22bvol1nyaoxb7xtzb2"
-                alt="Skate">
-            <div class="country-name">Skate</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/u4fawlfscjxmyrth5ybf"
-                alt="Surfe">
-            <div class="country-name">Surfe</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/l6xbdialbkt7u31mq0wm"
-                alt="Taekwondo">
-            <div class="country-name">Taekwondo</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/ztjvc5ehzd2vg6tkr2sw"
-                alt="Tênis">
-            <div class="country-name">Tênis</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/dsxfnz2g1kmulbct83zq"
-                alt="Tênis de Mesa">
-            <div class="country-name">Tênis de Mesa</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/wlx2gceuw8x4n7uvome4"
-                alt="Tiro com Arco">
-            <div class="country-name">Tiro com Arco</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/m1ocgesjgygunsvmyjhg"
-                alt="Tiro Esportivo">
-            <div class="country-name">Tiro Esportivo</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/yv4cu1hxyocybxyxmr3e"
-                alt="Triatlo">
-            <div class="country-name">Triatlo</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/padnjkqzk2otpeo6rnko"
-                alt="Vela">
-            <div class="country-name">Vela</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/mxea07bv3ztrcq5jigng"
-                alt="Vôlei">
-            <div class="country-name">Vôlei</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/lfzl3irpz6gm8uytipav"
-                alt="Vôlei de Praia">
-            <div class="country-name">Vôlei de Praia</div>
-        </div>
-        <!--categoria Parolímpica-->
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/icrbjnoha2fskbzdoipo"
-                alt="Atletismo Paralímpico">
-            <div class="country-name">Atletismo Paralímpico</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/qqyzkazaguvw7czmat8l"
-                alt="Badminton Paralímpico">
-            <div class="country-name">Badminton Paralímpico</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/yxtr1oco56zikp9m5jq0"
-                alt="Basquete em Cadeiras de Rodas">
-            <div class="country-name">Basquete em Cadeiras de Rodas</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/c7jztlejwocdb13jh4mm"
-                alt="Bocha">
-            <div class="country-name">Bocha</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/aohjb87qdckdmtzwn4k3"
-                alt="Canoagem Paralímpica">
-            <div class="country-name">Canoagem Paralímpica</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/mreudtg4viyson5ltpis"
-                alt="Ciclismo de Estrada Paralímpico">
-            <div class="country-name">Ciclismo de Estrada Paralímpico</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/fnr9aa8zytggiymixa6e"
-                alt="Ciclismo de Pista Paralímpico">
-            <div class="country-name">Ciclismo de Pista Paralímpico</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/qh95m44y5dqjfpc3g4vl"
-                alt="Esgrima em Cadeira de Rodas">
-            <div class="country-name">Esgrima em Cadeira de Rodas</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/o0kzshkxztwklrxn042x"
-                alt="Futebol de Cegos">
-            <div class="country-name">Futebol de Cegos</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/qadmffogj1b8mlow9ekt"
-                alt="Goalball">
-            <div class="country-name">Goalball</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/z68hygtkgmws33rlfkwe"
-                alt="Alterofilismo Paralímpico">
-            <div class="country-name">Alterofilismo Paralímpico</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/okilesjkzijdkdazlnph"
-                alt="Hipismo Paralímpico">
-            <div class="country-name">Hipismo Paralímpico</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/vpwvssr6weorsbxewous"
-                alt="Judô Paralímpico">
-            <div class="country-name">Judô Paralímpico</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/zwhilqmd7ho5zloq4cl9"
-                alt="Natação Paralímpica">
-            <div class="country-name">Natação Paralímpica</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/oadu80mhiqzwofn7zsbj"
-                alt="Remo Paralímpico">
-            <div class="country-name">Remo Paralímpico</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/zupgh1jtit2kziiw3t01"
-                alt="Rugby em Cadeira de Rodas">
-            <div class="country-name">Rugby em Cadeira de Rodas</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/jpyqg5pxefnanzgrxadf"
-                alt="Taekwondo Paralímpico">
-            <div class="country-name">Taekwondo Paralímpico</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/egeqqt9pvivlxqf13db1"
-                alt="Tênis de Mesa Paralímpicoo">
-            <div class="country-name">Tênis de Mesa Paralímpico</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/tx1392zxdmkvhk8jqhjv"
-                alt="Tênis em Cadeira de Rodas">
-            <div class="country-name">Tênis em Cadeira de Rodas</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/tv5kqsuh8sz0hhex38lu"
-                alt="Tiro com Arco Paralímpico">
-            <div class="country-name">Tiro com Arco Paralímpico</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/fociepldebytvfnx6vvx"
-                alt="Tiro Esportivo Paralímpico">
-            <div class="country-name">Tiro Esportivo Paralímpico</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/ahaoeg81hpf9tgtieyvm"
-                alt="Triatlo Paralímpico">
-            <div class="country-name">Triatlo Paralímpico</div>
-        </div>
-        <div class="country-card">
-            <img src="https://img.olympics.com/images/image/private/t_original_760/f_auto/primary/lieksanx3bivuw4sbcym"
-                alt="Vôlei Sentado">
-            <div class="country-name">Vôlei Sentado</div>
+        <div class="row small">
+            <p class="col-4 mr-auto pt-2">
+                <span data-bind="html: 'Page: ' + currentPage() + ' of ' + totalPages()"></span><br />
+                <span data-bind="html: 'Sports: ' + fromRecord() + '-' + toRecord() + ' of ' + totalSports()"></span>
+            </p>
+        
+            <div class="col-8 my-0 pt-3">
+                <ul class="pagination float-end">
+                    <!-- First Page Button -->
+                    <li class="page-item" data-bind="css: { disabled: !hasPreviousPage() }">
+                        <a class="page-link custom-pagination-link" title="First Page" rel="prev"
+                            data-bind="attr: { href: getPageHref(1) }">⇤</a>
+                    </li>
+        
+                    <!-- Previous Page Button -->
+                    <li class="page-item" data-bind="css: { disabled: !hasPreviousPage() }">
+                        <a class="page-link custom-pagination-link" title="Previous Page"
+                            data-bind="attr: { href: getPageHref(previousPage()), rel: 'prev' }">←</a>
+                    </li>
+        
+                    <!-- Dynamic Page Buttons -->
+                    <!-- ko foreach: visiblePages -->
+                    <li class="page-item" data-bind="css: { active: $data === $parent.currentPage() }">
+                        <a class="page-link custom-pagination-link"
+                            data-bind="attr: { href: $parent.getPageHref($data), title: 'Page ' + $data }, text: $data"></a>
+                    </li>
+                    <!-- /ko -->
+        
+                    <!-- Next Page Button -->
+                    <li class="page-item" data-bind="css: { disabled: !hasNextPage() }">
+                        <a class="page-link custom-pagination-link" title="Next Page"
+                            data-bind="attr: { href: getPageHref(nextPage()), rel: 'next' }">→</a>
+                    </li>
+        
+                    <!-- Last Page Button -->
+                    <li class="page-item" data-bind="css: { disabled: !hasNextPage() }">
+                        <a class="page-link custom-pagination-link" title="Last Page"
+                            data-bind="attr: { href: getPageHref(totalPages()) }">⇥</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="row">
+            <!-- Dynamic Cards -->
+            <!-- Cada card ocupa 2 colunas em telas grandes, 3 colunas em telas médias e 6 colunas em telas pequenas -->
+            <!-- ko foreach: Nocs_info -->
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: auto">
+                <div class="country-card"  style="position: relative;">
+                    <img data-bind="attr: { src: Pictogram && Pictogram.trim() !== '' ? Pictogram : 'imagem_default_nocs.png' }" alt="Pictogram" style="width: 100%; height: auto;" />
+                    
+                    <!-- Botão no canto superior direito -->
+                    <a class="btn btn-default btn-light btn-xs" data-bind="attr: { href:'detalhes_torneios.html?id=' + Id }" style="position: absolute; top: 10px; right: 10px; z-index: 10;">
+                        <i class="fa fa-eye" title="Show details"></i>
+                    </a>
+                    
+                    <div class="country-name text-center mt-2" data-bind="text: Name"></div>
+                </div>
+            </div>
+            <!-- /ko -->
+        </div>
+        
+    </div>
+        
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content shadow-lg">
+                <div class="modal-header" style="background: linear-gradient(135deg, #4ca1af, #2c3e50); color: #fff;">
+                    <h5 class="modal-title centered" id="exampleModalLabel">
+                        <img src="paris-2024-logo-1.png" height="30" class="me-2" />
+                        A processar dados, por favor aguarde...
+                    </h5>
+                </div>
+                <div class="modal-body text-center">
+                    <i class="fa fa-spin fa-3x fa-refresh" style="color: #4ca1af;"></i>
+                </div>
+            </div>
         </div>
     </div>
 
-
-
-    <!--footer-->
-    <div class="container-fluid w-100" style="border-top: 2px solid grey;">
+    <!-- Footer -->
+    <div class="container-fluid w-100" style="border-top: size 2px solid grey">
         <div class="row">
             <div class="col">
                 <div class="navbar-text">Olimpíadas Paris 2024 - projeto realizado no âmbito da cadeira de ITW</div>
@@ -528,36 +319,20 @@
             </div>
         </div>
     </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.js"
+        integrity="sha512-2AL/VEauKkZqQU9BHgnv48OhXcJPx9vdzxN1JrKDVc4FPU/MEE/BZ6d9l0mP7VmvLsjtYwqiYQpDskK9dG8KBA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Include JQuery bundle-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.2/jquery.min.js"
+        integrity="sha512-tWHlutFnuG0C6nQRlpvrEhE4QpkG1nn2MOUMWmUeRePl4e3Aki0VB6W1v3oLjFtd0hVOtRQ9PHpSfN6u6/QXkQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Include JQueryUi bundle-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"
+        integrity="sha512-57oZ/vW8ANMjR/KQ6Be9v/+/h6bq9/l3f0Oc7vn6qMqyhvPd1cvKBRWWpzu0QoneImqr2SkmO4MSqU+RpHom3Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="modo_escuro.js"></script>
+    <script src="torneios.js"></script>
 </body>
-<script>
-    // Função para remover acentos
-    function removeAccents(str) {
-        return str.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
-    }
-
-    // Seleciona o campo de entrada e os cards
-    const filterInput = document.getElementById('country-filter');
-    const cards = document.querySelectorAll('.country-card');
-
-    // Adiciona o evento para capturar mudanças no campo de entrada
-    filterInput.addEventListener('input', function () {
-        const filterText = removeAccents(filterInput.value.trim().toLowerCase()); // remove espaços extras
-
-        cards.forEach(card => {
-            const countryName = removeAccents(card.querySelector('.country-name').textContent.toLowerCase());
-
-            // Divide o texto de pesquisa em palavras e verifica se cada palavra do filtro é encontrada nas palavras do nome
-            const filterWords = filterText.split(' '); // separa a pesquisa em palavras
-            const matches = filterWords.every(word =>
-                countryName.split(' ').some(countryWord => countryWord.startsWith(word))
-            );
-
-            card.style.display = matches ? '' : 'none'; // Exibe ou oculta o card
-        });
-    });
-</script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="modo_escuro.js"></script>
 
 </html>
