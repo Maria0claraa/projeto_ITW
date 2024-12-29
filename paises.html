@@ -274,10 +274,17 @@
             <!-- Cada card ocupa 2 colunas em telas grandes, 3 colunas em telas médias e 6 colunas em telas pequenas -->
             <!-- ko foreach: Nocs_info -->
             <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: auto">
-                <div class="country-card" data-id="{{Id}}" onclick="window.location.href='detalhes_nocs.html?id=' + this.getAttribute('data-id')">
+                <div class="country-card"  style="position: relative;">
                     <img data-bind="attr: { src: Photo && Photo.trim() !== '' ? Photo : 'imagem_default_nocs.png' }" alt="Photo" style="width: 100%; height: auto;" />
-                    <div class="country-name text-center mt-2" data-bind="text: Country"></div>
+                    
+                    <!-- Botão no canto superior direito -->
+                    <a class="btn btn-default btn-light btn-xs" data-bind="attr: { href:'detalhes_nocs.html?id=' + Id }" style="position: absolute; top: 10px; right: 10px; z-index: 10;">
+                        <i class="fa fa-eye" title="Show details"></i>
+                    </a>
+                    
+                    <div class="country-name text-center mt-2" data-bind="text: Id"></div>
                 </div>
+                
             </div>
             
             <!-- /ko -->
