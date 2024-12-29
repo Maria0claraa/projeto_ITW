@@ -15,9 +15,12 @@ function NocsDetailsViewModel() {
     // Função para buscar os detalhes do treinador
     self.loadNocsDetails = function () {
         const params = new URLSearchParams(window.location.search);
-        const nocId = params.get('id'); // Corrigido para coachId
-
+        const nocId = params.get('id'); // Verifique se a URL está passando corretamente o parâmetro 'id'
+    
         if (nocId) {
+            // Verifique se o nocId está correto no console
+            console.log("ID da Comitiva:", nocId);
+    
             fetch(`http://192.168.160.58/Paris2024/api/NOCs/${nocId}`, {
                 method: "GET"
             })
@@ -31,7 +34,7 @@ function NocsDetailsViewModel() {
                     self.Id(data.Id || 'unknown');
                     self.Name(data.Name || 'unknown');
                     self.Note(data.Note || 'unknown');
-                    self.Url(data.Url || 'unknown'); 
+                    self.Url(data.Url || 'unknown');
                     self.Athletes(data.Athletes || []);
                     self.Coaches(data.Coaches || []);
                     self.Medals(data.Medals || []);
@@ -40,10 +43,12 @@ function NocsDetailsViewModel() {
                 })
                 .catch(error => {
                     console.error('Erro ao carregar os dados da Comitiva:', error);
-                    // Trate o erro, se necessário (por exemplo, exiba uma mensagem para o usuário)
                 });
+        } else {
+            console.error('ID da Comitiva não encontrado na URL.');
         }
     };
+    
 }
 
 // Aplica o Knockout.js bindings
