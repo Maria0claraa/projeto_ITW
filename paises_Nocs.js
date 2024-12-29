@@ -84,6 +84,8 @@ function vm() {
                     myModal.hide();
                 }
             });
+
+            
     };
 
     // Cálculo do número da página anterior 
