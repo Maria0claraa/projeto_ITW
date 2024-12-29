@@ -74,6 +74,18 @@ function vm() {
         return self.currentPage() < self.totalPages() ? self.currentPage() + 1 : self.totalPages();
     });
 
+    // Propriedade computada para páginas visíveis
+    self.visiblePages = ko.computed(() => {
+        const totalPages = self.totalPages();
+        const currentPage = self.currentPage();
+        const visiblePages = [];
+
+        for (let i = Math.max(1, currentPage - 2); i <= Math.min(totalPages, currentPage + 2); i++) {
+            visiblePages.push(i);
+        }
+        return visiblePages;
+    });
+
     // Inicializa a população de dados
     self.inventory_populate();
 }
