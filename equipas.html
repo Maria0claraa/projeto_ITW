@@ -168,6 +168,19 @@
             </div>
         </div>
 
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipas</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-min.js"></script>
+    <script src="equipas.js" defer></script>
+</head>
+<body>
+    <div id="knockout-app">
         <div class="row small">
             <p class="col-4 mr-auto pt-2">
                 <span data-bind="html: 'Page: ' + currentPage() + ' of ' + totalPages()"></span><br />
@@ -192,8 +205,7 @@
                     <!-- ko foreach: visiblePages -->
                     <li class="page-item" data-bind="css: { active: $data === $parent.currentPage() }">
                         <a class="page-link custom-pagination-link"
-                            data-bind="attr: { href: $parent.getPageHref($data), title: 'Page ' ```html
-+ $data }, text: $data"></a>
+                            data-bind="attr: { href: $parent.getPageHref($data), title: 'Page ' + ($data || '') }, text: $data"></a>
                     </li>
                     <!-- /ko -->
 
@@ -255,6 +267,9 @@
             </div>
         </div>
     </div>
+</body>
+</html>
+
     <div class="container-fluid w-100" style="border-top: 2px solid grey;">
         <div class="row">
             <div class="col">
