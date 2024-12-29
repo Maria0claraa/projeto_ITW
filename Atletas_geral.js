@@ -90,6 +90,20 @@ function vm() {
             });
     };
 
+    // Função para adicionar um atleta aos favoritos
+self.addToFavorites = function(athleteId) {
+    // Obtém os favoritos atuais do localStorage
+    let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
+    // Verifica se o atleta já está nos favoritos
+    if (!favorites.includes(athleteId)) {
+        // Adiciona o atleta aos favoritos
+        favorites.push(athleteId);
+        // Atualiza o localStorage com os novos favoritos
+        localStorage.setItem('favorites', JSON.stringify(favorites));
+    }
+};
+
 
     //Calculo do numero da página anterior 
     self.previousPage = function () {
@@ -141,3 +155,40 @@ function showLoadingModal() {
 document.addEventListener('DOMContentLoaded', function () {
     showLoadingModal();
 });
+
+// Função para carregar os favoritos
+function loadFavorites() {
+    // Obtém os IDs dos atletas favoritos do localStorage
+    let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
+    // Para cada ID de atleta favorito, você pode buscar as informações dele
+    favorites.forEach(athleteId => {
+        // Aqui você deve fazer a requisição para buscar os dados do atleta com esse ID
+        // Pode ser uma requisição para a API, ou você pode ter os dados já carregados
+        fetch(`http://192.168.160.58/Paris2024/api/Athletes/${athleteId}`)
+            .then(response => response.json())
+            .then(data => {
+                // Aqui você pode adicionar os dados do atleta aos favoritos na interface
+                displayFavoriteAthlete(data);
+            })
+            .catch(error => console.error('Erro ao carregar atleta favorito:', error));
+    });
+}
+
+// Função para exibir um atleta favorito
+function displayFavoriteAthlete(athlete) {
+    const favoriteContainer = document.getElementById('favorite-athletes-container');
+
+    const athleteCard = document.createElement('div');
+    athleteCard.classList.add('card', 'mb-3');
+    athleteCard.innerHTML = `
+        <img src="${athlete.PhotoUrl}" class="card-img-top" alt="${athlete.Name}">
+        <div class="card-body">
+            <h5 class="card-title">${athlete.Name}</h5>
+        </div>
+    `;
+    favoriteContainer.appendChild(athleteCard);
+}
+
+// Carrega os favoritos quando a página for carregada
+document.addEventListener('DOMContentLoaded', loadFavorites);
