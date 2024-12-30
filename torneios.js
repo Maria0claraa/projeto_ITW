@@ -1,39 +1,25 @@
-function vm() {
+function SportsViewModel() {
     var self = this;
 
-    // Propriedades KO disponíveis 
-    
-    self.totalPages = ko.observable(1); // Inicializa com 1, pois não há paginação
-    self.currentPage = ko.observable(1); // Inicializa com 1
-    self.totalSports = ko.observable(0); // Renomeado para totalSports
-    self.fromRecord = ko.observable(0);
-    self.toRecord = ko.observable(0);
-    self.Id = ko.observable();
-    self.Name = ko.observable();
-    self.Sport_url = ko.observable();
-    self.Pictogram = ko.observable();
-    self.Athletes = ko.observable();
-    self.Coaches = ko.observable();
-    self.Competitions = ko.observable();
-    self.Teams = ko.observable();
-    self.Tecnical_officials = ko.observable();
-    self.Venues = ko.observable();
+    // Propriedades observáveis para armazenar os esportes
+    self.Sports = ko.observableArray(); // Lista de esportes
 
-    // Computed properties para verificar páginas
-    self.hasPreviousPage = ko.computed(() => {
-        return self.currentPage() > 1;
-    });
-    self.hasNextPage = ko.computed(() => {
-        return self.currentPage() < self.totalPages();
-    });
+    const getQueryParams = () => {
+        const params = new URLSearchParams(window.location.search);
+        return {
+            search: params.get('q') || '',
+        };
+    };
 
-    // Função para atualizar os dados a mostrar
-    self.inventory_populate = function () {
-        // Mostrar modal de carregamento
-        showLoadingModal();
+    // Função para buscar os dados da API de esportes
+    self.loadSports = function () {
+        const { search} = getQueryParams();
+        console.log(search);
+        // URL da API
+        
+        const apiUrl = "http://192.168.160.58/Paris2024/api/Sports";
 
-        // Para conseguir ir buscar a API
-        fetch('http://192.168.160.58/Paris2024/api/Sports', {
+        fetch(apiUrl, {
             method: "GET"
         })
             .then(response => {
@@ -43,50 +29,78 @@ function vm() {
                 return response.json();
             })
             .then(data => {
-                console.log(data);
-
-                // Atualização dos dados
-                
-                self.totalSports(data.length); // Total de esportes
-                self.fromRecord(1); // Como não há paginação, sempre começa do 1
-                self.toRecord(data.length); // Total de registros
-                self.Id (data.Id || 'unknown');
-                self.Name (data.Name || 'unknown');
-                self.Sport_url (data.Sport_url || 'unknown');
-                self.Pictogram (data.Pictogram || 'unknown');
-                self.Athletes (data.Athletes || 'unknown');
-                self.Coaches (data.Coaches || 'unknown');
-                self.Competitions (data.Competitions || 'unknown');
-                self.Teams (data.Teams || 'unknown');
-                self.Tecnical_officials (data.Tecnical_officials || 'unknown');
-                self.Venues (data.Venues || 'unknown');
+                console.log(data); // Verifique os dados retornados no console
+                self.Sports(data); // Atualiza a lista de esportes com os dados recebidos
             })
             .catch(error => {
-                console.error('Houve um problema com a operação de fetch:', error);
-            })
-            .finally(() => {
-                // Esconder modal de carregamento após os dados serem buscados
-                const myModal = bootstrap.Modal.getInstance(document.getElementById('myModal'));
-                if (myModal) {
-                    myModal.hide();
-                }
+                console.error('Erro ao carregar os dados dos esportes:', error);
             });
     };
 
-    // Inicializa a busca de dados
-    self.inventory_populate();
+    // Função para abrir o modal com detalhes de um esporte
+    self.showSportDetails = function (sport) {
+        // Verifica se o modal existe
+        var modalSportName = document.getElementById('modalSportName');
+        if (modalSportName) {
+            modalSportName.innerText = sport.Name || 'unknown';
+        }
+    
+        var modalSportAthletes = document.getElementById('modalSportAthletes');
+        if (modalSportAthletes) {
+            modalSportAthletes.innerText = sport.Athletes || 'unknown';
+        }
+    
+        var modalSportCoaches = document.getElementById('modalSportCoaches');
+        if (modalSportCoaches) {
+            modalSportCoaches.innerText = sport.Coaches || 'unknown';
+        }
+    
+        var modalSportCompetitions = document.getElementById('modalSportCompetitions');
+        if (modalSportCompetitions) {
+            modalSportCompetitions.innerText = sport.Competitions || 'unknown';
+        }
+    
+        var modalSportTeams = document.getElementById('modalSportTeams');
+        if (modalSportTeams) {
+            modalSportTeams.innerText = sport.Teams || 'unknown';
+        }
+    
+        var modalSportVenues = document.getElementById('modalSportVenues');
+        if (modalSportVenues) {
+            modalSportVenues.innerText = sport.Venues || 'unknown';
+        }
+    
+        var modalSportPictogram = document.getElementById('modalSportPictogram');
+        if (modalSportPictogram) {
+            modalSportPictogram.src = sport.Pictogram || 'imagem_default_nocs.png';
+        }
+    
+        // Mostra o modal
+        var myModal = new bootstrap.Modal(document.getElementById('sportDetailsModal'));
+        myModal.show();
+    };
 }
 
-const appElement = document.querySelector("#knockout-app");
-const viewModel = new vm();
-ko.applyBindings(viewModel, appElement);
+// Aplica o Knockout.js bindings
+const SportsViewModelInstance = new SportsViewModel();
+ko.applyBindings(SportsViewModelInstance);
 
+// Carrega os esportes ao iniciar a página
+SportsViewModelInstance.loadSports();
+
+// Função para mostrar o modal de carregamento
 function showLoadingModal() {
     var myModal = new bootstrap.Modal(document.getElementById('myModal'));
     myModal.show();
+
+    // Simula o tempo de carregamento de dados (por exemplo, 3 segundos)
+    setTimeout(function () {
+        myModal.hide();
+        // Você pode adicionar qualquer função para carregar dados adicionais aqui
+    }, 500); // 500 ms para simulação de carregamento
 }
 
-// Chama a função para mostrar o modal e carregar os dados
+// Chama a função para mostrar o modal de carregamento ao carregar a página
 document.addEventListener('DOMContentLoaded', function () {
     showLoadingModal();
 });
