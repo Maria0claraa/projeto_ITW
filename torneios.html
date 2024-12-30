@@ -205,7 +205,7 @@
         <div class="border-bottom py-2 mb-2">
             <div class="row">
                 <div class=" col-md-8">
-                    <h2 class="subTitulo">Lista de Comitivas Olímpicas</h2>
+                    <h2 class="subTitulo">Lista de Modalidades</h2>
                 </div>
                 <div class=" col-md-4">
                     <form>
@@ -226,56 +226,12 @@
             </div>
         </div>
 
-        <div class="row small">
-            <p class="col-4 mr-auto pt-2">
-                <span data-bind="html: 'Page: ' + currentPage() + ' of ' + totalPages()"></span><br />
-                <span data-bind="html: 'Sports: ' + fromRecord() + '-' + toRecord() + ' of ' + totalSports()"></span>
-            </p>
         
-            <div class="col-8 my-0 pt-3">
-                <ul class="pagination float-end">
-                    <!-- First Page Button -->
-                    <li class="page-item" data-bind="css: { disabled: !hasPreviousPage() }">
-                        <a class="page-link custom-pagination-link" title="First Page" rel="prev"
-                            data-bind="attr: { href: getPageHref(1) }">⇤</a>
-                    </li>
         
-                    <!-- Previous Page Button -->
-                    <li class="page-item" data-bind="css: { disabled: !hasPreviousPage() }">
-                        <a class="page-link custom-pagination-link" title="Previous Page"
-                            data-bind="attr: { href: getPageHref(previousPage()), rel: 'prev' }">←</a>
-                    </li>
-        
-                    <!-- Dynamic Page Buttons -->
-                    <!-- ko foreach: visiblePages -->
-                    <li class="page-item" data-bind="css: { active: $data === $parent.currentPage() }">
-                        <a class="page-link custom-pagination-link"
-                            data-bind="attr: { href: $parent.getPageHref($data), title: 'Page ' + $data }, text: $data"></a>
-                    </li>
-                    <!-- /ko -->
-        
-                    <!-- Next Page Button -->
-                    <li class="page-item" data-bind="css: { disabled: !hasNextPage() }">
-                        <a class="page-link custom-pagination-link" title="Next Page"
-                            data-bind="attr: { href: getPageHref(nextPage()), rel: 'next' }">→</a>
-                    </li>
-        
-                    <!-- Last Page Button -->
-                    <li class="page-item" data-bind="css: { disabled: !hasNextPage() }">
-                        <a class="page-link custom-pagination-link" title="Last Page"
-                            data-bind="attr: { href: getPageHref(totalPages()) }">⇥</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        
-        <div class="row">
-            <!-- Dynamic Cards -->
-            <!-- Cada card ocupa 2 colunas em telas grandes, 3 colunas em telas médias e 6 colunas em telas pequenas -->
-            <!-- ko foreach: Nocs_info -->
+        <div class="row" data-bind="foreach: Sports">
             <div class="col-lg-3 col-md-4 col-sm-6 mb-5" style="height: auto">
                 <div class="country-card"  style="position: relative;">
-                    <img data-bind="attr: { src: Pictogram && Pictogram.trim() !== '' ? Pictogram : 'imagem_default_nocs.png' }" alt="Pictogram" style="width: 100%; height: auto;" />
+                    <img data-bind="attr: { src: Pictogram && Pictogram.trim() !== '' ? Pictogram : 'imagem_default_nocs.png' }" alt="Photo" style="width: 100%; height: auto;" />
                     
                     <!-- Botão no canto superior direito -->
                     <a class="btn btn-default btn-light btn-xs" data-bind="attr: { href:'detalhes_torneios.html?id=' + Id }" style="position: absolute; top: 10px; right: 10px; z-index: 10;">
@@ -284,9 +240,10 @@
                     
                     <div class="country-name text-center mt-2" data-bind="text: Name"></div>
                 </div>
+                </div>
             </div>
-            <!-- /ko -->
         </div>
+        
         
     </div>
         
