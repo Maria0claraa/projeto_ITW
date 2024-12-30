@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Detalhes do atleta</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="paises_style.css">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css"
+        integrity="sha512-ELV+xyi8IhEApPS/pSj66+Jiw+sOT1Mqkzlh8ExXihe4zfqbWkxPRi8wptXIO9g73FSlhmquFlUOuMSoXz5IRw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="detalhes_atleta.css">
+    <style>
+      /* Estilo do container principal */
+.main-container {
+    display: flex; /* Ativa o Flexbox */
+    justify-content: space-between; /* Espaço entre os containers */
+    align-items: stretch; /* Garante que os containers internos tenham a mesma altura */
+    gap: 10px; /* Espaço entre os containers */
+    padding: 20px;
+    background-color: #f5f5f5;
+    height: auto; /* Garante que o container principal tenha altura total da tela */
+}
+
+/* Estilo de cada container interno */
+.inner-container {
+    flex: 1; /* Todos os containers têm o mesmo tamanho */
+    background-color: #4ca1af;
+    color: white;
+    text-align: center; /* Alinha o conteúdo horizontalmente */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex; /* Ativa o Flexbox dentro de cada container */
+    flex-direction: column; /* Organiza os itens na vertical */
+    justify-content: flex-start; /* Alinha o conteúdo ao topo do container */
+    align-items: center; /* Alinha o conteúdo horizontalmente no centro */
+    height: 100%; /* Garante que o container tenha altura total */
+}
+
+    </style>
+</head>
+
+<body>
+    <!--Menu para a visualização de diferentes páginas-->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img src="paris-2024-logo-1.png" alt="Logo" height="50" class="d-inline-block align-text-top">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fa fa-home"></i> Home
+                        </a>
+                    </li>
+                    <li class="dropdown">
+                        <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-users"></i> Participantes
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="Atletas_geral.html">
+                                <i class="fa fa-user"></i> Atletas
+                            </a>
+                            <a class="dropdown-item" href="paises.html">
+                                <i class="fa fa-globe"></i> Comitivas
+                            </a>
+                            <a class="dropdown-item" href="treinadores.html">
+                                <i class="fa fa-id-badge"></i> Treinadores
+                            </a>
+                            <a class="dropdown-item" href="arbitros.html">
+                                <i class="fa fa-flag"></i> Árbitros
+                            </a>
+                            <a class="dropdown-item" href="equipas.html">
+                                <i class="fa fa-users"></i> Equipas
+                            </a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-users"></i> Competições
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="Torneios.html">
+                                <i class="fa fa-list"></i> Modalidades
+                                
+
+                            </a>
+                            <a class="dropdown-item" href="atletismo_mixed.html">
+                                <i class="fa fa-cubes"></i> Atletismo
+                            </a>
+                            <a class="dropdown-item" href="basquetbol.html">
+                                <i class="fa fa-circle"></i> Basquetebol
+                            </a>
+                            <a class="dropdown-item" href="canoagem.html">
+                                <i class="fa fa-flag"></i> Canoagem de velocidade
+                            </a>
+                            <a class="dropdown-item" href="ciclismo.html">
+                                <i class="fa fa-bicycle"></i> Ciclismo de pista
+                            </a>
+                            <a class="dropdown-item" href="futebol.html">
+                                <i class="fa fa-futbol-o"></i> Futebol
+                            </a>
+                            <a class="dropdown-item" href="natacao.html">
+                                <i class="fa fa-life-ring"></i> Natação
+                            </a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="mapa.html">
+                            <i class="fa fa-map"></i> Mapa de Arenas
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">
+                            <i class="fa fa-shopping-cart"></i>Loja</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tocha.html">
+                            <i class="fa fa-map-marker"></i>Percurso da tocha</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="estatisticas.html">
+                            <i class="fa fa-line-chart"></i>Estatisticas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="quiz.html">
+                            <i class="fa fa-puzzle-piece"></i>Quiz</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="light-theme">
+                <button class="mode-toggle" id="themeSwitcher">
+                    <i class="fa fa-moon"></i> <!-- Ícone inicial da Lua -->
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Botão para voltar à lista -->
+    <a href="torneios.html" class="botao">Voltar à lista</a>
+
+    <!-- Nome do atleta -->
+    <div>
+        <h2 class="text-center">Detalhes da Modalidade: <span data-bind="text: Name"></span></h2>
+    </div>
+    <div class="container">
+        <div class="row">
+            <!-- Coluna para a foto do atleta -->
+            <div class="col-12 col-md-4 d-flex flex-column justify-content-start align-items-center">
+                <img data-bind="attr: { src: Pictogram, alt: Name }" class="img-fluid img-bordered"
+                    style="width: 100%; height: auto; max-width: 400px;"
+                    onerror="this.onerror=null; this.src='imagem_default_nocs.png';" />
+            </div>
+
+            <!-- Coluna para os detalhes da NOC (tabela) -->
+            <div class="col-12 col-md-8">
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <th scope="row">ID</th>
+                            <td data-bind="text: Id"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Nome</th>
+                            <td data-bind="text: Name"></td>
+                        </tr>
+                        
+                        <tr>
+                            <th scope="row">Url</th>
+                            <td data-bind="text: Sports_url"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <h2 class="text-center">Mais detalhes da Modalidade</h2>
+    </div>
+
+    <div class="main-container">
+        <div class="inner-container">
+            <p>Atletas</p>
+            <table class="table table-striped table-sm small">
+                <thead class="table-secondary">
+                    <tr>
+                        <th scope="col">Nomes</th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: Athletes">
+                    <tr>
+                        <td class="align-middle" data-bind="text: Name"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="inner-container">
+            <p>Treinadores</p>
+            <table class="table table-striped table-sm small">
+                <thead class="table-secondary">
+                    <tr>
+                        <th scope="col">Nomes</th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: Coaches">
+                    <tr>
+                        <td class="align-middle" data-bind="text: Name"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div class="inner-container">
+            <p>Competições</p>
+            <table class="table table-striped table-sm small">
+                <thead class="table-secondary">
+                    <tr>
+                        <th scope="col">Nomes</th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: Competitions">
+                    <tr>
+                        <td class="align-middle" data-bind="text: Name"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="inner-container">
+            <p>Teams</p>
+            <table class="table table-striped table-sm small">
+                <thead class="table-secondary">
+                    <tr>
+                        <th scope="col">Nome</th>
+                        
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: Teams">
+                    <tr>
+                        <td class="align-middle" data-bind="text: Name"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="main-container">
+        <div class="inner-container">
+            <p>Árbitros</p>
+            <table class="table table-striped table-sm small">
+                <thead class="table-secondary">
+                    <tr>
+                        <th scope="col">Nomes</th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: Technical_officials">
+                    <tr>
+                        <td class="align-middle" data-bind="text: Name"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="inner-container">
+            <p>Estádios</p>
+            <table class="table table-striped table-sm small">
+                <thead class="table-secondary">
+                    <tr>
+                        <th scope="col">Nome</th>
+                        
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: Venues">
+                    <tr>
+                        <td class="align-middle" data-bind="text: Name"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal de carregamento -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content shadow-lg">
+                <div class="modal-header" style="background: linear-gradient(135deg, #4ca1af, #2c3e50); color: #fff;">
+                    <h5 class="modal-title">
+                        <img src="paris-2024-logo-1.png" height="30" class="me-2" alt="Logo Paris 2024" />
+                        A processar dados, por favor aguarde...
+                    </h5>
+                </div>
+                <div class="modal-body text-center">
+                    <i class="fa fa-spin fa-3x fa-refresh" style="color: #4ca1af;"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid w-100" style="border-top: 2px solid grey;">
+        <div class="row">
+            <div class="col">
+                <div class="navbar-text">Olimpíadas Paris 2024 - projeto realizado no âmbito da cadeira de ITW</div>
+            </div>
+            <div class="col" style="text-align: end;">
+                <div class="navbar-text justify-content-end d-none d-md-block">Universidade de Aveiro</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.min.js"></script>
+    <script src="detalhes_torneios.js"></script>
+    <script src="modo_escuro.js"></script>
+</body>
+
+</html>
