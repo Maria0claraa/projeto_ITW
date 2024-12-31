@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             stageButton.style.color = 'white';
 
                             // Agora podemos chamar a api do evento 
-                            fetch(`http://192.168.160.58/Paris2024/api/Basket?EventId=${competitionButton.dataset.eventId}&StageId=${stageButton.dataset.stageId}`)
+                            fetch(`http://192.168.160.58/Paris2024/api/Basketballs?EventId=${competitionButton.dataset.eventId}&StageId=${stageButton.dataset.stageId}`)
                                 .then(response => response.json())
                                 .then(results => {
                                     // Limpa a tabela antes de adicionar novos resultados
@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                             <td class="align-middle">${result.ParticipantName}</td>
                                             <td class="align-middle">${result.CountryName}</td>
                                             <td class="text-end">
-                                                <a class="btn btn-default btn-light btn-xs" href="detalhes_atletismo.html?id=${result.Id}">
+                                                <a class="btn btn-default btn-light btn-xs" href="detalhes_basquetbol.html?id=${result.Id}">
                                                     <i class="fa fa-eye" title="Show details"></i>
                                                 </a>
                                                 <button class="btn btn-default btn-xs" onclick="addToFavorites(${result.ParticipantCode})">
