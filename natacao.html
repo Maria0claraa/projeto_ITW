@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Torneios Natação</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="index.css">
+    <style>
+    .button-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Espaço entre os botões */
+}
+
+.competition-button, .phase-button {
+    padding: 5px 10px; /* Ajuste o tamanho do botão */
+    font-size: 14px; /* Reduza o tamanho da fonte */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    cursor: pointer;
+    white-space: nowrap; /* Evita que o texto quebre */
+    text-align: center;
+}
+
+.competition-button:hover, .phase-button:hover {
+    background-color: #e9ecef;
+}
+
+    </style>
+    <style>
+        .accordion-header .accordion-button {
+            background-color: #d0e7ff; /* Cor azul clara */
+            color: #000; /* Cor do texto (opcional) */
+        }
+    
+        .accordion-header .accordion-button:not(.collapsed) {
+            background-color: #d0e7ff; /* Cor azul clara quando aberto */
+            color: #000;
+        }
+    
+        .accordion-header .accordion-button:hover {
+            background-color: #a8d0ff; /* Cor mais clara ao passar o mouse */
+        }
+    </style>
+    
+</head>
+
+<body>
+    <!--Menu para a visualização de diferentes páginas-->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img src="paris-2024-logo-1.png" alt="Logo" height="50" class="d-inline-block align-text-top">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fa fa-home"></i> Home
+                        </a>
+                    </li>
+                    <li class="dropdown">
+                        <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-users"></i> Participantes
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="Atletas_geral.html">
+                                <i class="fa fa-user"></i> Atletas
+                            </a>
+                            <a class="dropdown-item" href="paises.html">
+                                <i class="fa fa-globe"></i> Comitivas
+                            </a>
+                            <a class="dropdown-item" href="treinadores.html">
+                                <i class="fa fa-id-badge"></i> Treinadores
+                            </a>
+                            <a class="dropdown-item" href="arbitros.html">
+                                <i class="fa fa-flag"></i> Árbitros
+                            </a>
+                            <a class="dropdown-item" href="equipas.html">
+                                <i class="fa fa-users"></i> Equipas
+                            </a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-users"></i> Competições
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="Torneios.html">
+                                <i class="fa fa-list"></i> Modalidades
+                                
+
+                            </a>
+                            <a class="dropdown-item" href="atletismo_mixed.html">
+                                <i class="fa fa-cubes"></i> Atletismo
+                            </a>
+                            <a class="dropdown-item" href="basquetbol.html">
+                                <i class="fa fa-circle"></i> Basquetebol
+                            </a>
+                            <a class="dropdown-item" href="canoagem.html">
+                                <i class="fa fa-flag"></i> Canoagem de velocidade
+                            </a>
+                            <a class="dropdown-item" href="ciclismo.html">
+                                <i class="fa fa-bicycle"></i> Ciclismo de pista
+                            </a>
+                            <a class="dropdown-item" href="futebol.html">
+                                <i class="fa fa-futbol-o"></i> Futebol
+                            </a>
+                            <a class="dropdown-item" href="natacao.html">
+                                <i class="fa fa-life-ring"></i> Natação
+                            </a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="mapa.html">
+                            <i class="fa fa-map"></i> Mapa de Arenas
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">
+                            <i class="fa fa-shopping-cart"></i>Loja</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tocha.html">
+                            <i class="fa fa-map-marker"></i>Percurso da tocha</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="estatisticas.html">
+                            <i class="fa fa-line-chart"></i>Estatisticas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="quiz.html">
+                            <i class="fa fa-puzzle-piece"></i>Quiz</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="light-theme">
+                <button class="mode-toggle" id="themeSwitcher">
+                    <i class="fa fa-moon"></i> <!-- Ícone inicial da Lua -->
+                </button>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- informações-->
+    <ul class="nav nav-tabs" style="padding-top: 20px;padding-bottom: 10px;">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="natacao.html">Eventos de natação</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-id="ATH" href="detalhes_natacao_modalidade.html">Detalhes da modalidade</a>
+        </li>
+    </ul>
+
+
+      <div class="accordion" id="accordionPanelsStayOpenExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                    (1) Escolha a Competição
+                </button>
+            </h2>
+            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+                <div class="accordion-body">
+                    <div class="button-container" id="competition-buttons">
+                        <!-- Competition buttons will be dynamically inserted here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                    (2) Escolha a  fase da Competição
+                </button>
+            </h2>
+            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show">
+                <div class="accordion-body">
+                    <div class="button-container" id="relay-options">
+                        <div class="competition-options" >
+                                                    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    
+    
+    <div class="container" id="knockout-app">
+        <div class="border-bottom py-2 mb-2">
+            <div class="row">
+                <div class=" col-md-8">
+                    <h2 class="subTitulo">Natação - Lista de Provas</h2>
+                </div>
+                <div class=" col-md-4">
+                    <form>
+                        <input type="hidden" name="page" value="1">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        
+
+        <table class="table table-striped table-sm small">
+            <thead class="table-secondary">
+                <tr>
+                    <th scope="col">Evento</th>
+                    <th scope="col">Fase</th>
+                    <th scope="col">Gênero</th>
+                    <th scope="col">Participante/Equipa</th>
+                    <th scope="col">País</th>
+
+                    <th scope="col" class="text-right"></th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: atheletics_info">
+               <!--Aqui vai ser adicionado as competições de cada um -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content shadow-lg">
+                <div class="modal-header" style="background: linear-gradient(135deg, #4ca1af, #2c3e50); color: #fff;">
+                    <h5 class="modal-title centered" id="exampleModalLabel">
+                        <img src="paris-2024-logo-1.png" height="30" class="me-2" />
+                        A processar dados, por favor aguarde...
+                    </h5>
+                </div>
+                <div class="modal-body text-center">
+                    <i class="fa fa-spin fa-3x fa-refresh" style="color: #4ca1af;"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!--footer-->
+    <div class="container-fluid w-100" style="border-top: 2px solid grey;">
+        <div class="row">
+            <div class="col">
+                <div class="navbar-text">Olimpíadas Paris 2024 - projeto realizado no âmbito da cadeira de ITW</div>
+            </div>
+            <div class="col" style="text-align: end;">
+                <div class="navbar-text justify-content-end d-none d-md-block">Universidade de Aveiro</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../lib/knockout/dist/knockout-latest.min.js"></script>
+    <script src="../lib/jquery/dist/jquery.min.js"></script>
+    <script src="natacao.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="modo_escuro.js"></script>
+    
+    
+    
+</body>
+
+</html>
