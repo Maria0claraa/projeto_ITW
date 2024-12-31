@@ -29,7 +29,22 @@
     background-color: #e9ecef;
 }
 
+    
+        .accordion-header .accordion-button {
+            background-color: #d0e7ff; /* Cor azul clara */
+            color: #000; /* Cor do texto (opcional) */
+        }
+    
+        .accordion-header .accordion-button:not(.collapsed) {
+            background-color: #d0e7ff; /* Cor azul clara quando aberto */
+            color: #000;
+        }
+    
+        .accordion-header .accordion-button:hover {
+            background-color: #a8d0ff; /* Cor mais clara ao passar o mouse */
+        }
     </style>
+    
 </head>
 
 <body>
@@ -168,7 +183,7 @@
                     (2) Escolha a fase da competição
                 </button>
             </h2>
-            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
+            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show">
                 <div class="accordion-body">
                     <div class="button-container" id="relay-options">
                         <div class="competition-options" >
