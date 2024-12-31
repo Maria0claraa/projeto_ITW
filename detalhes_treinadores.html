@@ -61,7 +61,7 @@
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="Torneios.html">
                                 <i class="fa fa-list"></i> Modalidades
-                                
+
 
                             </a>
                             <a class="dropdown-item" href="atletismo_mixed.html">
@@ -130,7 +130,8 @@
                 <!-- Coluna para a foto do treinador -->
                 <div class="col-12 col-md-4 d-flex flex-column justify-content-start align-items-center">
                     <img data-bind="attr: { src: Photo, alt: Name }" class="img-fluid img-bordered"
-                        style="width: 100%; height: auto; max-width: 400px;" />
+                        style="width: 100%; height: auto; max-width: 400px;"
+                        onerror="this.onerror=null; this.src='imagemDefault.png';" />
                 </div>
 
                 <!-- Coluna para os detalhes do treinador (tabela) -->
