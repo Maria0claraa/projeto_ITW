@@ -80,9 +80,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
                                     // Adiciona os resultados à tabela
                                     results.forEach(result => {
+                                        
                                         const row = document.createElement("tr");
                                         row.innerHTML = `
-                                            <td class="align-middle">${result.DateTime}</td>
+                                            <td class="align-middle">${result.EventName}</td>
                                             <td class="align-middle">${result.StageName}</td>
                                             <td class="align-middle">${result.Sex}</td>
                                             <td class="align-middle">${result.ParticipantName}</td>
