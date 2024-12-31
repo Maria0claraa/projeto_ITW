@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Torneios</title>
+    <title>Torneios Basquetbol</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="index.css">
@@ -30,6 +30,22 @@
 }
 
     </style>
+    <style>
+        .accordion-header .accordion-button {
+            background-color: #d0e7ff; /* Cor azul clara */
+            color: #000; /* Cor do texto (opcional) */
+        }
+    
+        .accordion-header .accordion-button:not(.collapsed) {
+            background-color: #d0e7ff; /* Cor azul clara quando aberto */
+            color: #000;
+        }
+    
+        .accordion-header .accordion-button:hover {
+            background-color: #a8d0ff; /* Cor mais clara ao passar o mouse */
+        }
+    </style>
+    
 </head>
 
 <body>
@@ -139,10 +155,10 @@
     <!-- informações-->
     <ul class="nav nav-tabs">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="atletismo_mixed.html">Eventos do basquetbol</a>
+          <a class="nav-link active" aria-current="page" href="basquetbol.html">Eventos do basquetbol</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-id="ATH" href="detalhes_basquetbol_modalidade.html" data-bind="attr: { href:'detalhes_atleta.html?id=' + Id }">Detalhes da modalidade</a>
+          <a class="nav-link" data-id="ATH" href="detalhes_basquetbol_modalidade.html">Detalhes da modalidade</a>
         </li>
     </ul>
 
@@ -168,7 +184,7 @@
                     (2) Escolha a  fase da Competição
                 </button>
             </h2>
-            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
+            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show">
                 <div class="accordion-body">
                     <div class="button-container" id="relay-options">
                         <div class="competition-options" >
