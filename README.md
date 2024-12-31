@@ -12,7 +12,7 @@ Página das equipas e os respetivos detalhes 29/12
 
 Página das modalidades e os respetivos detalhes 30/12
 
-Página do atletismo e os respetivos detalhes 31/12
+Página do atletismo e os respetivos detalhes (a incluir funcionalidades como o nav-tabs e o accordion) 31/12
 
 
 
