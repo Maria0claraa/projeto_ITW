@@ -210,50 +210,7 @@
             </div>
         </div>
 
-        <div class="row small">
-
-            <p class=" col-4 mr-auto pt-2">
-                <span data-bind="html: 'Page: ' + currentPage() + ' of ' + totalPages()"></span><br />
-                <span data-bind="html: 'Athletics: '+ fromRecord() + '-' + toRecord() + ' of ' + totalAhletics()"></span>
-            </p>
-
-            <div class="col-8 my-0 pt-3">
-                <ul class="pagination float-end">
-                    <!-- First Page Button -->
-                    <li class="page-item" data-bind="css: { disabled: !hasPreviousPage() }">
-                        <a class="page-link custom-pagination-link" title="First Page" rel="prev"
-                            data-bind="attr: { href: getPageHref(1)}">⇤</a>
-                    </li>
-
-                    <!-- Previous Page Button -->
-                    <li class="page-item" data-bind="css: { disabled: !hasPreviousPage() }">
-                        <a class="page-link custom-pagination-link" title="Previous Page"
-                            data-bind="attr: { href:  getPageHref(previousPage()), rel: 'prev' }">←</a>
-                    </li>
-
-                    <!-- Dynamic Page Buttons -->
-                    <!-- ko foreach: visiblePages -->
-                    <li class="page-item" data-bind="css: { active: $data === $parent.currentPage() }">
-                        <a class="page-link custom-pagination-link"
-                            data-bind="attr: { href: $parent.getPageHref($data), title: 'Page ' + $data }, text: $data"></a>
-                    </li>
-                    <!-- /ko -->
-
-                    <!-- Next Page Button -->
-                    <li class="page-item" data-bind="css: { disabled: !hasNextPage() }">
-                        <a class="page-link custom-pagination-link" title="Next Page"
-                            data-bind="attr: { href: getPageHref(nextPage()), rel: 'next' }">→</a>
-                    </li>
-
-                    <!-- Last Page Button -->
-                    <li class="page-item" data-bind="css: { disabled: !hasNextPage() }">
-                        <a class="page-link custom-pagination-link" title="Last Page"
-                            data-bind="attr: { href: getPageHref(totalPages()) }">⇥</a>
-                    </li>
-                </ul>
-            </div>
-
-        </div>
+        
 
         <table class="table table-striped table-sm small">
             <thead class="table-secondary">
