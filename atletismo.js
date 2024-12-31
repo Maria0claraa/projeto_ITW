@@ -1,55 +1,82 @@
-// ViewModel KnockOut
-var vm = function () {
-    console.log('ViewModel initiated...');
-    // Variáveis locais
-    var self = this;
-    self.baseUri = ko.observable('http://192.168.160.58/paris2024/api/athletics');
-    self.displayName = 'Paris 2024 Athletics';
-    self.records = ko.observableArray([]);
+document.addEventListener("DOMContentLoaded", () => {
+    // URL da API
+    const apiUrl = "http://192.168.160.58/Paris2024/api/Athletics/Events";
 
-    // Função para buscar os dados da API
-    self.activate = function (id) {
-        console.log('CALL: getAthletics...');
-        var composedUri = self.baseUri();
+    // Elementos do DOM
+    const competitionsContainer = document.querySelector(".accordion-body .button-container");
+    const phasesContainer = document.querySelector(".competition-options");
 
-        ajaxHelper(composedUri, 'GET')
-            .done(function (data) {
-                console.log('Dados recebidos:', data);
-                self.records(data);
-                self.error(''); // Limpa erros anteriores, se existirem
-            })
-            .fail(function (jqXHR, textStatus, errorThrown) {
-                console.error('Erro ao buscar dados:', textStatus, errorThrown);
-                self.error('Erro ao carregar os dados. Por favor, tente novamente mais tarde.');
+    // Fetch data from API
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            // Limpa os contêineres
+            competitionsContainer.innerHTML = "";
+            phasesContainer.innerHTML = "";
+
+            // Itera sobre os eventos
+            data.forEach(event => {
+                // Cria botão para cada competição
+                const competitionButton = document.createElement("button");
+                competitionButton.className = "competition-button";
+                competitionButton.textContent = event.EventName;
+                competitionButton.dataset.target = `event-${event.EventId}-stages`;
+
+                // Adiciona evento de clique para exibir as fases correspondentes
+                competitionButton.addEventListener("click", () => {
+                    // Remove destaque de outros botões
+                    document.querySelectorAll(".competition-button").forEach(btn => {
+                        btn.style.backgroundColor = '';
+                        btn.style.color = '';
+                    });
+
+                    // Destaca o botão atual
+                    competitionButton.style.backgroundColor = '#4ca1af';
+                    competitionButton.style.color = 'white';
+
+                    // Esconde todas as fases e exibe apenas as do evento selecionado
+                    document.querySelectorAll(".competition-options").forEach(option => {
+                        option.style.display = 'none';
+                    });
+                    const targetContainer = document.getElementById(`event-${event.EventId}-stages`);
+                    if (targetContainer) {
+                        targetContainer.style.display = 'block';
+                    }
+                });
+
+                competitionsContainer.appendChild(competitionButton);
+
+                // Cria contêiner para fases do evento
+                const stagesContainer = document.createElement("div");
+                stagesContainer.className = "competition-options";
+                stagesContainer.id = `event-${event.EventId}-stages`;
+                stagesContainer.style.display = "none";
+
+                // Adiciona fases ao contêiner
+                event.Stages.forEach(stage => {
+                    const stageButton = document.createElement("button");
+                    stageButton.className = "phase-button";
+                    stageButton.textContent = stage.StageName;
+
+                    // Adiciona evento de clique para destacar a fase selecionada
+                    stageButton.addEventListener("click", () => {
+                        document.querySelectorAll(".phase-button").forEach(btn => {
+                            btn.style.backgroundColor = '';
+                            btn.style.color = '';
+                        });
+
+                        stageButton.style.backgroundColor = '#4ca1af';
+                        stageButton.style.color = 'white';
+                    });
+
+                    stagesContainer.appendChild(stageButton);
+                });
+
+                // Adiciona o contêiner de fases ao DOM
+                phasesContainer.parentElement.appendChild(stagesContainer);
             });
-    };
-
-    // Inicialização
-    self.activate = function () {
-        self.getAthletics();
-    };
-
-    // Chamar a função de ativação ao carregar
-    self.activate();
-    console.log('ViewModel initialized!');
-};
-
- // Função AJAX Helper
- function ajaxHelper(uri, method, data) {
-    return $.ajax({
-        type: method,
-        url: uri,
-        dataType: 'json',
-        contentType: 'application/json',
-        data: data ? JSON.stringify(data) : null,
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.error(`AJAX Call [${uri}] Failed:`, textStatus, errorThrown);
-        }
-    });
-}
-
-// Aplicação de Bindings ao carregar a página
-$(document).ready(function () {
-    console.log('Document ready!');
-    ko.applyBindings(new vm());
+        })
+        .catch(error => {
+            console.error("Erro ao buscar os dados da API:", error);
+        });
 });
