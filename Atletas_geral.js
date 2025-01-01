@@ -90,18 +90,34 @@ function vm() {
             });
     };
 
-    // Função para adicionar um atleta aos favoritos
-self.addToFavorites = function(athleteId) {
-    // Obtém os favoritos atuais do localStorage
+  // Função para adicionar ou remover um atleta dos favoritos
+  self.toggleFavorite = function(athleteId) {
     let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
 
     // Verifica se o atleta já está nos favoritos
-    if (!favorites.includes(athleteId)) {
-        // Adiciona o atleta aos favoritos
-        favorites.push(athleteId);
-        // Atualiza o localStorage com os novos favoritos
-        localStorage.setItem('favorites', JSON.stringify(favorites));
+    const index = favorites.findIndex(fav => fav.Id === athleteId);
+    if (index === -1) {
+        // Adiciona aos favoritos
+        const athlete = self.athletes_info().find(a => a.Id === athleteId);
+        if (athlete) {
+            favorites.push({
+                Id: athlete.Id,
+                Name: athlete.Name,
+                PhotoUrl: athlete.PhotoUrl // Supondo que você tenha a URL da foto
+            });
+        }
+    } else {
+        // Remove dos favoritos
+        favorites.splice(index, 1);
     }
+    // Atualiza o localStorage com os novos favoritos
+    localStorage.setItem(' favorites', JSON.stringify(favorites));
+};
+
+// Função para verificar se um atleta é favorito
+self.isFavorite = function(athleteId) {
+    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    return favorites.some(fav => fav.Id === athleteId);
 };
 
 
