@@ -24,4 +24,4 @@ Página do futebol e os respetivos detalhes (a incluir funcionalidades como o na
 
 Página da natação e os respetivos detalhes (a incluir funcionalidades como o nav-tabs e o accordion) 31/12
 
-
+Página das competições e os respetivos detalhes 01/01
