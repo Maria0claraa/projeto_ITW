@@ -14,6 +14,14 @@ Página das modalidades e os respetivos detalhes 30/12
 
 Página do atletismo e os respetivos detalhes (a incluir funcionalidades como o nav-tabs e o accordion) 31/12
 
+Página do basquetbol e os respetivos detalhes (a incluir funcionalidades como o nav-tabs e o accordion) 31/12
 
+Página da canoagem de velocidade e os respetivos detalhes (a incluir funcionalidades como o nav-tabs e o accordion) 31/12
+
+Página do ciclismo de pista  e os respetivos detalhes (a incluir funcionalidades como o nav-tabs e o accordion) 31/12
+
+Página do futebol e os respetivos detalhes (a incluir funcionalidades como o nav-tabs e o accordion) 31/12
+
+Página da natação e os respetivos detalhes (a incluir funcionalidades como o nav-tabs e o accordion) 31/12
 
 
