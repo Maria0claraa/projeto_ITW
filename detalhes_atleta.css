@@ -74,6 +74,7 @@ span {
     /* Sombra sutil para destacar a imagem */
     transition: transform 0.3s ease;
     /* Transição suave ao passar o mouse */
+    background-color: white;
 }
 
 /* Efeito interativo nas imagens */
