@@ -42,7 +42,7 @@ const quizData = [
         image: "https://zap.aeiou.pt/wp-content/uploads/2014/02/789f1253b4a110cabe3bab1d7e7361e3-783x450.jpg"
     },
     {
-        question: "Quem acendeu a pira olímpica nos Jogos de Barcelona 1992?",
+        question: "Quem acendeu a tocha olímpica nos Jogos de Barcelona 1992?",
         options: ["Muhammad Ali", "Juan Antonio Samaranch", "Wayne Gretzky", "Antonio Rebollo"],
         answer: 3,
         image: "https://www.olimpiadatododia.com.br/wp-content/uploads/2020/05/15007411677834.jpg"
