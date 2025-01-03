@@ -92,9 +92,6 @@ document.addEventListener("DOMContentLoaded", () => {
                                                 <a class="btn btn-default btn-light btn-xs" href="detalhes_basquetbol.html?id=${result.Id}">
                                                     <i class="fa fa-eye" title="Show details"></i>
                                                 </a>
-                                                <button class="btn btn-default btn-xs" onclick="addToFavorites(${result.ParticipantCode})">
-                                                    <i class="fa fa-heart-o" title="Add to favorites"></i>
-                                                </button>
                                             </td>
                                         `;
                                         resultsTableBody.appendChild(row);
